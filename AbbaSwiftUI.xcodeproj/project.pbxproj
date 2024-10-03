@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		344CAFF0FA1DA9173AADA967 /* Pods_AbbaSwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BA244CD45975F0D3C5F1E0 /* Pods_AbbaSwiftUI.framework */; };
+		67E92D1E2ED4161985376D7A /* Pods_AbbaSwiftUI_AbbaSwiftUIUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 827E04458DC15BC0B179DED0 /* Pods_AbbaSwiftUI_AbbaSwiftUIUITests.framework */; };
 		8F0B37AB2CAE4A7200A261E4 /* AbbaSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0B37AA2CAE4A7200A261E4 /* AbbaSwiftUIApp.swift */; };
 		8F0B37AD2CAE4A7200A261E4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0B37AC2CAE4A7200A261E4 /* ContentView.swift */; };
 		8F0B37AF2CAE4A7400A261E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F0B37AE2CAE4A7400A261E4 /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 		8F0B37F62CAE54F800A261E4 /* OneSignalFramework in Frameworks */ = {isa = PBXBuildFile; productRef = 8F0B37F52CAE54F800A261E4 /* OneSignalFramework */; };
 		8F0B37F82CAE54F800A261E4 /* OneSignalInAppMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 8F0B37F72CAE54F800A261E4 /* OneSignalInAppMessages */; };
 		8F0B37FA2CAE54F800A261E4 /* OneSignalLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 8F0B37F92CAE54F800A261E4 /* OneSignalLocation */; };
+		A1B6A252AEF6393984B3779B /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84928A548F8542BE9870B067 /* Pods_OneSignalNotificationServiceExtension.framework */; };
+		DBD4ACC4E045517B6FF4DB82 /* Pods_AbbaSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715C2E7587C0C88961806A7F /* Pods_AbbaSwiftUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +70,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4A47775F6E50B1D0D0AAF824 /* Pods-AbbaSwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbbaSwiftUI.release.xcconfig"; path = "Target Support Files/Pods-AbbaSwiftUI/Pods-AbbaSwiftUI.release.xcconfig"; sourceTree = "<group>"; };
+		715C2E7587C0C88961806A7F /* Pods_AbbaSwiftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbbaSwiftUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		821996AFBB43F6494F4F933F /* Pods-AbbaSwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbbaSwiftUI.debug.xcconfig"; path = "Target Support Files/Pods-AbbaSwiftUI/Pods-AbbaSwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
+		827E04458DC15BC0B179DED0 /* Pods_AbbaSwiftUI_AbbaSwiftUIUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbbaSwiftUI_AbbaSwiftUIUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		82B6438D87DD3ABDE01D3C19 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		84928A548F8542BE9870B067 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0B37A72CAE4A7200A261E4 /* AbbaSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbbaSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0B37AA2CAE4A7200A261E4 /* AbbaSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbbaSwiftUIApp.swift; sourceTree = "<group>"; };
 		8F0B37AC2CAE4A7200A261E4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -86,6 +96,12 @@
 		8F0B37E62CAE544900A261E4 /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0B37E82CAE544900A261E4 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		8F0B37EA2CAE544900A261E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AD90D20BA9C809B0AFC22C1F /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
+		B0BA244CD45975F0D3C5F1E0 /* Pods_AbbaSwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbbaSwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF81AAE9F7CF0570B4BAC9E1 /* Pods-AbbaSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbbaSwiftUITests.debug.xcconfig"; path = "Target Support Files/Pods-AbbaSwiftUITests/Pods-AbbaSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C1705022AA202DB7398AA5DF /* Pods-AbbaSwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbbaSwiftUITests.release.xcconfig"; path = "Target Support Files/Pods-AbbaSwiftUITests/Pods-AbbaSwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CB78907957C32F57FF53D0C6 /* Pods-AbbaSwiftUI-AbbaSwiftUIUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbbaSwiftUI-AbbaSwiftUIUITests.release.xcconfig"; path = "Target Support Files/Pods-AbbaSwiftUI-AbbaSwiftUIUITests/Pods-AbbaSwiftUI-AbbaSwiftUIUITests.release.xcconfig"; sourceTree = "<group>"; };
+		DA66E1D0851E26A1D6564069 /* Pods-AbbaSwiftUI-AbbaSwiftUIUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbbaSwiftUI-AbbaSwiftUIUITests.debug.xcconfig"; path = "Target Support Files/Pods-AbbaSwiftUI-AbbaSwiftUIUITests/Pods-AbbaSwiftUI-AbbaSwiftUIUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +113,7 @@
 				8F0B37F62CAE54F800A261E4 /* OneSignalFramework in Frameworks */,
 				8F0B37FA2CAE54F800A261E4 /* OneSignalLocation in Frameworks */,
 				8F0B37F42CAE54F800A261E4 /* OneSignalExtension in Frameworks */,
+				344CAFF0FA1DA9173AADA967 /* Pods_AbbaSwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBD4ACC4E045517B6FF4DB82 /* Pods_AbbaSwiftUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67E92D1E2ED4161985376D7A /* Pods_AbbaSwiftUI_AbbaSwiftUIUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1B6A252AEF6393984B3779B /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +152,8 @@
 				8F0B37C42CAE4A7400A261E4 /* AbbaSwiftUIUITests */,
 				8F0B37E72CAE544900A261E4 /* OneSignalNotificationServiceExtension */,
 				8F0B37A82CAE4A7200A261E4 /* Products */,
+				B21ACDEEE9BF4C5FEE569683 /* Pods */,
+				AC2EE84D8E78ED8CB6F3D2F2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -214,6 +236,33 @@
 			path = OneSignalNotificationServiceExtension;
 			sourceTree = "<group>";
 		};
+		AC2EE84D8E78ED8CB6F3D2F2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B0BA244CD45975F0D3C5F1E0 /* Pods_AbbaSwiftUI.framework */,
+				827E04458DC15BC0B179DED0 /* Pods_AbbaSwiftUI_AbbaSwiftUIUITests.framework */,
+				715C2E7587C0C88961806A7F /* Pods_AbbaSwiftUITests.framework */,
+				84928A548F8542BE9870B067 /* Pods_OneSignalNotificationServiceExtension.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B21ACDEEE9BF4C5FEE569683 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				821996AFBB43F6494F4F933F /* Pods-AbbaSwiftUI.debug.xcconfig */,
+				4A47775F6E50B1D0D0AAF824 /* Pods-AbbaSwiftUI.release.xcconfig */,
+				DA66E1D0851E26A1D6564069 /* Pods-AbbaSwiftUI-AbbaSwiftUIUITests.debug.xcconfig */,
+				CB78907957C32F57FF53D0C6 /* Pods-AbbaSwiftUI-AbbaSwiftUIUITests.release.xcconfig */,
+				BF81AAE9F7CF0570B4BAC9E1 /* Pods-AbbaSwiftUITests.debug.xcconfig */,
+				C1705022AA202DB7398AA5DF /* Pods-AbbaSwiftUITests.release.xcconfig */,
+				82B6438D87DD3ABDE01D3C19 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				AD90D20BA9C809B0AFC22C1F /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -221,10 +270,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F0B37CB2CAE4A7400A261E4 /* Build configuration list for PBXNativeTarget "AbbaSwiftUI" */;
 			buildPhases = (
+				91B731C5D2A9C18ED7CD1824 /* [CP] Check Pods Manifest.lock */,
 				8F0B37A32CAE4A7200A261E4 /* Sources */,
 				8F0B37A42CAE4A7200A261E4 /* Frameworks */,
 				8F0B37A52CAE4A7200A261E4 /* Resources */,
 				8F0B37F12CAE544900A261E4 /* Embed Foundation Extensions */,
+				2826044186CE7FF49EA9BE55 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -246,6 +297,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F0B37CE2CAE4A7400A261E4 /* Build configuration list for PBXNativeTarget "AbbaSwiftUITests" */;
 			buildPhases = (
+				14D21088C86D1B10D6AA51BD /* [CP] Check Pods Manifest.lock */,
 				8F0B37B32CAE4A7400A261E4 /* Sources */,
 				8F0B37B42CAE4A7400A261E4 /* Frameworks */,
 				8F0B37B52CAE4A7400A261E4 /* Resources */,
@@ -264,9 +316,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F0B37D12CAE4A7400A261E4 /* Build configuration list for PBXNativeTarget "AbbaSwiftUIUITests" */;
 			buildPhases = (
+				14F20C56E8EEE4BE6A8EEB7F /* [CP] Check Pods Manifest.lock */,
 				8F0B37BD2CAE4A7400A261E4 /* Sources */,
 				8F0B37BE2CAE4A7400A261E4 /* Frameworks */,
 				8F0B37BF2CAE4A7400A261E4 /* Resources */,
+				75FABD4E983EEC9227A1EC85 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -282,6 +336,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F0B37EE2CAE544900A261E4 /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
 			buildPhases = (
+				2B34E0CCEF198882ECD1B718 /* [CP] Check Pods Manifest.lock */,
 				8F0B37E22CAE544900A261E4 /* Sources */,
 				8F0B37E32CAE544900A261E4 /* Frameworks */,
 				8F0B37E42CAE544900A261E4 /* Resources */,
@@ -381,6 +436,131 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		14D21088C86D1B10D6AA51BD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AbbaSwiftUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		14F20C56E8EEE4BE6A8EEB7F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AbbaSwiftUI-AbbaSwiftUIUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2826044186CE7FF49EA9BE55 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AbbaSwiftUI/Pods-AbbaSwiftUI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AbbaSwiftUI/Pods-AbbaSwiftUI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AbbaSwiftUI/Pods-AbbaSwiftUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2B34E0CCEF198882ECD1B718 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		75FABD4E983EEC9227A1EC85 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AbbaSwiftUI-AbbaSwiftUIUITests/Pods-AbbaSwiftUI-AbbaSwiftUIUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AbbaSwiftUI-AbbaSwiftUIUITests/Pods-AbbaSwiftUI-AbbaSwiftUIUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AbbaSwiftUI-AbbaSwiftUIUITests/Pods-AbbaSwiftUI-AbbaSwiftUIUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		91B731C5D2A9C18ED7CD1824 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AbbaSwiftUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8F0B37A32CAE4A7200A261E4 /* Sources */ = {
@@ -560,6 +740,7 @@
 		};
 		8F0B37CC2CAE4A7400A261E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 821996AFBB43F6494F4F933F /* Pods-AbbaSwiftUI.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -601,6 +782,7 @@
 		};
 		8F0B37CD2CAE4A7400A261E4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A47775F6E50B1D0D0AAF824 /* Pods-AbbaSwiftUI.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -642,6 +824,7 @@
 		};
 		8F0B37CF2CAE4A7400A261E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF81AAE9F7CF0570B4BAC9E1 /* Pods-AbbaSwiftUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -662,6 +845,7 @@
 		};
 		8F0B37D02CAE4A7400A261E4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1705022AA202DB7398AA5DF /* Pods-AbbaSwiftUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -682,6 +866,7 @@
 		};
 		8F0B37D22CAE4A7400A261E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA66E1D0851E26A1D6564069 /* Pods-AbbaSwiftUI-AbbaSwiftUIUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -700,6 +885,7 @@
 		};
 		8F0B37D32CAE4A7400A261E4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB78907957C32F57FF53D0C6 /* Pods-AbbaSwiftUI-AbbaSwiftUIUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -718,6 +904,7 @@
 		};
 		8F0B37EF2CAE544900A261E4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 82B6438D87DD3ABDE01D3C19 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -744,6 +931,7 @@
 		};
 		8F0B37F02CAE544900A261E4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD90D20BA9C809B0AFC22C1F /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
