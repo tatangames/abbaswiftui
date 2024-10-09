@@ -62,7 +62,6 @@ class RegistrarseViewModel: ObservableObject {
             return Disposables.create {
                 request.cancel()
             }
-        }
-        .retry()        
+        }      
     }
 }

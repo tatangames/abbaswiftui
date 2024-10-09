@@ -8,8 +8,39 @@
 import SwiftUI
 
 struct PrincipalView: View {
+    
+    init() {
+        UITabBar.appearance().backgroundColor = UIColor.white
+        
+
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            InicioView()
+                .tabItem {
+                    Image(systemName: "house.fill")
+                    Text(TextoIdiomaController.localizedString(forKey: "key-inicio"))
+                }
+
+            DevocionalView()
+                .tabItem {
+                    Image(systemName: "book.fill")
+                    Text(TextoIdiomaController.localizedString(forKey: "key-devocional"))
+                }
+
+            BibliaView()
+                .tabItem {
+                    Image(systemName: "book.circle.fill")
+                    Text(TextoIdiomaController.localizedString(forKey: "key-biblia"))
+                }
+
+            AjustesView()
+                .tabItem {
+                    Image(systemName: "gearshape.fill")
+                    Text(TextoIdiomaController.localizedString(forKey: "key-ajustes"))
+                }
+        }.accentColor(.black)
     }
 }
 

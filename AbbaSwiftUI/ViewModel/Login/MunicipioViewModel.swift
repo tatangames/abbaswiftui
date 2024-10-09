@@ -39,8 +39,6 @@ class MunicipioViewModel: ObservableObject {
             return Disposables.create {
                 request.cancel()
             }
-        }
-        .retry(3) // Reintenta hasta 3 veces en caso de error
-     
+        }       
     }
 }

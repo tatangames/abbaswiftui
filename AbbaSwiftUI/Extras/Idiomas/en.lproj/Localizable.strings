@@ -5,3 +5,327 @@
   Created by Jonathan  Moran on 3/10/24.
   
 */
+
+key-registrarse="Register";
+key-bienvenidos-a-mi-caminar-dios="Welcome to my walk with god";
+key-ya-tines-una-cuenta="¿Do you already have an account";
+key-ingresar="Enter";
+key-levantando-el-ejercito="\"Raising up the mighty army of God\"";
+key-primer-nombre="First Name";
+key-apellido="Last Name";
+key-nombre="Name";
+key-fecha-nacimiento="Birthdate";
+key-seleccionar-fecha-nacimiento="select date of birth";
+key-confirmar="Confirm";
+key-seleccionar-fecha="Select date";
+key-seleccionar-opcion="Select option";
+key-aceptar="Ok";
+key-cancelar="Cancel";
+key-seleccionar-genero="Select gender";
+key-masculino="Male";
+key-femenino="Female";
+key-seleccionar-pais="Select country";
+key-seleccionar-iglesia="Select church";
+key-el-salvador="El Salvador";
+key-guatemala="Guatemala";
+key-honduras="Honduras";
+key-nicaragua="Nicaragua";
+key-mexico="México";
+key-otros="Other";
+key-ciudad="City";
+key-escribir-ciudad="Write city";
+key-escribir-pais="Write country";
+key-atras="Back";
+key-departamento="Department";
+key-municipio="Municipality";
+key-redes-sociales="Social Network";
+key-para-iniciar-elige="To start, choose a reading plan in \"Search Plans\"";
+key-recursos="Resources";
+key-error-intentar-de-nuevo="Error, try again";
+key-editar="Edit";
+key-niveles="Levels";
+key-borrar="Delete";
+key-seleccionar-municipio="Select municipality";
+key-correo-electronico="Email";
+key-contrasena="Password";
+key-crear-cuenta="Create Account";
+key-pais="Country";
+key-area="Area";
+key-iglesia="Church";
+key-registro="Register";
+key-completar-registro="Complete registration";
+key-nombre-requerido="Name is required";
+key-apellido-requerido="Last name is required";
+key-correo-requerido="Email is required";
+key-password-requerido="Password is required";
+key-pais-es-requerido="Country is required";
+key-ciudad-es-requerido="City is required";
+key-fecha-nacimiento-es-requerido="Date of Birth is required";
+key-editar-perfil="Edit profile";
+key-actualizar="Update";
+key-genero-es-requerido="Gender is required";
+key-iglesia-es-requerido="Church is required";
+key-completar-registro="Complete Registration";
+key-correo-no-encontrado="Email not found";
+key-correo-no-valido="The email is not valid";
+key-contrasena-minimo-cinco="Password requires at least 5 characters";
+key-correo-ya-registrado="The email is already registered";
+key-aceptar="Ok";
+key-eliminar="Delete";
+key-iniciar-sesion="Log in";
+key-correo-o-contrasena-incorrecto="Incorrect email or password";
+key-olvido-su-contrasena="¿Forgot your password?";
+key-escribe-tu-correo-electronico="Enter your email, and we will send you a code to reset your password";
+key-recuperacion="Recovery";
+key-verificar="Verify";
+key-ingresar-el-codigo-otp="Enter the Code that has been sent to the following address: %@";
+key-solicitar-codigo="Request code";
+key-codigo="Code";
+key-codigo-requerido="Code is required";
+key-ingresar-codigo="Enter code";
+key-enviar="Send";
+key-codigo-incorrecto="Incorrect code";
+key-nueva-contrasena="New Password";
+key-password-actualizada="Password updated";
+key-cargando="Loading...";
+key-inicio="Start";
+key-biblia="Bible";
+key-planes="Plans";
+key-ajustes="Settings";
+key-devocional="Devotional";
+key-light="Light";
+key-dark="Dark";
+key-selecciona-un-tema="Select a Theme";
+
+
+
+
+
+
+app_name="Mi Caminar con Dios";
+version_app="V. 1.1.5";
+logo="Logo";
+continuar_con_correo="Continue with email";
+
+
+
+
+
+direccion_correo_invalida="Sorry, this is not a valid email address";
+contrasena_minimo="Sorry, passwords require a minimum of 6 characters";
+
+se_ve_genial="Looks great";
+bienvenidos_a_abba_app="Welcome to Abba App";
+
+
+sin_conexion_a_internet="No internet connection";
+
+enviar_codigo="Send code";
+notificaciones="Notificacions";
+versiculo_del_dia="Verse of the Day";
+flecha_atras="Back arrow";
+registrado_correctamente="Registered Successfully";
+continuar="Continue";
+
+lo_siento_algo_salio_mal="Sorry, something went wrong :(";
+
+correo="Email";
+enviar="Send";
+
+mas="More";
+por_favor_asegurate_tener="Please make sure you have internet service to use this feature.";
+videos="Videos";
+temas="Themes";
+oscuro="Dark";
+claro="Light";
+eventos="Events";
+insignias="Badge";
+acerca_de="About";
+idioma="Language";
+configuracion="Setting";
+ayuda="Help";
+marcadores="Markers";
+notas="Notes";
+amigos="Friends";
+ora="Pray";
+imagenes="Images";
+resaltados="Highlights";
+historial="History";
+oracion="Prayer";
+cerrar_sesion="Sign off";
+si="Yes";
+no="No";
+
+seleccionar_edad="Select Age";
+
+
+correo_no_disponible="Email not available";
+actualizado="Updated";
+editar_notificaciones="Edit Notifications";
+tema_actualizado="Update Theme";
+cambiar_idioma="Change Language";
+ingles="English";
+espanol="Spanish";
+idioma_actualizado="Language Update";
+cambiar_tema="Change Theme";
+tema_claro="Theme Light";
+tema_oscuro="Theme Dark";
+para_aplicar_efectos_se_debe_reiniciar="To apply effects you must restart";
+reiniciar="Restart";
+edad="Age";
+telefono="Phone";
+
+
+
+reintentar_en="Retry";
+reenviar_codigo="Resend code";
+codigo_enviado="Code sent";
+
+
+lenguaje="Language";
+esta_config_afecta_app="This setting affects the language of the entire application interface";
+esta_config_afecta_planes="This setting affects the language you use to read the Plans or the Bible";
+interfaz_de_la_aplicacion="Application interface";
+textos_planes_biblia="Text Plans and Bible";
+ver="See";
+iniciar="Start";
+plan_agregado="Added plan";
+informacion_plan="Plan Information";
+no_hay_planes_disponibles="No planes available";
+
+interactivo="Interactive";
+opciones="Options";
+fuente="Source";
+meditacion="Meditation";
+no_hay_devocionales_disponibles="No Devotionals available";
+no_hay_devvocionales_seleccionado="No Devotional selected";
+guardar="Save";
+campo_requerido="Required field";
+completar_campos="Complete fields";
+meditacion_no_disponible="Meditation not available";
+devocional_completado="Completed Devotional";
+no_hay_devocionales_completados="No Devotionals completed";
+mis_planes="My plans";
+buscar_planes="Search plans";
+completados="Completed";
+compartidos="Shared";
+comunidad="Community";
+devocional_del_dia="Devotional of the day";
+compartir_con="Share with";
+imagenes_del_dia="Images of the Day";
+abrir_con="To open with";
+informacion="Information";
+compartir="Share";
+todos_los_videos="All videos";
+descargar="Download";
+permiso_denegado="Permission denied";
+permiso_autorizado="Permission success";
+permiso_almacenamiento_es_requerido="Storage permission is required";
+guardado="Saved";
+error_al_guardar="Error with saving";
+hitos="Milestones";
+racha_mas_alta="Highest streak";
+dias_seguidos="Consecitive days";
+letra_lunes="M";
+letra_martes="T";
+letra_miercoles="W";
+letra_jueves="T";
+letra_viernes="F";
+letra_sabado="S";
+letra_domingo="S";
+dias_app_este_anio="days in the app this year";
+
+
+santa_ana="Santa Ana";
+chalatenango="Chalatenango";
+sonsonate="Sonsonate";
+la_libertad="La Libertad";
+ahuachapan="Ahuachapan";
+san_marcos="San Marcos";
+quetzaltenango="Quetzaltenango";
+retalhuleu="Retalhuleu";
+suchitepequez="Suchitepéquez";
+chimaltenango="Chimaltenango";
+escuintla="Escuintla";
+santa_rosa="Santa Rosa";
+jalapa="Jalapa";
+jutiapa="Jutiapa";
+chiquimula="Chiquimula";
+zacapa="Zacapa";
+francisco_morazan="Francisco Morazán";
+olancho="Olancho";
+el_paraiso="El Paraíso";
+esteli="Estelí";
+madriz="Madriz";
+nueva_segovia="Nueva Segovia";
+hidalgo="Hidalgo";
+chiapas="Chiapas";
+chimaltenango="Chimaltenango";
+
+
+cuestinario_no_encontrado="Questionnaire not found";
+no_hay_preguntas="There are no questions";
+insignias_por_ganar="Badges to earn";
+no_hay_insignias_disponibles="No Badges available";
+agregar_amigo="Add friend";
+pendientes="Pending";
+no_hay_solicitudes_aceptadas="No friend request";
+nombre_dos_puntos="Name:";
+correo_dos_puntos="Email:";
+pais_dos_puntos="Country:";
+iglesia_dos_puntos="Church:";
+ingresa_correo_amigo="Enter a friends email to send a request";
+solicitud_pendiente_aceptacion="Application pending acceptance";
+solicitud_ya_esta_aceptada="Application is already accepted";
+solicitud_enviada="Request sent";
+no_hay_solicitudes_pendientes="There are no pending requests";
+fecha="Date";
+fecha_de_solicitud="Request Date";
+borrar_solicitud="Delete request";
+eliminado="Removed";
+sition_en_construccion="Site under construction";
+completar_devocional="Complete Devotional";
+devocional_no_disponible="Devotional not available";
+no_hay_notificaciones="No notifications";
+enviadas="Sent";
+recibidas="Received";
+
+
+iniciar_con_amigos="Start with Friends";
+seleccionar_cinco_amigos="Select maximum 5 friends";
+iniciar_plan="Start plan";
+maximo_cinco_amigos="Maximum 5 friends";
+minimo_uno_amigo="Minimum 1 friend required";
+error="Error";
+plan_ya_estaba_iniciado="Plan was already started";
+ocultar="Hide";
+planes_comunidad="Community plans";
+los_amigos_que_tienes_agregados="The friends you have added to the community will not see your devotions if you have them marked.";
+reseteo="Reset";
+nivel="Level";
+no_hay_biblia_disponibles="No Bibles available";
+referencias="References";
+versiculos="Verses";
+versiones="versions";
+
+
+levantado_el_ejercito="\"Raising up the mighty army of God\"";
+correo_o_contrasena_incorrectos="Incorrect email or password";
+codigo_es_requerido="Code is required";
+contrasena_minimo_seis="Password minimum 6 characters";
+aviso="Warning";
+eliminar_cuenta="Delete account";
+eliminar_cuenta_mensaje="Get in touch by email: micaminarcondios.app@gmail.com";
+eliminar_solicitud="Delete request";
+aceptar_solicitud="Accept request";
+completado_el="Completed the: ";
+acceder_invitado="Log in as guest";
+
+preguntas="Questions";
+contador_actual="Current counter";
+agregado="Aggregate";
+me_han_agregado="I have been added";
+no_hay_informacion="There is no information";
+devocional_total="Total devotional";
+devocional_realizados="Devotional performed";
+

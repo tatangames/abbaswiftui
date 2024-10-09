@@ -14,7 +14,10 @@ struct AbbaSwiftUIApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
+           // SplashScreenView()
+            NavigationStack {
+                SplashScreenView()
+                   }
         }
     }
 }

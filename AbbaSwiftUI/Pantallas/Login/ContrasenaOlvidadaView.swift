@@ -13,16 +13,20 @@ import AlertToast
 import Combine
 import Foundation
 
+// AQUI SE INGRESA EL CORREO PARA SOLICITAR RECUPERACION DE CONTRASEÑA
+
 struct ContrasenaOlvidadaView: View {
-    @Environment(\.presentationMode) var presentationMode
+    
+    @Environment(\.dismiss) var dismiss
+    
     @State private var showToastBool:Bool = false
     @State private var openLoadingSpinner: Bool = false
     @AppStorage(DatosGuardadosKeys.temaApp) private var temaApp:Int = 0
     @AppStorage(DatosGuardadosKeys.idiomaApp) private var idiomaApp:Int = 0
     @State private var boolPantallaCodigoOTP: Bool = false
     @State private var correo:String = ""
-
-    let viewModel = LoginViewModel()
+    
+    let viewModel = CorreoOTPViewModel()
     
     
     // Variable para almacenar el contenido del toast
@@ -33,65 +37,51 @@ struct ContrasenaOlvidadaView: View {
             ScrollView {
                 VStack(spacing: 15) {
                     
-                    Image("abba_logo")
+                    Image("correootp")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 150, height: 150)
+                        .frame(width: 100, height: 100)
                         .padding(.top, 0)
                     
-                    
-                    CustomTituloHstack(labelKey: TextoIdiomaController.localizedString(forKey: "key-correo-electronico"), isDarkMode: temaApp, aplicarTema: true)
+                    HStack {
+                        Spacer() // Empuja el contenido a la derecha
+                        Text(TextoIdiomaController.localizedString(forKey: "key-escribe-tu-correo-electronico"))
+                            .foregroundColor(temaApp == 1 ? .white : .black)
+                            .bold()
+                        Spacer() // Empuja el contenido a la izquierda, centrando el texto
+                    }
+                    .padding(.top, 25)
                     
                     CustomTextField(labelKey: "key-correo-electronico", isDarkMode: temaApp != 0, text: $correo, maxLength: 100, keyboardType: .emailAddress)
+                        .padding(.top, 25)
                     
                     
-                    CustomTituloHstack(labelKey: TextoIdiomaController.localizedString(forKey: "key-contrasena"), isDarkMode: temaApp, aplicarTema: true)
-                    
-                    CustomPasswordField(
-                        labelKey: "key-contrasena",  // Placeholder personalizado
-                        isDarkMode: false,                   // Modo claro u oscuro
-                        password: $password,                 // Variable que contiene la contraseña
-                        maxLength: 20                        // Longitud máxima de la contraseña
-                    )
-                    
-                    
-                    //****************  BOTON CONTINUAR   *********************************
+                    //****************  BOTON SOLICITAR CODIGO   *********************************
                     
                     Button(action: {
                         verificarCampos()
                     }) {
-                        Text(TextoIdiomaController.localizedString(forKey: "key-ingresar"))
+                        Text(TextoIdiomaController.localizedString(forKey: "key-solicitar-codigo"))
                             .font(.headline)
-                            .foregroundColor(.white)
+                            .foregroundColor(temaApp == 1 ? .black : .white)
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(Color("cazulv1"))
+                            .background(temaApp == 1 ? .white : Color("cazulv1"))
                             .cornerRadius(8)
                     }
                     .padding(.top, 50)
                     .opacity(1.0)
                     .buttonStyle(NoOpacityChangeButtonStyle())
-                                        
-                    Button(action: {
-                        boolPantallaCodigoOTP = true
-                    }) {
-                        Text(TextoIdiomaController.localizedString(forKey: "key-olvido-su-contrasena"))
-                            .foregroundColor(temaApp == 1 ? .white : .black)
-                            .bold()
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    }
-                    .padding(.top, 30)
-                    
                     
                     Spacer()
                 }
                 .padding()
-                .navigationTitle(TextoIdiomaController.localizedString(forKey: "key-iniciar-sesion"))
+                .navigationTitle(TextoIdiomaController.localizedString(forKey: "key-recuperacion"))
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
-                            presentationMode.wrappedValue.dismiss() // Regresa a la pantalla anterior
+                            dismiss()
                         }) {
                             HStack {
                                 Image(systemName: "arrow.left")
@@ -106,7 +96,7 @@ struct ContrasenaOlvidadaView: View {
             }
             .background(CustomNavigationBarModifier(backgroundColor: temaApp == 1 ? .black : .white,
                                                     titleColor: temaApp == 1 ? .white : .black))
-
+            
             .onTapGesture {
                 hideKeyboard()
             }
@@ -124,10 +114,10 @@ struct ContrasenaOlvidadaView: View {
             openLoadingSpinner = loading
         }
         .navigationDestination(isPresented: $boolPantallaCodigoOTP) {
-            CodigoOTPView()
+            CodigoOTPView(correo: correo)
         }
     }
-        
+    
     private func verificarCampos(){
         
         if(correo.isEmpty){
@@ -140,13 +130,13 @@ struct ContrasenaOlvidadaView: View {
             return
         }
         
-        apiServerLogin()
+        apiEnviarCodigo()
     }
     
-    private func apiServerLogin(){
+    private func apiEnviarCodigo(){
         if !viewModel.isRequestInProgress {
-                  
-            viewModel.loginRX(correo: correo, contrasena: password)
+            
+            viewModel.solicitarCodigoCorreoRX(correo: correo, idioma: idiomaApp)
                 .subscribe(onNext: { result in
                     switch result {
                     case .success(let json):
@@ -154,17 +144,12 @@ struct ContrasenaOlvidadaView: View {
                         
                         switch success {
                         case 1:
-                            // inicio sesion
-                            let _id = json["id"].int ?? 0
-                            let _token = json["token"].string ?? ""
+                            // correo no encontrado
+                            self.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-no-encontrado"), tipoColor: .gris)
                             
-                            idCliente = String(_id)
-                            idToken = _token
-                            
-                            boolPantallaPrincipal = true
                         case 2:
-                          // datos incorrectos
-                            self.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-o-contrasena-incorrecto"), tipoColor: .gris)
+                            // codigo enviado
+                            boolPantallaCodigoOTP = true
                         default:
                             // error
                             self.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
@@ -198,8 +183,6 @@ struct ContrasenaOlvidadaView: View {
         )
         showToastBool = true
     }
-    
-    
 }
 
 #Preview {

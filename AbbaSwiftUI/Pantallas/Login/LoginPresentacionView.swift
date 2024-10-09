@@ -11,101 +11,77 @@ import RxSwift
 import Alamofire
 import AlertToast
 
-struct LoginRegistroView: View {
-        
-    @State private var navegarRegistroView = false
-    @State private var navegarLoginView = false
+struct LoginPresentacionView: View {
+    
     @AppStorage(DatosGuardadosKeys.idiomaApp) private var idiomaApp: Int = 0
-            
+    @State private var boolPantallaRegistro: Bool = false
+    @State private var boolPantallaLogin: Bool = false
     
     var body: some View {
-        NavigationStack {
-            ZStack {
-                ScrollView {
-                    VStack(spacing: 15){
-                        // Logo
-                        Image("abba_logo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 150, height: 150)
-                            .padding(.top, 40)
-                        
-                        Text(TextoIdiomaController.localizedString(forKey: "key-bienvenidos-a-mi-caminar-dios"))
-                            .font(.custom("LiberationSans-Bold", size: 28))
-                            .multilineTextAlignment(.center)
+        ZStack {
+            ScrollView {
+                VStack(spacing: 15){
+                    // Logo
+                    Image("abba_logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 150, height: 150)
+                        .padding(.top, 40)
                     
-                        
-                        Button(action: {
-                           idiomaApp = 1
-                           
-                        }) {
-                            Text(TextoIdiomaController.localizedString(forKey: "key-registrarse"))
-                                .font(.custom("LiberationSans-Bold", size: 17))
-                                .foregroundColor(.white)
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.black)
-                                .cornerRadius(32)
+                    Text(TextoIdiomaController.localizedString(forKey: "key-bienvenidos-a-mi-caminar-dios"))
+                        .font(.custom("LiberationSans-Bold", size: 28))
+                        .multilineTextAlignment(.center)
+                    
+                    Button(action: {
+                        boolPantallaRegistro = true
+                    }) {
+                        Text(TextoIdiomaController.localizedString(forKey: "key-registrarse"))
+                            .font(.custom("LiberationSans-Bold", size: 17))
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.black)
+                            .cornerRadius(32)
+                    }
+                    .padding(.horizontal)
+                    .padding(.top, 30)
+                    .opacity(1.0)
+                    .buttonStyle(NoOpacityChangeButtonStyle())
+                    
+                    Text(TextoIdiomaController.localizedString(forKey: "key-ya-tines-una-cuenta"))
+                        .font(.system(size: 16, weight: .bold))
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(Color("cgrisv1"))
+                        .padding(.top, 15)
+                    
+                    
+                    Text(TextoIdiomaController.localizedString(forKey: "key-ingresar"))
+                        .font(.custom("LiberationSans-Bold", size: 22))
+                        .multilineTextAlignment(.center)
+                        .padding(.top, 12)
+                        .foregroundColor(.black)
+                        .bold()
+                        .onTapGesture {
+                            boolPantallaLogin = true
                         }
-                        .padding(.horizontal)
+                    
+                    Text(TextoIdiomaController.localizedString(forKey: "key-levantando-el-ejercito"))
+                        .font(.system(size: 22, weight: .bold))
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.black)
                         .padding(.top, 30)
-                        .opacity(1.0)
-                        .buttonStyle(NoOpacityChangeButtonStyle())
-                        
-                        Text(TextoIdiomaController.localizedString(forKey: "key-ya-tines-una-cuenta"))
-                            .font(.system(size: 18, weight: .bold))
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(Color("cgrisv1"))
-                            .padding(.top, 15)
-                        
-                        Text(TextoIdiomaController.localizedString(forKey: "key-ingresar"))
-                            .font(.custom("LiberationSans-Bold", size: 23))
-                            .multilineTextAlignment(.center)
-                            .padding(.top, 12)
-                            .foregroundColor(.black)
-                            .bold()
-                                                
-                        Text(TextoIdiomaController.localizedString(forKey: "key-levantando-el-ejercito"))
-                            .font(.system(size: 28, weight: .bold))
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(.black)
-                            .padding(.top, 25)
-                                                
-                    } //end-vstack
-                   
-                   
-                }
-                
+                        .padding(.horizontal, 6)
+                } //end-vstack
+            } // end-scroll
             
-            } // end-zstack
-       
-            .navigationDestination(isPresented: $navigateToDetail) {
-               // CodigoOtpView(initialTime: _segundosiphone, telefono: phoneNumber)
-                                
-              
+            .navigationDestination(isPresented: $boolPantallaRegistro) {
+                RegistroView()
             }
-            .onAppear{
-                
-                print("IDIOMA APP \(idiomaApp)")
-              
+            .navigationDestination(isPresented: $boolPantallaLogin) {
+                LoginView()
             }
-            .navigationDestination(isPresented: $navigateToDetail) {
-               // CodigoOtpView(initialTime: _segundosiphone, telefono: phoneNumber)
-                
-                CodigoOtpView(telefono: phoneNumber, startValue: _segundosiphone)
-            }
-        } // end-navigationStack
+        } // end-zstack
     } // end-body
     
     
-    
-    // ** FUNCIONES **
-   
-
-    
-    
 } // end-view
-
-#Preview {
-    LoginView()
-}

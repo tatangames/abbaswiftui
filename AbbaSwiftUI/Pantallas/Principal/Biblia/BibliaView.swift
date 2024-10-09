@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct BibliaView: View {
+    
+    @Environment(\.colorScheme) var scheme: ColorScheme
+    @AppStorage(DatosGuardadosKeys.temaApp) private var temaApp: Theme = .light
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text("Hello, 333!")
+                .foregroundColor(temaApp == .dark ? .white : .black)
+        }
+        .background(Color.blue)
     }
 }
 

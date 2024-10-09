@@ -5,3 +5,331 @@
   Created by Jonathan  Moran on 3/10/24.
   
 */
+
+key-registrarse="Registrarse";
+key-bienvenidos-a-mi-caminar-dios="Bienvenidos a mi caminar con Dios";
+key-ya-tines-una-cuenta="¿Ya tienes una cuenta?";
+key-ingresar="Ingresar";
+key-levantando-el-ejercito="\"Levantando el ejército Poderoso de Dios\"";
+key-primer-nombre="Primer Nombre";
+key-apellido="Apellido";
+key-nombre="Nombre";
+key-fecha-nacimiento="Fecha de Nacimiento";
+key-seleccionar-fecha-nacimiento="Seleccionar fecha nacimiento";
+key-confirmar="Confirmar";
+key-seleccionar-fecha="Seleccionar fecha";
+key-seleccionar-opcion="Seleccionar Opción";
+key-aceptar="Aceptar";
+key-cancelar="Cancelar";
+key-seleccionar-genero="Seleccionar Género";
+key-masculino="Masculino";
+key-femenino="Femenino";
+key-seleccionar-pais="Seleccionar País";
+key-seleccionar-iglesia="Seleccionar Iglesia";
+key-el-salvador="El Salvador";
+key-guatemala="Guatemala";
+key-honduras="Honduras";
+key-nicaragua="Nicaragua";
+key-mexico="México";
+key-otros="Otros";
+key-ciudad="Ciudad";
+key-escribir-ciudad="Escribir ciudad";
+key-escribir-pais="Escribir país";
+key-atras="Atrás";
+key-departamento="Departamento";
+key-municipio="Municipio";
+key-redes-sociales="Redes Sociales";
+key-para-iniciar-elige="Para iniciar elige un plan de lectura en \"Buscar Planes\"";
+key-recursos="Recursos";
+key-error-intentar-de-nuevo="Error, intentar de nuevo";
+key-editar="Editar";
+key-niveles="Niveles";
+key-borrar="Borrar";
+key-seleccionar-municipio="Seleccionar municipio";
+key-correo-electronico="Correo electrónico";
+key-contrasena="Contraseña";
+key-crear-cuenta="Crear cuenta";
+key-pais="País";
+key-area="Área";
+key-iglesia="Iglesia";
+key-registro="Registro";
+key-completar-registro="Completar registro";
+key-nombre-requerido="Nombre es requerido";
+key-apellido-requerido="Apellido es requerido";
+key-correo-requerido="Correo es requerido";
+key-password-requerido="Contraseña es requerido";
+key-pais-es-requerido="País es requerido";
+key-ciudad-es-requerido="Ciudad es requerido";
+key-fecha-nacimiento-es-requerido="Fecha Nacimiento es requerido";
+key-editar-perfil="Editar Perfil";
+key-actualizar="Actualizar";
+key-genero-es-requerido="Género es requerido";
+key-iglesia-es-requerido="Iglesia es requerido";
+key-completar-registro="Completar registro";
+key-correo-no-encontrado="Correo no encontrado";
+key-correo-no-valido="El correo no es valido";
+key-contrasena-minimo-cinco="Contraseña requiere mínimo 5 caracteres";
+key-correo-ya-registrado="El correo ya se encuentra registrado";
+key-aceptar="Aceptar";
+key-eliminar="Eliminar";
+key-iniciar-sesion="Iniciar sesión";
+key-correo-o-contrasena-incorrecto="Correo o contraseña incorrectos";
+key-olvido-su-contrasena="Olvido su contraseña?";
+key-escribe-tu-correo-electronico="Escribe tu correo electrónico, y te enviaremos un código para restablecer tu contraseña";
+key-recuperacion="Recuperación";
+key-verificar="Verificar";
+key-ingresar-el-codigo-otp="Ingresar el Código que se ha enviado a la siguiente dirección: %@";
+key-solicitar-codigo="Solicitar código";
+key-codigo="Código";
+key-codigo-requerido="Código es requerido";
+key-ingresar-codigo="Ingresar código";
+key-enviar="Enviar";
+key-codigo-incorrecto="Código incorrecto";
+key-nueva-contrasena="Nueva contraseña";
+key-password-actualizada="Contraseña actualizada";
+key-cargando="Cargando...";
+key-inicio="Inicio";
+key-biblia="Biblia";
+key-planes="Planes";
+key-ajustes="Ajustes";
+key-devocional="Devocional";
+key-light="Claro";
+key-dark="Oscuro";
+key-selecciona-un-tema="Seleciona un Tema";
+
+
+
+
+
+
+
+
+
+
+
+app_name="Mi Caminar con Dios";
+version_app="V. 1.1.5";
+logo="Logo";
+continuar_con_correo="Continuar con correo";
+
+
+
+
+
+
+
+se_ve_genial="Se ve genial";
+bienvenidos_a_abba_app="Bienvenidos a Abba App";
+
+
+sin_conexion_a_internet="Sin conexión a Internet";
+
+enviar_codigo="Enviar código";
+escribe_tu_correo_electronico="Escribe tu correo electrónico, y te enviaremos un código para restablecer tu contraseña";
+notificaciones="Notificaciones";
+versiculo_del_dia="Versículo del Día";
+flecha_atras="Flecha Atras";
+registrado_correctamente="Registrado correctamente";
+continuar="Continuar";
+
+lo_siento_algo_salio_mal="Lo siento, algo salio mal :(";
+
+correo="Correo";
+
+mas="Más";
+por_favor_asegurate_tener="Por favor asegúrate tener servicio de internet para usar esta función";
+videos="Videos";
+temas="Temas";
+oscuro="Oscuro";
+claro="Claro";
+eventos="Eventos";
+insignias="Insignias";
+acerca_de="Acerca de";
+idioma="Idioma";
+configuracion="Configuración";
+ayuda="Ayuda";
+marcadores="Marcadores";
+notas="Notas";
+amigos="Amigos";
+ora="Ora";
+imagenes="Imagenes";
+resaltados="Resaltados";
+historial="Historial";
+oracion="Oración";
+cerrar_sesion="Cerrar Sesión";
+si="Si";
+no="No";
+
+
+correo_no_disponible="Correo no disponible";
+actualizado="Actualizado";
+editar_notificaciones="Editar Notificaciones";
+tema_actualizado="Tema Actualizado";
+cambiar_idioma="Cambiar Idioma";
+ingles="Ingles";
+espanol="Español";
+idioma_actualizado="Idioma Actualizado";
+cambiar_tema="Cambiar Tema";
+tema_claro="Tema Claro";
+tema_oscuro="Tema Oscuro";
+para_aplicar_efectos_se_debe_reiniciar="Para aplicar efectos se debe reiniciar";
+reiniciar="Reiniciar";
+edad="Edad";
+telefono="Teléfono";
+
+
+
+codigo="Código";
+reintentar_en="Reintentar en";
+reenviar_codigo="Reenviar código";
+codigo_enviado="Código enviado";
+
+
+lenguaje="Lenguaje";
+esta_config_afecta_app="Esta configuración afecta al idioma de toda la interfaz de la aplicación";
+esta_config_afecta_planes="Esta configuración afecta al idioma que usas para leer los planes o la Bilbia";
+interfaz_de_la_aplicacion="Interfaz de la aplicación";
+textos_planes_biblia="Texto Planes y Biblia";
+ver="Ver";
+iniciar="Iniciar";
+plan_agregado="Plan agregado";
+informacion_plan="Información Plan";
+no_hay_planes_disponibles="No hay Planes disponibles";
+
+interactivo="Interactivo";
+opciones="Opciones";
+fuente="Fuente";
+meditacion="Meditación";
+no_hay_devocionales_disponibles="No hay Devocionales disponibles";
+no_hay_devvocionales_seleccionado="No hay Devocionales seleccionados";
+guardar="Guardar";
+campo_requerido="Campo requerido";
+completar_campos="Completar campos";
+meditacion_no_disponible="Meditación no disponible";
+devocional_completado="Devocional Completado";
+no_hay_devocionales_completados="No hay Devocionales completados";
+mis_planes="Mis Planes";
+buscar_planes="Buscar planes";
+completados="Completados";
+compartidos="Compartidos";
+comunidad="Comunidad";
+devocional_del_dia="Devocional del día";
+compartir_con="Compartir con";
+imagenes_del_dia="Imágenes del Día";
+abrir_con="Abrir con...";
+informacion="Información";
+compartir="Compartir";
+todos_los_videos="Todos los Videos";
+descargar="Descargar";
+permiso_denegado="Permiso denegado";
+permiso_autorizado="Permiso autorizado";
+permiso_almacenamiento_es_requerido="PErmiso almacenamiento es requerido";
+guardado="Guardado";
+error_al_guardar="Error al guardar";
+hitos="Hitos";
+racha_mas_alta="Racha más alta";
+dias_seguidos="Días seguidos";
+letra_lunes="L";
+letra_martes="M";
+letra_miercoles="M";
+letra_jueves="J";
+letra_viernes="V";
+letra_sabado="S";
+letra_domingo="D";
+dias_app_este_anio="días en la app este año";
+
+
+santa_ana="Santa Ana";
+chalatenango="Chalatenango";
+sonsonate="Sonsonate";
+la_libertad="La Libertad";
+ahuachapan="Ahuachapan";
+san_marcos="San Marcos";
+quetzaltenango="Quetzaltenango";
+retalhuleu="Retalhuleu";
+suchitepequez="Suchitepéquez";
+chimaltenango="Chimaltenango";
+escuintla="Escuintla";
+santa_rosa="Santa Rosa";
+jalapa="Jalapa";
+jutiapa="Jutiapa";
+chiquimula="Chiquimula";
+zacapa="Zacapa";
+francisco_morazan="Francisco Morazán";
+olancho="Olancho";
+el_paraiso="El Paraíso";
+esteli="Estelí";
+madriz="Madriz";
+nueva_segovia="Nueva Segovia";
+hidalgo="Hidalgo";
+chiapas="Chiapas";
+chimaltenango="Chimaltenango";
+
+
+cuestinario_no_encontrado="Cuestionario no encontrado";
+no_hay_preguntas="No hay preguntas";
+insignias_por_ganar="Insignias por ganar";
+no_hay_insignias_disponibles="No hay Insignias disponibles";
+agregar_amigo="Agregar amigo";
+pendientes="Pendientes";
+no_hay_solicitudes_aceptadas="No hay solicitudes aceptadas";
+nombre_dos_puntos="Nombre:";
+correo_dos_puntos="Correo:";
+pais_dos_puntos="País:";
+iglesia_dos_puntos="Iglesia:";
+ingresa_correo_amigo="Ingresa el correo de un amigo para enviarle una solicitud";
+solicitud_pendiente_aceptacion="Solicitud pendiente de aceptación";
+solicitud_ya_esta_aceptada="Solicitud ya esta aceptada";
+solicitud_enviada="Solicitud enviada";
+no_hay_solicitudes_pendientes="No hay solicitudes pendientes";
+fecha="Fecha";
+fecha_de_solicitud="Fecha de solicitud";
+borrar_solicitud="Borrar solicitud";
+eliminado="Eliminado";
+sition_en_construccion="Sitio en construcción";
+completar_devocional="Completar Devocional";
+devocional_no_disponible="Devocional no disponible";
+no_hay_notificaciones="No hay notificaciones";
+enviadas="Enviadas";
+recibidas="Recibidas";
+
+
+iniciar_con_amigos="Iniciar con Amigos";
+seleccionar_cinco_amigos="Seleccionar máximo 5 amigos";
+iniciar_plan="Iniciar Plan";
+maximo_cinco_amigos="Máximo 5 amigos";
+minimo_uno_amigo="Mínimo 1 amigo se requiere";
+error="Error";
+plan_ya_estaba_iniciado="Plan ya estaba iniciado";
+ocultar="Ocultar";
+planes_comunidad="Planes comunidad";
+los_amigos_que_tienes_agregados="Los amigos que tienes agregados en comunidad, no veran tus devocionales si los tienes marcados";
+reseteo="Reseteo";
+nivel="Nivel";
+no_hay_biblia_disponibles="No hay Biblias disponibles";
+referencias="Referencias";
+versiculos="Versículos";
+versiones="Versiones";
+
+
+levantado_el_ejercito="\"Levantando el ejército poderoso de Dios\"";
+correo_o_contrasena_incorrectos="Correo o contraseña incorrectos";
+codigo_es_requerido="Código es requerido";
+contrasena_minimo_seis="Contraseña mínimo 6 caracteres";
+aviso="Aviso";
+eliminar_cuenta="Eliminar Cuenta";
+eliminar_cuenta_mensaje="Ponerse en contacto al correo: micaminarcondios@gmail.com";
+eliminar_solicitud="Eliminar solicitud";
+aceptar_solicitud="Aceptar solicitud";
+completado_el="Completado el: ";
+acceder_invitado="Acceder como invitado";
+
+preguntas="Preguntas";
+contador_actual="Contador actual";
+agregado="Agregado";
+me_han_agregado="Me han agregado";
+no_hay_informacion="No hay información";
+devocional_total="Devocional total";
+devocional_realizados="Devocional realizado";
+
+
