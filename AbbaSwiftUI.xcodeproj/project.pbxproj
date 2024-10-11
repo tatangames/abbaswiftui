@@ -58,6 +58,8 @@
 		8FD27AB02CB42EA200667C2F /* InicioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD27AAF2CB42EA200667C2F /* InicioView.swift */; };
 		8FD27AB32CB4811500667C2F /* AjustesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD27AB22CB4811500667C2F /* AjustesViewModel.swift */; };
 		8FD27AB52CB4BA0000667C2F /* ThemeChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD27AB42CB4BA0000667C2F /* ThemeChangeView.swift */; };
+		8FDCC4502CB8BD9D00700F4A /* IdiomaSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDCC44F2CB8BD9D00700F4A /* IdiomaSettings.swift */; };
+		8FDCC4522CB8D31B00700F4A /* NotificacionesAjustesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FDCC4512CB8D31B00700F4A /* NotificacionesAjustesView.swift */; };
 		A1B6A252AEF6393984B3779B /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 84928A548F8542BE9870B067 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		DBD4ACC4E045517B6FF4DB82 /* Pods_AbbaSwiftUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 715C2E7587C0C88961806A7F /* Pods_AbbaSwiftUITests.framework */; };
 /* End PBXBuildFile section */
@@ -159,6 +161,8 @@
 		8FD27AAF2CB42EA200667C2F /* InicioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioView.swift; sourceTree = "<group>"; };
 		8FD27AB22CB4811500667C2F /* AjustesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjustesViewModel.swift; sourceTree = "<group>"; };
 		8FD27AB42CB4BA0000667C2F /* ThemeChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeChangeView.swift; sourceTree = "<group>"; };
+		8FDCC44F2CB8BD9D00700F4A /* IdiomaSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdiomaSettings.swift; sourceTree = "<group>"; };
+		8FDCC4512CB8D31B00700F4A /* NotificacionesAjustesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificacionesAjustesView.swift; sourceTree = "<group>"; };
 		AD90D20BA9C809B0AFC22C1F /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		B0BA244CD45975F0D3C5F1E0 /* Pods_AbbaSwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbbaSwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF81AAE9F7CF0570B4BAC9E1 /* Pods-AbbaSwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AbbaSwiftUITests.debug.xcconfig"; path = "Target Support Files/Pods-AbbaSwiftUITests/Pods-AbbaSwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -421,13 +425,39 @@
 			children = (
 				8F2FEBAE2CAF045000647572 /* Localizable.strings */,
 				8F2FEBB22CAF123900647572 /* TextoIdiomaController.swift */,
+				8FDCC44F2CB8BD9D00700F4A /* IdiomaSettings.swift */,
 			);
 			path = Idiomas;
+			sourceTree = "<group>";
+		};
+		8F58B04F2CB8328B00DEC534 /* Notificaciones */ = {
+			isa = PBXGroup;
+			children = (
+				8FDCC4512CB8D31B00700F4A /* NotificacionesAjustesView.swift */,
+			);
+			path = Notificaciones;
+			sourceTree = "<group>";
+		};
+		8F58B0502CB8329800DEC534 /* Contrasena */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Contrasena;
+			sourceTree = "<group>";
+		};
+		8F58B0512CB832A600DEC534 /* InsigniaPorGanar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = InsigniaPorGanar;
 			sourceTree = "<group>";
 		};
 		8F5B109D2CB5847B0013078E /* Opciones */ = {
 			isa = PBXGroup;
 			children = (
+				8F58B0512CB832A600DEC534 /* InsigniaPorGanar */,
+				8F58B0502CB8329800DEC534 /* Contrasena */,
+				8F58B04F2CB8328B00DEC534 /* Notificaciones */,
 				8F5B109E2CB584820013078E /* Perfil */,
 			);
 			path = Opciones;
@@ -821,7 +851,9 @@
 				8FD27AB52CB4BA0000667C2F /* ThemeChangeView.swift in Sources */,
 				8F2FEBB72CAF333600647572 /* LoginView.swift in Sources */,
 				8F25FAF02CB333CA001BE477 /* ResetPasswordViewModel.swift in Sources */,
+				8FDCC4502CB8BD9D00700F4A /* IdiomaSettings.swift in Sources */,
 				8FD27AAA2CB42E6700667C2F /* AjustesView.swift in Sources */,
+				8FDCC4522CB8D31B00700F4A /* NotificacionesAjustesView.swift in Sources */,
 				8F25FAEE2CB331F6001BE477 /* NuevaPasswordLoginView.swift in Sources */,
 				8F25FAEA2CB312FE001BE477 /* CorreoOTPViewModel.swift in Sources */,
 				8F2FEBB32CAF123900647572 /* TextoIdiomaController.swift in Sources */,

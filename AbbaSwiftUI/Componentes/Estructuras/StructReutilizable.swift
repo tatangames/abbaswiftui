@@ -463,3 +463,79 @@ struct CustomNavigationBarModifier: UIViewControllerRepresentable {
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
 }
+
+
+struct LineaHorizontal: View {
+    let altura: Float
+    let espaciado: Int
+    let temaApp: Int
+        
+    var body: some View {
+        VStack {
+            Rectangle()
+              .frame(height: CGFloat(altura)) // Espesor de la línea
+              .foregroundColor(temaApp == 1 ? .white : .black) // Cambia el color aquí
+              .padding(.leading, CGFloat(espaciado))
+        }
+    }
+}
+
+
+
+
+enum EnumTipoVistaAjustes: Identifiable {
+    case perfil
+    case notificaciones
+    case contrasena
+    case insignias
+    case cerrarsesion
+ 
+    var id: Self { self }
+}
+
+
+struct CambiarIdiomaModal: View {
+    @Binding var idiomaSeleccionado: Int
+    let cambiarIdioma: (Int) -> Void
+    
+    // Claves de los idiomas a traducir
+    let idiomas = [
+          (texto: TextoIdiomaController.localizedString(forKey: "key-espanol"), valor: 1),
+          (texto: TextoIdiomaController.localizedString(forKey: "key-ingles"), valor: 2)
+      ]
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Text(TextoIdiomaController.localizedString(forKey: "key-seleccionar-idioma"))
+                .font(.headline)
+                .padding(.top)
+
+            Image(systemName: "globe")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 100, height: 100)
+
+            Picker(TextoIdiomaController.localizedString(forKey: "key-idioma"), selection: $idiomaSeleccionado) {
+                ForEach(idiomas, id: \.valor) { idioma in
+                    Text(idioma.texto).tag(idioma.valor)
+                }
+            }
+            .pickerStyle(.segmented)
+            .padding()
+            .onChange(of: idiomaSeleccionado) { nuevoIdioma in
+                cambiarIdioma(nuevoIdioma)
+            }
+
+            Spacer()
+        }
+        .padding()
+        .presentationDetents([.medium, .fraction(0.4)])
+    }
+}
+
+enum EnumTipoVistaSplash: Identifiable {
+    case login
+    case principal
+    
+    var id: Self { self }
+}

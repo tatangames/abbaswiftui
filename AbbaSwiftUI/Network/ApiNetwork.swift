@@ -12,8 +12,8 @@ let apiVersionApp = "v. 1.0.0"
 /// utilizado cuando hay un nuevo servicio
 let apiURLAppleStore = "https://apps.apple.com/app/nortego/idxxxxxx"
 
-let baseUrl:String = "http://192.168.1.145:8080/api/"
-let baseUrlImagen: String = "http://192.168.1.145:8080/storage/archivos/"
+let baseUrl:String = "http://192.168.1.29:8080/api/"
+let baseUrlImagen: String = "http://192.168.1.29:8080/storage/archivos/"
 
 
 // **************** RUTAS ********************

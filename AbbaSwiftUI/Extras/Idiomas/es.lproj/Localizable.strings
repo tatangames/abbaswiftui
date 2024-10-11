@@ -96,10 +96,20 @@ key-devocional="Devocional";
 key-light="Claro";
 key-dark="Oscuro";
 key-selecciona-un-tema="Seleciona un Tema";
-
-
-
-
+key-ajustes-mayus="AJUSTES";
+key-cerrar-sesion="Cerrar Sesión";
+key-idioma="Idioma";
+key-insignias-por-ganar="Insignias por ganar";
+key-no-hay-insignias-disponibles="No hay Insignias disponibles";
+key-temas="Temas";
+key-oscuro="Oscuro";
+key-claro="Claro";
+key-notificaciones="Notificaciones";
+key-si="Si";
+key-no="No";
+key-seleccionar-idioma="Seleccionar idioma";
+key-ingles="Ingles";
+key-espanol="Español";
 
 
 
@@ -126,7 +136,7 @@ sin_conexion_a_internet="Sin conexión a Internet";
 
 enviar_codigo="Enviar código";
 escribe_tu_correo_electronico="Escribe tu correo electrónico, y te enviaremos un código para restablecer tu contraseña";
-notificaciones="Notificaciones";
+
 versiculo_del_dia="Versículo del Día";
 flecha_atras="Flecha Atras";
 registrado_correctamente="Registrado correctamente";
@@ -139,13 +149,11 @@ correo="Correo";
 mas="Más";
 por_favor_asegurate_tener="Por favor asegúrate tener servicio de internet para usar esta función";
 videos="Videos";
-temas="Temas";
-oscuro="Oscuro";
-claro="Claro";
+
 eventos="Eventos";
 insignias="Insignias";
 acerca_de="Acerca de";
-idioma="Idioma";
+
 configuracion="Configuración";
 ayuda="Ayuda";
 marcadores="Marcadores";
@@ -156,9 +164,8 @@ imagenes="Imagenes";
 resaltados="Resaltados";
 historial="Historial";
 oracion="Oración";
-cerrar_sesion="Cerrar Sesión";
-si="Si";
-no="No";
+
+
 
 
 correo_no_disponible="Correo no disponible";
@@ -166,8 +173,7 @@ actualizado="Actualizado";
 editar_notificaciones="Editar Notificaciones";
 tema_actualizado="Tema Actualizado";
 cambiar_idioma="Cambiar Idioma";
-ingles="Ingles";
-espanol="Español";
+
 idioma_actualizado="Idioma Actualizado";
 cambiar_tema="Cambiar Tema";
 tema_claro="Tema Claro";
@@ -268,8 +274,7 @@ chimaltenango="Chimaltenango";
 
 cuestinario_no_encontrado="Cuestionario no encontrado";
 no_hay_preguntas="No hay preguntas";
-insignias_por_ganar="Insignias por ganar";
-no_hay_insignias_disponibles="No hay Insignias disponibles";
+
 agregar_amigo="Agregar amigo";
 pendientes="Pendientes";
 no_hay_solicitudes_aceptadas="No hay solicitudes aceptadas";

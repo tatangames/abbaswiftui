@@ -96,6 +96,29 @@ key-devocional="Devotional";
 key-light="Light";
 key-dark="Dark";
 key-selecciona-un-tema="Select a Theme";
+key-ajustes-mayus="SETTINGS";
+key-cerrar-sesion="Sign off";
+key-idioma="Language";
+key-insignias-por-ganar="Badges to earn";
+key-no-hay-insignias-disponibles="No Badges available";
+key-temas="Themes";
+key-oscuro="Dark";
+key-claro="Light";
+key-notificaciones="Notificacions";
+key-si="Yes";
+key-no="No";
+key-seleccionar-idioma="Select language";
+key-ingles="English";
+key-espanol="Spanish";
+
+
+
+
+
+
+
+
+
 
 
 
@@ -121,7 +144,7 @@ bienvenidos_a_abba_app="Welcome to Abba App";
 sin_conexion_a_internet="No internet connection";
 
 enviar_codigo="Send code";
-notificaciones="Notificacions";
+
 versiculo_del_dia="Verse of the Day";
 flecha_atras="Back arrow";
 registrado_correctamente="Registered Successfully";
@@ -135,13 +158,11 @@ enviar="Send";
 mas="More";
 por_favor_asegurate_tener="Please make sure you have internet service to use this feature.";
 videos="Videos";
-temas="Themes";
-oscuro="Dark";
-claro="Light";
+
 eventos="Events";
 insignias="Badge";
 acerca_de="About";
-idioma="Language";
+
 configuracion="Setting";
 ayuda="Help";
 marcadores="Markers";
@@ -152,9 +173,8 @@ imagenes="Images";
 resaltados="Highlights";
 historial="History";
 oracion="Prayer";
-cerrar_sesion="Sign off";
-si="Yes";
-no="No";
+
+
 
 seleccionar_edad="Select Age";
 
@@ -164,8 +184,7 @@ actualizado="Updated";
 editar_notificaciones="Edit Notifications";
 tema_actualizado="Update Theme";
 cambiar_idioma="Change Language";
-ingles="English";
-espanol="Spanish";
+
 idioma_actualizado="Language Update";
 cambiar_tema="Change Theme";
 tema_claro="Theme Light";
@@ -265,8 +284,7 @@ chimaltenango="Chimaltenango";
 
 cuestinario_no_encontrado="Questionnaire not found";
 no_hay_preguntas="There are no questions";
-insignias_por_ganar="Badges to earn";
-no_hay_insignias_disponibles="No Badges available";
+
 agregar_amigo="Add friend";
 pendientes="Pending";
 no_hay_solicitudes_aceptadas="No friend request";

@@ -55,7 +55,7 @@ struct LoginView: View {
                     
                     CustomPasswordField(
                         labelKey: "key-contrasena",  // Placeholder personalizado
-                        isDarkMode: false,                   // Modo claro u oscuro
+                        isDarkMode: temaApp == 1 ? true : false,                   // Modo claro u oscuro
                         password: $password,                 // Variable que contiene la contraseña
                         maxLength: 20                        // Longitud máxima de la contraseña
                     )

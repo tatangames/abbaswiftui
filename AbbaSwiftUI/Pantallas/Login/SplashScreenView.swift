@@ -14,28 +14,34 @@ struct SplashScreenView: View {
     @AppStorage(DatosGuardadosKeys.idiomaApp) private var idiomaApp: Int = 0
     @AppStorage(DatosGuardadosKeys.temaApp) private var temaApp: Int = 0
     @Environment(\.colorScheme) var colorScheme
-    @State private var boolPantallaPrincipal: Bool = false
-    @State private var boolPantallaInicial: Bool = false
-    
+        
+    @State private var boolActivarCambio: Bool = false
+    @State private var activeView: EnumTipoVistaSplash?
     
     var body: some View {
-        // NavigationStack {
         ZStack {
-            Color.white.edgesIgnoringSafeArea(.all)
             
-            Image("fondov2")
-                .resizable()
-                .scaledToFill()
-                .ignoresSafeArea()
+            Color.white.edgesIgnoringSafeArea(.all)
+                
+            GeometryReader { geometry in
+                Image("fondov2")
+                    .resizable()
+                    .scaledToFill() // Escala la imagen para llenar el contenedor
+                    .frame(width: geometry.size.width, height: geometry.size.height) // Ajusta el tamaño según la pantalla
+                    .clipped() // Recorta lo que sobrepase el contenedor
+                    .ignoresSafeArea(edges: .vertical) // Ignora áreas seguras en la parte superior e inferior
+            }
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                 withAnimation {
+                    // si hay token
                     if (idToken.isEmpty){
-                        boolPantallaInicial = true
+                        activeView = .login
                     }else{
-                        boolPantallaPrincipal = true
+                        activeView = .principal
                     }
+                    boolActivarCambio = true
                 }
             }
         }.onAppear{
@@ -66,19 +72,21 @@ struct SplashScreenView: View {
                 }
             }
         }
-        .navigationDestination(isPresented: $boolPantallaInicial) {
-            LoginPresentacionView()
-                .navigationBarBackButtonHidden(true)
-                .toolbar(.hidden)
+        
+        .fullScreenCover(item: $activeView) { view in
+            switch view {
+            case .login:
+                LoginPresentacionView()
+            case .principal:
+                PrincipalView()
+            }
         }
-        .navigationDestination(isPresented: $boolPantallaPrincipal) {
-            PrincipalView()
-                .navigationBarBackButtonHidden(true)
-                .toolbar(.hidden)
-        }
-        //}
     } // end-body
+    
+    
 }
+
+
 
 #Preview {
     SplashScreenView()
