@@ -113,6 +113,11 @@ key-espanol="Español";
 key-actualizacion="Actualización";
 key-actualizado="Actualizado";
 key-no-hay-notificaciones="No hay notificaciones";
+key-borrar-notificaciones="Borrar notificaciones";
+key-notificaciones-borradas="Notificaciones Borradas";
+key-eventos="Eventos";
+key-insignias="Insignias";
+key-todas-las-insignias-ganadas="Todas las insignias ganadas";
 
 
 
@@ -150,8 +155,7 @@ mas="Más";
 por_favor_asegurate_tener="Por favor asegúrate tener servicio de internet para usar esta función";
 videos="Videos";
 
-eventos="Eventos";
-insignias="Insignias";
+
 acerca_de="Acerca de";
 
 configuracion="Configuración";

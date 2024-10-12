@@ -113,10 +113,11 @@ key-espanol="Spanish";
 key-actualizacion="Update";
 key-actualizado="Updated";
 key-no-hay-notificaciones="No notifications";
-
-
-
-
+key-borrar-notificaciones="Delete notifications";
+key-notificaciones-borradas="Notifications Cleared";
+key-eventos="Events";
+key-insignias="Badge";
+key-todas-las-insignias-ganadas="All badges earned";
 
 
 
@@ -159,8 +160,7 @@ mas="More";
 por_favor_asegurate_tener="Please make sure you have internet service to use this feature.";
 videos="Videos";
 
-eventos="Events";
-insignias="Badge";
+
 acerca_de="About";
 
 configuracion="Setting";

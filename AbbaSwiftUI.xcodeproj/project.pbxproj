@@ -28,7 +28,7 @@
 		8F0B37FA2CAE54F800A261E4 /* OneSignalLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 8F0B37F92CAE54F800A261E4 /* OneSignalLocation */; };
 		8F105B652CB078FF0036EF64 /* MunicipioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F105B642CB078FF0036EF64 /* MunicipioViewModel.swift */; };
 		8F245FE02CB9808F00F145D1 /* ContrasenaAjustesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F245FDF2CB9808F00F145D1 /* ContrasenaAjustesView.swift */; };
-		8F245FE22CB9955800F145D1 /* InsigniasAjustesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F245FE12CB9955800F145D1 /* InsigniasAjustesView.swift */; };
+		8F245FE22CB9955800F145D1 /* InsigniasPorGanarAjustesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F245FE12CB9955800F145D1 /* InsigniasPorGanarAjustesView.swift */; };
 		8F245FE42CB9F3DB00F145D1 /* ToastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F245FE32CB9F3DB00F145D1 /* ToastViewModel.swift */; };
 		8F245FE62CB9FD1800F145D1 /* ListaNotificacionesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F245FE52CB9FD1800F145D1 /* ListaNotificacionesViewModel.swift */; };
 		8F245FE92CBA2E6300F145D1 /* ModeloNotificacionPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F245FE82CBA2E6300F145D1 /* ModeloNotificacionPager.swift */; };
@@ -57,6 +57,9 @@
 		8F2FEBB72CAF333600647572 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2FEBB62CAF333600647572 /* LoginView.swift */; };
 		8F48F8862CB1BA4C001E1819 /* RegistrarseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F48F8852CB1BA4C001E1819 /* RegistrarseViewModel.swift */; };
 		8F5B10A02CB584920013078E /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5B109F2CB584920013078E /* PerfilView.swift */; };
+		8F792F9C2CBADA6B0013211E /* BorrarNotificacionesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F792F9B2CBADA6B0013211E /* BorrarNotificacionesViewModel.swift */; };
+		8F792F9F2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F792F9E2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift */; };
+		8F792FA22CBAF96A0013211E /* ModeloInsignias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F792FA12CBAF96A0013211E /* ModeloInsignias.swift */; };
 		8FD27AAA2CB42E6700667C2F /* AjustesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD27AA92CB42E6700667C2F /* AjustesView.swift */; };
 		8FD27AAC2CB42E7900667C2F /* BibliaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD27AAB2CB42E7900667C2F /* BibliaView.swift */; };
 		8FD27AAE2CB42E8A00667C2F /* DevocionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD27AAD2CB42E8A00667C2F /* DevocionalView.swift */; };
@@ -135,7 +138,7 @@
 		8F0B37EA2CAE544900A261E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F105B642CB078FF0036EF64 /* MunicipioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunicipioViewModel.swift; sourceTree = "<group>"; };
 		8F245FDF2CB9808F00F145D1 /* ContrasenaAjustesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrasenaAjustesView.swift; sourceTree = "<group>"; };
-		8F245FE12CB9955800F145D1 /* InsigniasAjustesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsigniasAjustesView.swift; sourceTree = "<group>"; };
+		8F245FE12CB9955800F145D1 /* InsigniasPorGanarAjustesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsigniasPorGanarAjustesView.swift; sourceTree = "<group>"; };
 		8F245FE32CB9F3DB00F145D1 /* ToastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModel.swift; sourceTree = "<group>"; };
 		8F245FE52CB9FD1800F145D1 /* ListaNotificacionesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaNotificacionesViewModel.swift; sourceTree = "<group>"; };
 		8F245FE82CBA2E6300F145D1 /* ModeloNotificacionPager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeloNotificacionPager.swift; sourceTree = "<group>"; };
@@ -165,6 +168,9 @@
 		8F2FEBB62CAF333600647572 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8F48F8852CB1BA4C001E1819 /* RegistrarseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarseViewModel.swift; sourceTree = "<group>"; };
 		8F5B109F2CB584920013078E /* PerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilView.swift; sourceTree = "<group>"; };
+		8F792F9B2CBADA6B0013211E /* BorrarNotificacionesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrarNotificacionesViewModel.swift; sourceTree = "<group>"; };
+		8F792F9E2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsiginiasPorGanarViewModel.swift; sourceTree = "<group>"; };
+		8F792FA12CBAF96A0013211E /* ModeloInsignias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeloInsignias.swift; sourceTree = "<group>"; };
 		8FD27AA92CB42E6700667C2F /* AjustesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjustesView.swift; sourceTree = "<group>"; };
 		8FD27AAB2CB42E7900667C2F /* BibliaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliaView.swift; sourceTree = "<group>"; };
 		8FD27AAD2CB42E8A00667C2F /* DevocionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevocionalView.swift; sourceTree = "<group>"; };
@@ -251,6 +257,7 @@
 				8F0B37E12CAE53B100A261E4 /* AbbaSwiftUI.entitlements */,
 				8F0B37D72CAE50B100A261E4 /* Info.plist */,
 				8F0B37AE2CAE4A7400A261E4 /* Assets.xcassets */,
+				8F245FE72CBA2E4500F145D1 /* Modelos */,
 				8F105B632CB078EC0036EF64 /* ViewModel */,
 				8F2FEBA62CAEE8DB00647572 /* Network */,
 				8F0B37D82CAE518A00A261E4 /* Fonts */,
@@ -320,7 +327,6 @@
 		8F105B632CB078EC0036EF64 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				8F245FE72CBA2E4500F145D1 /* Modelos */,
 				8FD27AB12CB480EE00667C2F /* Ajustes */,
 				8F25FAE22CB2FA5C001BE477 /* Login */,
 			);
@@ -330,7 +336,7 @@
 		8F245FE72CBA2E4500F145D1 /* Modelos */ = {
 			isa = PBXGroup;
 			children = (
-				8F245FE82CBA2E6300F145D1 /* ModeloNotificacionPager.swift */,
+				8F792FA02CBAF9550013211E /* Ajustes */,
 			);
 			path = Modelos;
 			sourceTree = "<group>";
@@ -469,7 +475,7 @@
 		8F58B0512CB832A600DEC534 /* InsigniaPorGanar */ = {
 			isa = PBXGroup;
 			children = (
-				8F245FE12CB9955800F145D1 /* InsigniasAjustesView.swift */,
+				8F245FE12CB9955800F145D1 /* InsigniasPorGanarAjustesView.swift */,
 			);
 			path = InsigniaPorGanar;
 			sourceTree = "<group>";
@@ -491,6 +497,32 @@
 				8F5B109F2CB584920013078E /* PerfilView.swift */,
 			);
 			path = Perfil;
+			sourceTree = "<group>";
+		};
+		8F792F9A2CBADA530013211E /* Notificaciones */ = {
+			isa = PBXGroup;
+			children = (
+				8F245FE52CB9FD1800F145D1 /* ListaNotificacionesViewModel.swift */,
+				8F792F9B2CBADA6B0013211E /* BorrarNotificacionesViewModel.swift */,
+			);
+			path = Notificaciones;
+			sourceTree = "<group>";
+		};
+		8F792F9D2CBAF9290013211E /* Insignias */ = {
+			isa = PBXGroup;
+			children = (
+				8F792F9E2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift */,
+			);
+			path = Insignias;
+			sourceTree = "<group>";
+		};
+		8F792FA02CBAF9550013211E /* Ajustes */ = {
+			isa = PBXGroup;
+			children = (
+				8F245FE82CBA2E6300F145D1 /* ModeloNotificacionPager.swift */,
+				8F792FA12CBAF96A0013211E /* ModeloInsignias.swift */,
+			);
+			path = Ajustes;
 			sourceTree = "<group>";
 		};
 		8FD27AA52CB42C8400667C2F /* Inicio */ = {
@@ -529,8 +561,9 @@
 		8FD27AB12CB480EE00667C2F /* Ajustes */ = {
 			isa = PBXGroup;
 			children = (
+				8F792F9D2CBAF9290013211E /* Insignias */,
+				8F792F9A2CBADA530013211E /* Notificaciones */,
 				8FD27AB22CB4811500667C2F /* AjustesViewModel.swift */,
-				8F245FE52CB9FD1800F145D1 /* ListaNotificacionesViewModel.swift */,
 			);
 			path = Ajustes;
 			sourceTree = "<group>";
@@ -875,6 +908,7 @@
 				8F2FEBB72CAF333600647572 /* LoginView.swift in Sources */,
 				8F25FAF02CB333CA001BE477 /* ResetPasswordViewModel.swift in Sources */,
 				8F245FE92CBA2E6300F145D1 /* ModeloNotificacionPager.swift in Sources */,
+				8F792F9C2CBADA6B0013211E /* BorrarNotificacionesViewModel.swift in Sources */,
 				8FDCC4502CB8BD9D00700F4A /* IdiomaSettings.swift in Sources */,
 				8FD27AAA2CB42E6700667C2F /* AjustesView.swift in Sources */,
 				8FDCC4522CB8D31B00700F4A /* NotificacionesAjustesView.swift in Sources */,
@@ -887,15 +921,17 @@
 				8F5B10A02CB584920013078E /* PerfilView.swift in Sources */,
 				8FD27AAE2CB42E8A00667C2F /* DevocionalView.swift in Sources */,
 				8F0B37D62CAE4F1700A261E4 /* DatosGuardadosKeys.swift in Sources */,
-				8F245FE22CB9955800F145D1 /* InsigniasAjustesView.swift in Sources */,
+				8F245FE22CB9955800F145D1 /* InsigniasPorGanarAjustesView.swift in Sources */,
 				8F245FE02CB9808F00F145D1 /* ContrasenaAjustesView.swift in Sources */,
 				8F25FAF22CB33EF2001BE477 /* OTPInput.swift in Sources */,
 				8F2FEBA52CAEE78D00647572 /* StructReutilizable.swift in Sources */,
+				8F792FA22CBAF96A0013211E /* ModeloInsignias.swift in Sources */,
 				8F245FE42CB9F3DB00F145D1 /* ToastViewModel.swift in Sources */,
 				8F2FEBAA2CAEF02900647572 /* LoginPresentacionView.swift in Sources */,
 				8F2FEBA32CAEE77200647572 /* CustomModal2ButtonView.swift in Sources */,
 				8F2FEBB52CAF30B700647572 /* RegistroView.swift in Sources */,
 				8FD27AB32CB4811500667C2F /* AjustesViewModel.swift in Sources */,
+				8F792F9F2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift in Sources */,
 				8F25FAE82CB312AF001BE477 /* CodigoOTPView.swift in Sources */,
 				8F25FAE62CB304A0001BE477 /* ContrasenaOlvidadaView.swift in Sources */,
 				8FD27AB02CB42EA200667C2F /* InicioView.swift in Sources */,

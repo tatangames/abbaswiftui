@@ -20,10 +20,11 @@ class ListaNotificacionesViewModel: ObservableObject {
     @Published var isRequestInProgress: Bool = false
     @Published var notifications: [NotificationesPager] = []
     @Published var hasMorePages: Bool = true
-    var currentPage: Int = 1
         
+    var currentPage: Int = 1
+    
     let disposeBag = DisposeBag()
-    private let itemsPerPage = 10
+    private let itemsPerPage = 60 // 60 items por pagina
     
     func fetchNotifications(idCliente: String, idToken: String, idioma: Int) -> Observable<Result<ModeloNotificationResponse, Error>> {
         guard !isRequestInProgress else {
@@ -56,6 +57,7 @@ class ListaNotificacionesViewModel: ObservableObject {
                     switch response.result {
                     case .success(let notificationResponse):
                         // Verificar si hay datos
+                        
                         if !notificationResponse.listado.data.isEmpty {
                             // Solo agregar notificaciones si hay datos
                             self.notifications.append(contentsOf: notificationResponse.listado.data)
@@ -64,7 +66,7 @@ class ListaNotificacionesViewModel: ObservableObject {
                             self.currentPage += 1
                             
                             // Verificar si hay más páginas
-                            self.hasMorePages = notificationResponse.listado.currentPage < notificationResponse.listado.lastPage
+                            self.hasMorePages = notificationResponse.listado.currentPage ?? 1 < notificationResponse.listado.lastPage ?? 0
                         } else {
                             // Si no hay más datos, no se incrementa currentPage
                             self.hasMorePages = false

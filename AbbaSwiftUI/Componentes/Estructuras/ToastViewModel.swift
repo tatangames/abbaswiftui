@@ -10,9 +10,14 @@ import AlertToast
 import SwiftUI
 
 class ToastViewModel: ObservableObject {
-    @Published var customToast: AlertToast? = nil
+ //   @Published var customToast: AlertToast? = nil
     @Published var showToastBool: Bool = false
 
+    
+    @Published var customToast: AlertToast = AlertToast(displayMode: .banner(.slide), type: .regular, title: "", style: .style(backgroundColor: .clear, titleColor: .white, subTitleColor: .blue, titleFont: .headline, subTitleFont: nil))
+    
+    
+    
     func showCustomToast(with mensaje: String, tipoColor: ToastColor) {
         let titleColor = tipoColor.color
         customToast = AlertToast(

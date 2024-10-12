@@ -314,7 +314,7 @@ struct AjustesView: View {
             case .notificaciones:
                 NotificacionesAjustesView()
             case .insignias:
-                InsigniasAjustesView()
+                InsigniasPorGanarAjustesView()
             case .cerrarsesion:
                 LoginPresentacionView()
             }

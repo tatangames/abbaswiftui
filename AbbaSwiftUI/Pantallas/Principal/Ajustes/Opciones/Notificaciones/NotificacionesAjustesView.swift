@@ -22,39 +22,51 @@ struct NotificacionesAjustesView: View {
     @AppStorage(DatosGuardadosKeys.idiomaApp) private var idiomaApp:Int = 0
     
     @StateObject private var toastViewModel = ToastViewModel()
-    @State private var showToastBool: Bool = false
+    // @State private var showToastBool: Bool = false
     @State private var openLoadingSpinner: Bool = false
+    @State private var openLoadingSpinnerBorrarNoti: Bool = false
     @State private var password: String = ""
     
-    @State private var customToast: AlertToast = AlertToast(displayMode: .banner(.slide), type: .regular, title: "", style: .style(backgroundColor: .clear, titleColor: .white, subTitleColor: .blue, titleFont: .headline, subTitleFont: nil))
-    
     @StateObject var viewModel = ListaNotificacionesViewModel()
+    @StateObject var viewModelBorrarNoti = BorrarNotificacionesViewModel()
     
     @State private var boolVistaHabilitar: Bool = false
-    @State private var boolHabiaDatos: Bool = false
+    @State private var boolVistaHayDatos: Bool = false
+    @State private var popBorrarNotificaciones: Bool = false
     
     var body: some View {
         NavigationView {
             ZStack {
                 VStack() {
                     
+                    // Solo se habilita si hay informacion, se ocultara al eliminar notificaciones
                     if(boolVistaHabilitar){
-                        if(boolHabiaDatos){
+                        if(boolVistaHayDatos){
                             List {
                                 ForEach(viewModel.notifications) { notification in
-                                   
                                     
-                                    
-                                    VStack(alignment: .leading) {
+                                    HStack(alignment: .top, spacing: 5) {
+                                        Image(systemName: "bell.fill") // Reemplaza con el nombre de tu imagen de icono
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 15, height: 15)
+                                            .foregroundColor(temaApp == 1 ? Color(UIColor.systemGray3) : .black)
+                                            .padding(.top, 5) // Opcional, ajusta para alinear mejor con el texto
                                         
-                                        Text(notification.titulo)
-                                            .font(.headline)
-                                            .foregroundColor(.blue)
-                                        Text("Fecha: \(notification.fecha)")
-                                            .foregroundColor(temaApp == 1 ? .white : .black)
-                                            .font(.headline)
-                                        
-                                        LineaHorizontal(altura: 0.3, espaciado: 40, temaApp: temaApp)
+                                        VStack(alignment: .leading, spacing: 2) {
+                                            Text(notification.titulo)
+                                                .font(.headline)
+                                                .foregroundColor(temaApp == 1 ? Color.white : Color.black)
+                                            
+                                            Text(notification.fecha)
+                                                .font(.headline)
+                                                .foregroundColor(Color(UIColor.systemGray3))
+                                                .font(.system(size: 10, design: .rounded))
+                                                .padding(.top,4)
+                                            
+                                            LineaHorizontal(altura: 0.3, espaciado: 40, temaApp: temaApp)
+                                                .padding(.top, 4)
+                                        }
                                     }
                                     .listRowInsets(EdgeInsets())
                                     .listRowSeparator(.hidden)
@@ -75,41 +87,12 @@ struct NotificacionesAjustesView: View {
                                         }
                                     }
                                     .padding()
-                                    
-                                    
-                                    
-                                    
-                                   /* VStack(alignment: .leading) {
-                                        Text(notification.titulo)
-                                            .font(.headline)
-                                            .foregroundColor(.blue)
-                                        Text("Fecha: \(notification.fecha)")
-                                            .foregroundColor(temaApp == 1 ? .white : .black)
-                                            .font(.headline)
-                                    }
-                                    .listRowInsets(EdgeInsets())
-                                    .listRowSeparator(.hidden)
-                                    .listRowBackground(temaApp == 1 ? Color("coscurov1") : .white)
-                                    .onAppear {
-                                        // Cargar más datos si el usuario llega al final de la lista
-                                        if notification == viewModel.notifications.last && viewModel.hasMorePages && !viewModel.isRequestInProgress {
-                                            viewModel.fetchNotifications(idCliente: idCliente, idToken: idToken, idioma: idiomaApp)
-                                                .subscribe(onNext: { result in
-                                                    switch result {
-                                                    case .success:
-                                                        print("Page \(viewModel.currentPage - 1) fetched successfully")
-                                                    case .failure(let error):
-                                                        print("Failed to fetch notifications: \(error.localizedDescription)")
-                                                    }
-                                                })
-                                                .disposed(by: viewModel.disposeBag)
-                                        }
-                                    }*/
                                 }
                             }
                             .listStyle(InsetGroupedListStyle())
                             .scrollContentBackground(.hidden)
                             .background(temaApp == 1 ? Color.black : Color(UIColor.systemGray6))
+                            
                         }else{
                             VStack {
                                 Image("notificaciones")
@@ -117,7 +100,7 @@ struct NotificacionesAjustesView: View {
                                     .scaledToFit()
                                     .frame(width: 100, height: 100)
                                     .padding(.top, 15)
-
+                                
                                 HStack {
                                     Spacer() // Empuja el contenido a la derecha
                                     Text(TextoIdiomaController.localizedString(forKey: "key-no-hay-notificaciones"))
@@ -131,16 +114,33 @@ struct NotificacionesAjustesView: View {
                             }
                             .padding()
                         }
-                        
                     }
+                    
                     
                 }.onAppear {
                     loadData()
                 }
-               
+                .onReceive(viewModelBorrarNoti.$loadingSpinner) { loading in
+                    openLoadingSpinnerBorrarNoti = loading
+                }
                 
+                if popBorrarNotificaciones {
+                    PopImg2BtnView(isActive: $popBorrarNotificaciones, imagen: .constant("infocolor"), descripcion: .constant(TextoIdiomaController.localizedString(forKey: "key-borrar-notificaciones")), txtCancelar: .constant(TextoIdiomaController.localizedString(forKey: "key-no")),
+                                   txtAceptar: .constant(TextoIdiomaController.localizedString(forKey: "key-si")),
+                                   cancelAction: {popBorrarNotificaciones = false},
+                                   acceptAction: {
+                        requestBorrarNotificaciones()
+                        
+                    }).zIndex(1)
+                }
                 
                 if openLoadingSpinner && viewModel.hasMorePages {
+                    LoadingSpinnerView()
+                        .transition(.opacity) // Transición de opacidad
+                        .zIndex(10)
+                }
+                
+                if openLoadingSpinnerBorrarNoti {
                     LoadingSpinnerView()
                         .transition(.opacity) // Transición de opacidad
                         .zIndex(10)
@@ -164,33 +164,64 @@ struct NotificacionesAjustesView: View {
                         .font(.headline)
                         .foregroundColor(.black)
                 }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        // Acción para el botón de basurero
+                        
+                        
+                        if(boolVistaHayDatos){
+                            popBorrarNotificaciones = true
+                        }else{
+                            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-no-hay-notificaciones"), tipoColor: .gris)
+                        }
+                    }) {
+                        Image(systemName: "trash")
+                            .foregroundColor(.black) // Cambia el color según tu preferencia
+                    }
+                }
             }
             .background(temaApp == 1 ? Color.black : Color.white) // fondo de pantalla
+            .toast(isPresenting: $toastViewModel.showToastBool, duration: 3, tapToDismiss: false) {
+                toastViewModel.customToast
+            }
             .onReceive(viewModel.$loadingSpinner) { loading in
                 openLoadingSpinner = loading
             }
-            .toast(isPresenting: $toastViewModel.showToastBool, alert: {
-                toastViewModel.customToast ?? AlertToast(type: .regular, title: "")
-            })
         } // end-navigationView
         .background(CustomNavigationBarModifier(backgroundColor: .white, // toolbar
                                                 titleColor: .black))
     }
     
     
+    private func requestBorrarNotificaciones(){
+        viewModelBorrarNoti.borrarNotificacionesRX(idToken: idToken, idiomaPlan: idiomaApp) { result in
+            switch result {
+            case .success(let json):
+                
+                let success = json["success"].int ?? 0
+                switch success {
+                case 1:
+                    boolVistaHayDatos = false
+                    toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-notificaciones-borradas"), tipoColor: .verde)
+                default:
+                    mensajeError()
+                }
+                
+            case .failure(_):
+                mensajeError()
+            }
+        }
+    }
+    
     private func loadData() {
         openLoadingSpinner = true
-        
         viewModel.fetchNotifications(idCliente: idCliente, idToken: idToken, idioma: idiomaApp)
             .subscribe(onNext: { result in
                 switch result {
                 case .success(let notificationResponse):
-                    print("Initial notifications fetched successfully")
-                    // Aquí ya no necesitas imprimir las notificaciones,
-                    // se agregarán automáticamente al modelo en el ViewModel
                     
                     if(notificationResponse.hayinfo == 1){
-                        boolHabiaDatos = true
+                        boolVistaHayDatos = true
                     }
                     
                     boolVistaHabilitar = true

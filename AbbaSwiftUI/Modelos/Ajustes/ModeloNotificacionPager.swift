@@ -16,18 +16,18 @@ struct ModeloNotificationResponse: Codable {
 }
 
 struct ModeloNotificacionListado: Codable {
-    let currentPage: Int
+    let currentPage: Int?
     let data: [NotificationesPager]
-    let firstPageURL: String
-    let from: Int
-    let lastPage: Int
-    let lastPageURL: String
+    let firstPageURL: String?
+    let from: Int?
+    let lastPage: Int?
+    let lastPageURL: String?
     let nextPageURL: String?
-    let path: String
-    let perPage: Int
+    let path: String?
+    let perPage: Int?
     let prevPageURL: String?
-    let to: Int
-    let total: Int
+    let to: Int?
+    let total: Int?
 
     enum CodingKeys: String, CodingKey {
         case currentPage = "current_page"
