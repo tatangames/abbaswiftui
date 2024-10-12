@@ -110,9 +110,9 @@ key-no="No";
 key-seleccionar-idioma="Seleccionar idioma";
 key-ingles="Ingles";
 key-espanol="Español";
-
-
-
+key-actualizacion="Actualización";
+key-actualizado="Actualizado";
+key-no-hay-notificaciones="No hay notificaciones";
 
 
 
@@ -169,7 +169,7 @@ oracion="Oración";
 
 
 correo_no_disponible="Correo no disponible";
-actualizado="Actualizado";
+
 editar_notificaciones="Editar Notificaciones";
 tema_actualizado="Tema Actualizado";
 cambiar_idioma="Cambiar Idioma";
@@ -294,7 +294,7 @@ eliminado="Eliminado";
 sition_en_construccion="Sitio en construcción";
 completar_devocional="Completar Devocional";
 devocional_no_disponible="Devocional no disponible";
-no_hay_notificaciones="No hay notificaciones";
+
 enviadas="Enviadas";
 recibidas="Recibidas";
 

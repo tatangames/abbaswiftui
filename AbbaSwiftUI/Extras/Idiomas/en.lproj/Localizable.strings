@@ -110,9 +110,9 @@ key-no="No";
 key-seleccionar-idioma="Select language";
 key-ingles="English";
 key-espanol="Spanish";
-
-
-
+key-actualizacion="Update";
+key-actualizado="Updated";
+key-no-hay-notificaciones="No notifications";
 
 
 
@@ -180,7 +180,7 @@ seleccionar_edad="Select Age";
 
 
 correo_no_disponible="Email not available";
-actualizado="Updated";
+
 editar_notificaciones="Edit Notifications";
 tema_actualizado="Update Theme";
 cambiar_idioma="Change Language";
@@ -304,7 +304,7 @@ eliminado="Removed";
 sition_en_construccion="Site under construction";
 completar_devocional="Complete Devotional";
 devocional_no_disponible="Devotional not available";
-no_hay_notificaciones="No notifications";
+
 enviadas="Sent";
 recibidas="Received";
 

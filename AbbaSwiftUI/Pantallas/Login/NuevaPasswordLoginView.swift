@@ -18,9 +18,9 @@ struct NuevaPasswordLoginView: View {
     // parametro recibido
     var tokenTemporal:String = ""
     
+    @AppStorage(DatosGuardadosKeys.temaApp) private var temaApp:Int = 0
     @State private var showToastBool:Bool = false
     @State private var openLoadingSpinner: Bool = false
-    @AppStorage(DatosGuardadosKeys.temaApp) private var temaApp:Int = 0
     @State private var boolPantallaLogin: Bool = false
     @State private var password:String = ""
     @State private var popDatosActualizados:Bool = false
@@ -96,7 +96,7 @@ struct NuevaPasswordLoginView: View {
             }
             
             if popDatosActualizados {
-                PopImg1BtnView(isActive: $popDatosActualizados, imagen: .constant("infocolor"), bLlevaTitulo: .constant(false), titulo: .constant(""), descripcion: .constant(TextoIdiomaController.localizedString(forKey: "key-password-actualizada")), txtAceptar: .constant("Aceptar"), acceptAction: {
+                PopImg1BtnView(isActive: $popDatosActualizados, imagen: .constant("infocolor"), bLlevaTitulo: .constant(false), titulo: .constant(""), descripcion: .constant(TextoIdiomaController.localizedString(forKey: "key-password-actualizada")), txtAceptar: .constant(TextoIdiomaController.localizedString(forKey: "key-aceptar")), acceptAction: {
                     popDatosActualizados = false
                     boolPantallaLogin = true
                 })

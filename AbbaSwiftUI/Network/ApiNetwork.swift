@@ -26,6 +26,6 @@ let apiSolicitarCodigoPorCorreo = baseUrl+"app/solicitar/codigo/contrasena"
 let apiVerificarCodigoDeCorreo = baseUrl+"app/verificar/codigo/recuperacion"
 let apiResetPassword = baseUrl+"app/actualizar/nueva/contrasena/reseteo"
 let apiInformacionAjustes = baseUrl+"app/solicitar/informacion/perfil"
-
+let apiListadoNotificaciones = baseUrl+"app/notificaciones/listado"
 
 

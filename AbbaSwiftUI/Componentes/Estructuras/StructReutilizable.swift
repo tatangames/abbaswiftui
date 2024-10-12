@@ -445,7 +445,7 @@ func isValidEmail(_ email: String) -> Bool {
     return emailPred.evaluate(with: email)
 }
 
-
+// CAMBIAR COLOR AL TOOLBAR Y AL TITLE
 struct CustomNavigationBarModifier: UIViewControllerRepresentable {
     let backgroundColor: UIColor
     let titleColor: UIColor
