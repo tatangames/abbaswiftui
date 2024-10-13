@@ -32,6 +32,7 @@ struct InsigniasPorGanarAjustesView: View {
         NavigationView {
             ZStack {
                 VStack() {
+                    
                     if(boolHayDatos){
                         List(viewModel.insignias) { insignia in
                             InsigniaPorGanarRow(insignia: insignia, temaApp: temaApp)

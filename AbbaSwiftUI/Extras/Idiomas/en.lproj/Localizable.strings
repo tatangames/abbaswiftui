@@ -118,6 +118,10 @@ key-notificaciones-borradas="Notifications Cleared";
 key-eventos="Events";
 key-insignias="Badge";
 key-todas-las-insignias-ganadas="All badges earned";
+key-perfil="Profile";
+key-acceso-galeria-camara="Access to Gallery and Camera Denied";
+key-porfavor-habilitar-permiso-camara="Please enable Gallery & Camera permission in Settings.";
+
 
 
 

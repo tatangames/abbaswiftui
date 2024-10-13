@@ -118,6 +118,12 @@ key-notificaciones-borradas="Notificaciones Borradas";
 key-eventos="Eventos";
 key-insignias="Insignias";
 key-todas-las-insignias-ganadas="Todas las insignias ganadas";
+key-perfil="Perfil";
+key-acceso-galeria-camara="Acceso a Galería y Camara Denegado";
+key-porfavor-habilitar-permiso-camara="Por favor habilitar el permiso de Galería y Camara en Ajustes.";
+
+
+
 
 
 

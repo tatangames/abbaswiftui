@@ -74,9 +74,11 @@ struct ContrasenaAjustesView: View {
                                     .zIndex(10)
                             }
                         }
+                        .frame(maxWidth: .infinity) // para expansion
                         .padding()
                     }// end-scrollview
                 }
+                .frame(maxWidth: .infinity, maxHeight: .infinity) // para expansion
                 .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
                 .toolbar {

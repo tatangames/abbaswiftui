@@ -116,7 +116,6 @@ struct NotificacionesAjustesView: View {
                         }
                     }
                     
-                    
                 }.onAppear {
                     loadData()
                 }

@@ -68,11 +68,8 @@ struct AjustesView: View {
                             .frame(maxWidth: .infinity, alignment: .leading) // Alinea el contenido a la izquierda
                             .contentShape(Rectangle()) // Asegúrate de que toda el área sea clickeable
                             .onTapGesture {
-                                
                                 vistaSeleccionada = .perfil
-                             
-                            }
-                            
+                            }                            
                             LineaHorizontal(altura: 0.3, espaciado: 40, temaApp: temaApp)
                         }
                         .listRowInsets(EdgeInsets())

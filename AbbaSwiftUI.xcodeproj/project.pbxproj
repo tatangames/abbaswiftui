@@ -60,6 +60,7 @@
 		8F792F9C2CBADA6B0013211E /* BorrarNotificacionesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F792F9B2CBADA6B0013211E /* BorrarNotificacionesViewModel.swift */; };
 		8F792F9F2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F792F9E2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift */; };
 		8F792FA22CBAF96A0013211E /* ModeloInsignias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F792FA12CBAF96A0013211E /* ModeloInsignias.swift */; };
+		8F792FA52CBB3A030013211E /* PerfilViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F792FA42CBB3A030013211E /* PerfilViewModel.swift */; };
 		8FD27AAA2CB42E6700667C2F /* AjustesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD27AA92CB42E6700667C2F /* AjustesView.swift */; };
 		8FD27AAC2CB42E7900667C2F /* BibliaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD27AAB2CB42E7900667C2F /* BibliaView.swift */; };
 		8FD27AAE2CB42E8A00667C2F /* DevocionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD27AAD2CB42E8A00667C2F /* DevocionalView.swift */; };
@@ -171,6 +172,7 @@
 		8F792F9B2CBADA6B0013211E /* BorrarNotificacionesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrarNotificacionesViewModel.swift; sourceTree = "<group>"; };
 		8F792F9E2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsiginiasPorGanarViewModel.swift; sourceTree = "<group>"; };
 		8F792FA12CBAF96A0013211E /* ModeloInsignias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeloInsignias.swift; sourceTree = "<group>"; };
+		8F792FA42CBB3A030013211E /* PerfilViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewModel.swift; sourceTree = "<group>"; };
 		8FD27AA92CB42E6700667C2F /* AjustesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AjustesView.swift; sourceTree = "<group>"; };
 		8FD27AAB2CB42E7900667C2F /* BibliaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BibliaView.swift; sourceTree = "<group>"; };
 		8FD27AAD2CB42E8A00667C2F /* DevocionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevocionalView.swift; sourceTree = "<group>"; };
@@ -525,6 +527,14 @@
 			path = Ajustes;
 			sourceTree = "<group>";
 		};
+		8F792FA32CBB39F70013211E /* Perfil */ = {
+			isa = PBXGroup;
+			children = (
+				8F792FA42CBB3A030013211E /* PerfilViewModel.swift */,
+			);
+			path = Perfil;
+			sourceTree = "<group>";
+		};
 		8FD27AA52CB42C8400667C2F /* Inicio */ = {
 			isa = PBXGroup;
 			children = (
@@ -561,6 +571,7 @@
 		8FD27AB12CB480EE00667C2F /* Ajustes */ = {
 			isa = PBXGroup;
 			children = (
+				8F792FA32CBB39F70013211E /* Perfil */,
 				8F792F9D2CBAF9290013211E /* Insignias */,
 				8F792F9A2CBADA530013211E /* Notificaciones */,
 				8FD27AB22CB4811500667C2F /* AjustesViewModel.swift */,
@@ -918,6 +929,7 @@
 				8F2FEBB32CAF123900647572 /* TextoIdiomaController.swift in Sources */,
 				8F2FEBA82CAEE90C00647572 /* ApiNetwork.swift in Sources */,
 				8F48F8862CB1BA4C001E1819 /* RegistrarseViewModel.swift in Sources */,
+				8F792FA52CBB3A030013211E /* PerfilViewModel.swift in Sources */,
 				8F5B10A02CB584920013078E /* PerfilView.swift in Sources */,
 				8FD27AAE2CB42E8A00667C2F /* DevocionalView.swift in Sources */,
 				8F0B37D62CAE4F1700A261E4 /* DatosGuardadosKeys.swift in Sources */,
