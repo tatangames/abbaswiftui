@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SplashScreenView: View {
-    
     @AppStorage(DatosGuardadosKeys.idToken) private var idToken: String = ""
     @AppStorage(DatosGuardadosKeys.setearLenguaje) private var setearLenguaje: Int = 0
     @AppStorage(DatosGuardadosKeys.idiomaApp) private var idiomaApp: Int = 0
@@ -20,17 +19,10 @@ struct SplashScreenView: View {
     
     var body: some View {
         ZStack {
-            
             Color.white.edgesIgnoringSafeArea(.all)
-                
-            GeometryReader { geometry in
-                Image("fondov2")
-                    .resizable()
-                    .scaledToFill() // Escala la imagen para llenar el contenedor
-                    .frame(width: geometry.size.width, height: geometry.size.height) // Ajusta el tamaño según la pantalla
-                    .clipped() // Recorta lo que sobrepase el contenedor
-                    .ignoresSafeArea(edges: .vertical) // Ignora áreas seguras en la parte superior e inferior
-            }
+            Image("fondov2")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
         }
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -44,7 +36,8 @@ struct SplashScreenView: View {
                     boolActivarCambio = true
                 }
             }
-        }.onAppear{
+        }.onAppear{            
+            // SOLO LO HARA 1 VEZ, ESTABLECE UDIOMA SEGUN TELEFONO
             if(setearLenguaje == 0){
                 let deviceLanguage = Locale.preferredLanguages.first
                 if let deviceLanguage = deviceLanguage{
@@ -63,7 +56,7 @@ struct SplashScreenView: View {
                 }
                 setearLenguaje = 1
                 
-                // Modificar Tema
+                // Modificar Tema, SEGUN TELEFONO
                 
                 if(colorScheme == .dark){
                     temaApp = 1
@@ -72,7 +65,6 @@ struct SplashScreenView: View {
                 }
             }
         }
-        
         .fullScreenCover(item: $activeView) { view in
             switch view {
             case .login:
@@ -82,11 +74,7 @@ struct SplashScreenView: View {
             }
         }
     } // end-body
-    
-    
 }
-
-
 
 #Preview {
     SplashScreenView()

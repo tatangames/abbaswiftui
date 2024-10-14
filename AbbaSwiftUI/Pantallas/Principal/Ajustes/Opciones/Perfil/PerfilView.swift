@@ -22,17 +22,20 @@ struct PerfilView: View {
     @AppStorage(DatosGuardadosKeys.idToken) private var idToken:String = ""
     @AppStorage(DatosGuardadosKeys.idCliente) private var idCliente:String = ""
     @AppStorage(DatosGuardadosKeys.idiomaApp) private var idiomaApp:Int = 0
-    
     @StateObject private var toastViewModel = ToastViewModel()
+    @StateObject var viewModel = PerfilViewModel()
+    @StateObject var viewModelActualizar = PerfilActualizarViewModel()
     @State private var openLoadingSpinner: Bool = true
     @State private var boolMostrarVista: Bool = false
     @State private var boolHayImagen: Bool = false
-    @StateObject var viewModel = PerfilViewModel()
-    
     @State private var boolHayDatos: Bool = true
     @State private var imgGenero: String = "generom" // defecto
-    
     @State private var urlImagenUsuario: String = ""
+    @State private var nombre:String = ""
+    @State private var apellido:String = ""
+    @State private var fechaNacimientoDate: Date? = nil
+    @State private var correoElectronico:String = ""
+    @State private var fechaNacUsuario:String = ""
     
     // Camara
     @State private var isCameraPresented:Bool = false
@@ -57,7 +60,7 @@ struct PerfilView: View {
                                         .frame(width: 150, height: 150)
                                         .clipShape(Circle())
                                         .onTapGesture {
-                                          sheetCamaraGaleria.toggle()
+                                            sheetCamaraGaleria.toggle()
                                         }
                                         .padding(.top, 10)
                                         .frame(maxWidth: .infinity)
@@ -70,7 +73,7 @@ struct PerfilView: View {
                                         .clipShape(Circle())
                                         .onTapGesture {
                                             sheetCamaraGaleria.toggle()
-                                           }
+                                        }
                                         .padding(.top, 10)
                                         .frame(maxWidth: .infinity)
                                 }
@@ -86,18 +89,76 @@ struct PerfilView: View {
                                     .padding(.top, 10)
                                     .frame(maxWidth: .infinity)
                             }
-                        }
-
-
-                     
-                        
-                        
+                            
+                            // Alinea el texto a la izquierda
+                            HStack {
+                                CustomTituloHstack(labelKey: TextoIdiomaController.localizedString(forKey: "key-primer-nombre"), isDarkMode: temaApp, aplicarTema: true)
+                            }
+                            
+                            VStack {
+                                CustomTextField(labelKey: "key-nombre", isDarkMode: temaApp == 1 ? true : false, text: $nombre, maxLength: 50, keyboardType: .default)
+                            }
+                            
+                            //***************************
+                            
+                            CustomTituloHstack(labelKey: TextoIdiomaController.localizedString(forKey: "key-apellido"), isDarkMode: temaApp, aplicarTema: true)
+                            
+                            VStack {
+                                CustomTextField(labelKey: "key-apellido", isDarkMode: temaApp != 0, text: $apellido, maxLength: 50, keyboardType: .default)
+                            }
+                            
+                            
+                            
+                            //***************************
+                            
+                            CustomTituloHstack(labelKey: TextoIdiomaController.localizedString(forKey: "key-fecha-nacimiento"), isDarkMode: temaApp, aplicarTema: true)
+                            
+                            
+                            
+                            FechaNacimientoPickerPerfil(fechaNacimiento: $fechaNacimientoDate)
+                                .onAppear {
+                                    if let date = convertStringToDate(fechaNacUsuario) {
+                                        fechaNacimientoDate = date
+                                    }
+                                }
+                            
+                            
+                            
+                            CustomTituloHstack(labelKey: TextoIdiomaController.localizedString(forKey: "key-correo-electronico"), isDarkMode: temaApp, aplicarTema: true)
+                            
+                            CustomTextField(labelKey: "key-correo-electronico", isDarkMode: temaApp != 0, text: $correoElectronico, maxLength: 100, keyboardType: .emailAddress)
+                            
+                            
+                            //****************  BOTON ACTUALIZAR   *********************************
+                            
+                            Button(action: {
+                                verificarCampos()
+                            }) {
+                                Text(TextoIdiomaController.localizedString(forKey: "key-actualizar"))
+                                    .font(.headline)
+                                    .foregroundColor(.white)
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color("cazulv1"))
+                                    .cornerRadius(8)
+                            }
+                            .padding(.top, 50)
+                            .opacity(1.0)
+                            .buttonStyle(NoOpacityChangeButtonStyle())
+                            Spacer()
+                            
+                        } //end-if
                     }
                     .padding()
                     .frame(maxWidth: .infinity) // para expansion
                 } // end-scrollview
-
-             
+                                
+                if openLoadingSpinner {
+                    LoadingSpinnerView()
+                        .transition(.opacity) // Transición de opacidad
+                        .zIndex(10)
+                }
+                
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity) // para expansion
             .navigationBarTitleDisplayMode(.inline)
@@ -120,7 +181,7 @@ struct PerfilView: View {
             }
             .sheet(isPresented: $sheetCamaraGaleria) {
                 BottomSheetCamaraGaleriaView(onOptionSelected: { option in
-                                  
+                    
                     if option == 1{
                         checkPhotoLibraryPermission()
                     }else{
@@ -159,6 +220,9 @@ struct PerfilView: View {
             .onReceive(viewModel.$loadingSpinner) { loading in
                 openLoadingSpinner = loading
             }
+            .onReceive(viewModelActualizar.$loadingSpinner) { loading in
+                openLoadingSpinner = loading
+            }
             .onAppear {
                 loadData()
             }
@@ -183,6 +247,84 @@ struct PerfilView: View {
     }
     
     
+    private func verificarCampos(){
+        if(nombre.isEmpty){
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-nombre-requerido"), tipoColor: .gris)
+            return
+        }
+        
+        if(apellido.isEmpty){
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-apellido-requerido"), tipoColor: .gris)
+            return
+        }
+        
+        if(fechaNacimientoDate == nil){
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-fecha-nacimiento-es-requerido"), tipoColor: .gris)
+            return
+        }
+        
+        if(correoElectronico.isEmpty){
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-requerido"), tipoColor: .gris)
+            return
+        }
+        
+        if !isValidEmail(correoElectronico) {
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-no-valido"), tipoColor: .gris)
+            return
+        }
+        
+        actualizarPerfil()
+    }
+    
+    private func actualizarPerfil(){
+        
+        // Ejemplo de uso
+        if let _fechaFormat = convertToMySQLDateFormat(fechaNacUsuario) {
+            
+            viewModelActualizar.actualizarPerfilRX(idToken: idToken, idCliente: idCliente, nombre: nombre, apellido: apellido, fechanac: _fechaFormat, correo: correoElectronico, selectedImage: selectedImage) { result in
+                switch result {
+                case .success(let json):
+                    let success = json["success"].int ?? 0
+                    switch success {
+                    case 1:
+                        // correo ya registrado
+                        toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-ya-registrado"), tipoColor: .gris)
+                    case 2:
+                        // actualizado
+                        toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-actualizado"), tipoColor: .verde)
+                        
+                    default:
+                        mensajeError()
+                    }
+                    
+                case .failure(_):
+                    mensajeError()
+                }
+            }
+        }
+    }
+    
+    // UTILIZADO EN EL PICKER
+    func convertStringToDate(_ dateString: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy" // Formato inicial de la cadena
+        return dateFormatter.date(from: dateString)
+    }
+
+    // UTILIZADO AL ENVIAR AL SERVER
+    func convertToMySQLDateFormat(_ dateString: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy" // Ajusta esto según el formato inicial de la fecha que recibas
+        
+        // Convertir el string a Date
+        if let date = dateFormatter.date(from: dateString) {
+            dateFormatter.dateFormat = "yyyy-MM-dd" // Formato esperado por MySQL
+            return dateFormatter.string(from: date)
+        }
+        
+        return nil // Retorna nil si la conversión falla
+    }
+    
     private func loadData() {
         openLoadingSpinner = true
         viewModel.infoPerfilRX(idToken: idToken, idCliente: idCliente) { result in
@@ -192,31 +334,29 @@ struct PerfilView: View {
                 switch success {
                 case 1:
                     
-                    print("ENTRAAAA")
+                    let _nombre = json["nombre"].string ?? ""
+                    let _apellido = json["apellido"].string ?? ""
+                    let _fecha = json["fecha_nacimiento"].string ?? ""
+                    let _hayimagen = json["hayimagen"].int ?? 0
+                    let _imagen = json["imagen"].string ?? ""
+                    let _correo = json["correo"].string ?? ""
+                    let _genero = json["genero"].int ?? 0 // 1: masculino 2: femenino
                     
-                   let _nombre = json["nombre"].string ?? ""
-                   let _apellido = json["apellido"].string ?? ""
-                   let _fechaNac = json["fecha_nacimiento"].string ?? ""
-                   let _hayimagen = json["hayimagen"].int ?? 0
-                   let _imagen = json["imagen"].string ?? ""
-                   let _genero = json["genero"].int ?? 0 // 1: masculino 2: femenino
+                    if(_hayimagen == 1){
+                        urlImagenUsuario = _imagen
+                        boolHayImagen = true
+                    }
                     
-                   if(_hayimagen == 1){
-                       urlImagenUsuario = _imagen
-                       boolHayImagen = true
-                   }
+                    nombre = _nombre
+                    apellido = _apellido
+                    fechaNacUsuario = _fecha
+                    correoElectronico = _correo
                     
-                    print("url: \(_imagen)")
+                    if(_genero == 2){
+                        imgGenero = "generof"
+                    }
                     
-                   
-                   if(_genero == 2){
-                       imgGenero = "generof"
-                   }
-                    
-                    
-                   boolMostrarVista = true
-                                     
-                    
+                    boolMostrarVista = true
                 default:
                     mensajeError()
                 }
@@ -230,7 +370,6 @@ struct PerfilView: View {
     private func mensajeError(){
         toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
     }
-    
     
     
     // verificar permiso para galeria
@@ -256,7 +395,7 @@ struct PerfilView: View {
         case .limited:
             showSettingsAlert = true
         @unknown default:
-           // print("Estado desconocido")
+            // print("Estado desconocido")
             showSettingsAlert = true
         }
     }

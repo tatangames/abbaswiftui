@@ -20,12 +20,10 @@ struct InsigniasPorGanarAjustesView: View {
     @AppStorage(DatosGuardadosKeys.temaApp) private var temaApp: Int = 0
     @AppStorage(DatosGuardadosKeys.idToken) private var idToken:String = ""
     @AppStorage(DatosGuardadosKeys.idCliente) private var idCliente:String = ""
-    @AppStorage(DatosGuardadosKeys.idiomaApp) private var idiomaApp:Int = 0
-    
+    @AppStorage(DatosGuardadosKeys.idiomaApp) private var idiomaApp:Int = 0    
     @StateObject private var toastViewModel = ToastViewModel()
-    @State private var openLoadingSpinner: Bool = false
     @StateObject var viewModel = InsigniasPorGanarViewModel()
-    
+    @State private var openLoadingSpinner: Bool = false
     @State private var boolHayDatos: Bool = true
     
     var body: some View {
@@ -36,7 +34,6 @@ struct InsigniasPorGanarAjustesView: View {
                     if(boolHayDatos){
                         List(viewModel.insignias) { insignia in
                             InsigniaPorGanarRow(insignia: insignia, temaApp: temaApp)
-                            
                         }
                         .listStyle(InsetGroupedListStyle())
                         .scrollContentBackground(.hidden)
@@ -77,8 +74,7 @@ struct InsigniasPorGanarAjustesView: View {
                 .onReceive(viewModel.$loadingSpinner) { loading in
                     openLoadingSpinner = loading
                 }
-                
-                
+                                
                 if openLoadingSpinner {
                     LoadingSpinnerView()
                         .transition(.opacity) // Transición de opacidad
@@ -106,9 +102,9 @@ struct InsigniasPorGanarAjustesView: View {
                 
             }
             .background(temaApp == 1 ? Color.black : Color.white) // fondo de pantalla
-            .toast(isPresenting: $toastViewModel.showToastBool, duration: 3, tapToDismiss: false) {
+            .toast(isPresenting: $toastViewModel.showToastBool, alert: {
                 toastViewModel.customToast
-            }
+            })
             .onReceive(viewModel.$loadingSpinner) { loading in
                 openLoadingSpinner = loading
             }
@@ -176,16 +172,21 @@ struct InsigniaPorGanarRow: View {
                     .font(.headline)
                     .foregroundColor(temaApp == 1 ? Color.white : Color.black)
                 
-                // Muestra el texto completo de la descripción
                 Text(insignia.descripcion)
                     .font(.subheadline)
                     .foregroundColor(temaApp == 1 ? .white : .black)
                     .padding(.top, 8)
             }
+            .padding()
         }
-        .padding()
+        .background(
+            RoundedRectangle(cornerRadius: 10)
+                          .fill(temaApp == 1 ? Color("coscurov1") : .white)
+                      
+        )
+        .padding([.horizontal, .top], 10)
         .listRowInsets(EdgeInsets()) // Elimina los insets de las celdas si se usa dentro de una lista
         .listRowSeparator(.hidden) // Oculta el separador de la celda si se usa dentro de una lista
-        .listRowBackground(temaApp == 1 ? Color("coscurov1") : .white)
+        .listRowBackground(Color.clear)
     }
 }

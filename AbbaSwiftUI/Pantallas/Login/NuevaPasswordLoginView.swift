@@ -24,11 +24,8 @@ struct NuevaPasswordLoginView: View {
     @State private var boolPantallaLogin: Bool = false
     @State private var password:String = ""
     @State private var popDatosActualizados:Bool = false
-    
+    @StateObject private var toastViewModel = ToastViewModel()
     let viewModel = ResetPasswordViewModel()
-    
-    // Variable para almacenar el contenido del toast
-    @State private var customToast: AlertToast = AlertToast(displayMode: .banner(.slide), type: .regular, title: "", style: .style(backgroundColor: .clear, titleColor: .white, subTitleColor: .blue, titleFont: .headline, subTitleFont: nil))
     
     var body: some View {
         ZStack {
@@ -49,7 +46,7 @@ struct NuevaPasswordLoginView: View {
                         password: $password,                 // Variable que contiene la contraseña
                         maxLength: 20                        // Longitud máxima de la contraseña
                     )
-                                        
+                    
                     //****************  BOTON ENVIAR NUEVA CONTRASEÑA   *********************************
                     
                     Button(action: {
@@ -88,13 +85,11 @@ struct NuevaPasswordLoginView: View {
                     }
                 }
             }
-            .background(CustomNavigationBarModifier(backgroundColor: temaApp == 1 ? .black : .white,
-                                                    titleColor: temaApp == 1 ? .white : .black))
-            
+            .background(CustomNavigationBarModifier(backgroundColor: .white, // toolbar
+                                                    titleColor: .black))
             .onTapGesture {
                 hideKeyboard()
             }
-            
             if popDatosActualizados {
                 PopImg1BtnView(isActive: $popDatosActualizados, imagen: .constant("infocolor"), bLlevaTitulo: .constant(false), titulo: .constant(""), descripcion: .constant(TextoIdiomaController.localizedString(forKey: "key-password-actualizada")), txtAceptar: .constant(TextoIdiomaController.localizedString(forKey: "key-aceptar")), acceptAction: {
                     popDatosActualizados = false
@@ -103,7 +98,6 @@ struct NuevaPasswordLoginView: View {
                 .zIndex(1)
             }
             
-            
             if openLoadingSpinner {
                 LoadingSpinnerView()
                     .transition(.opacity) // Transición de opacidad
@@ -111,9 +105,9 @@ struct NuevaPasswordLoginView: View {
             }
         }
         .background(temaApp == 1 ? Color.black : Color.white)
-        .toast(isPresenting: $showToastBool, duration: 3, tapToDismiss: false) {
-            customToast
-        }
+        .toast(isPresenting: $toastViewModel.showToastBool, alert: {
+            toastViewModel.customToast
+        })
         .onReceive(viewModel.$loadingSpinner) { loading in
             openLoadingSpinner = loading
         }
@@ -126,61 +120,42 @@ struct NuevaPasswordLoginView: View {
     
     private func verificarCampos(){
         if(password.isEmpty){
-            showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-password-requerido"), tipoColor: .gris)
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-password-requerido"), tipoColor: .gris)
             return
         }
         if(password.count < 5){
-            showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-contrasena-minimo-cinco"), tipoColor: .gris)
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-contrasena-minimo-cinco"), tipoColor: .gris)
             return
         }
+        
         apiEnviar()
     }
     
     private func apiEnviar(){
-        if !viewModel.isRequestInProgress {
-            viewModel.resetPasswordRX(password: password, token: tokenTemporal)
-                .subscribe(onNext: { result in
-                    switch result {
-                    case .success(let json):
-                        let success = json["success"].int ?? 0
-                        
-                        switch success {
-                        case 1:
-                            // contrasena cambiada
-                            popDatosActualizados = true
-                        default:
-                            // error
-                            self.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
-                        }
-                        
-                    case .failure(_):
-                        self.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
+        viewModel.resetPasswordRX(password: password, token: tokenTemporal)
+            .subscribe(onNext: { result in
+                switch result {
+                case .success(let json):
+                    let success = json["success"].int ?? 0
+                    
+                    switch success {
+                    case 1:
+                        // contrasena cambiada
+                        popDatosActualizados = true
+                    default:
+                        // error
+                        toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
                     }
-                }, onError: { error in
-                    self.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
-                })
-                .disposed(by: viewModel.disposeBag)
-        }
+                    
+                case .failure(_):
+                    toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
+                }
+            }, onError: { error in
+                toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
+            })
+            .disposed(by: viewModel.disposeBag)
     }
     
-    // Función para configurar y mostrar el toast
-    func showCustomToast(with mensaje: String, tipoColor: ToastColor) {
-        let titleColor = tipoColor.color
-        customToast = AlertToast(
-            displayMode: .banner(.pop),
-            type: .regular,
-            title: mensaje,
-            subTitle: nil,
-            style: .style(
-                backgroundColor: titleColor,
-                titleColor: Color.white,
-                subTitleColor: Color.blue,
-                titleFont: .headline,
-                subTitleFont: nil
-            )
-        )
-        showToastBool = true
-    }
 }
 
 #Preview {

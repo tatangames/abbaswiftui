@@ -18,18 +18,16 @@ struct RegistroView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @State private var selectedOption:Int = 0
-    @State private var showToastBool:Bool = false
-    
-    @State private var openLoadingSpinner: Bool = false
     @AppStorage(DatosGuardadosKeys.idToken) private var idToken:String = ""
     @AppStorage(DatosGuardadosKeys.idCliente) private var idCliente:String = ""
     @AppStorage(DatosGuardadosKeys.temaApp) private var temaApp:Int = 0
+    @State private var selectedOption:Int = 0
+    @State private var showToastBool:Bool = false
+    @State private var openLoadingSpinner: Bool = false
     @State private var popVerificar:Bool = false
     @State private var popMensaje:Bool = false
     @State private var popMensajeString:String = ""
     @State private var boolPantallaPrincipal: Bool = false
-    
     @State private var generoSeleccionado: Genero = .ninguno
     @State private var vistaPais:Bool = true
     @State private var nombre:String = ""
@@ -39,23 +37,18 @@ struct RegistroView: View {
     @State private var password:String = ""
     @State private var nombrePais:String = ""
     @State private var nombreCiudad:String = ""
-    
     @State private var selectedPaises: Paises = .ninguno
     @State private var selectedDepartment: Department?
     @State private var selectedMunicipio: Municipio?
     @State private var municipios: [Municipio] = []
+    @StateObject private var toastViewModel = ToastViewModel()
     
     let viewModel = MunicipioViewModel()
     let viewModelRegistrarse = RegistrarseViewModel()
     
     // IDENTIFICADOR ONE SIGNAL
     let idonesignal: String = OneSignal.User.pushSubscription.id ?? ""
-    
-    
-    // Variable para almacenar el contenido del toast
-    @State private var customToast: AlertToast = AlertToast(displayMode: .banner(.slide), type: .regular, title: "", style: .style(backgroundColor: .clear, titleColor: .white, subTitleColor: .blue, titleFont: .headline, subTitleFont: nil))
-    
-    
+        
     var body: some View {
         
         ZStack {
@@ -320,15 +313,13 @@ struct RegistroView: View {
             }
         }
         .background(temaApp == 1 ? Color.black : Color.white)
-        .toast(isPresenting: $showToastBool, duration: 3, tapToDismiss: false) {
-            customToast
-        }
+        .toast(isPresenting: $toastViewModel.showToastBool, alert: {
+            toastViewModel.customToast
+        })
         .onReceive(viewModel.$loadingSpinner) { loading in
-            print("Loading spinner municipios: \(loading)")
             openLoadingSpinner = loading
         }
         .onReceive(viewModelRegistrarse.$loadingSpinner) { loading in
-            print("Loading spinner registrarse: \(loading)")
             openLoadingSpinner = loading
         }
         .navigationDestination(isPresented: $boolPantallaPrincipal) {
@@ -342,22 +333,22 @@ struct RegistroView: View {
     private func verificarCampos(){
         
         if(nombre.isEmpty){
-            showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-nombre-requerido"), tipoColor: .gris)
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-nombre-requerido"), tipoColor: .gris)
             return
         }
         
         if(apellido.isEmpty){
-            showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-apellido-requerido"), tipoColor: .gris)
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-apellido-requerido"), tipoColor: .gris)
             return
         }
         
         if(fechaNacimientoDate == nil){
-            showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-fecha-nacimiento-es-requerido"), tipoColor: .gris)
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-fecha-nacimiento-es-requerido"), tipoColor: .gris)
             return
         }
         
         if(generoSeleccionado == .ninguno){
-            showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-genero-es-requerido"), tipoColor: .gris)
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-genero-es-requerido"), tipoColor: .gris)
             return
         }
         
@@ -365,40 +356,40 @@ struct RegistroView: View {
         if(vistaPais){
             
             if(selectedMunicipio == nil){
-                showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-seleccionar-municipio"), tipoColor: .gris)
+                toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-seleccionar-municipio"), tipoColor: .gris)
                 return
             }
             
         }else{
             if(nombrePais.isEmpty){
-                showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-pais-es-requerido"), tipoColor: .gris)
+                toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-pais-es-requerido"), tipoColor: .gris)
                 return
             }
             
             if(nombreCiudad.isEmpty){
-                showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-ciudad-es-requerido"), tipoColor: .gris)
+                toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-ciudad-es-requerido"), tipoColor: .gris)
                 return
             }
         }
         
         
         if(correoElectronico.isEmpty){
-            showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-requerido"), tipoColor: .gris)
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-requerido"), tipoColor: .gris)
             return
         }
         
         if !isValidEmail(correoElectronico) {
-            showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-no-valido"), tipoColor: .gris)
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-no-valido"), tipoColor: .gris)
             return
         }
         
         if(password.isEmpty){
-            showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-password-requerido"), tipoColor: .gris)
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-password-requerido"), tipoColor: .gris)
             return
         }
         
         if(password.count < 5){
-            showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-contrasena-minimo-cinco"), tipoColor: .gris)
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-contrasena-minimo-cinco"), tipoColor: .gris)
             return
         }
         
@@ -406,44 +397,41 @@ struct RegistroView: View {
     }
     
     private func apiServerRegistrarse(){
-        if !viewModelRegistrarse.isRequestInProgress {
-            let _fechaFormat = formatDateToMDY(fechaNacimientoDate ?? Date())
-            let _genero = generoSeleccionado == .masculino ? 1 : 2
-            let _municipio = selectedMunicipio?.id ?? 0
-            
-            viewModelRegistrarse.registrarseRX(nombre: nombre, apellido: apellido, fecha: _fechaFormat, genero: _genero, municipio: _municipio, correo: correoElectronico, contrasena: password, idonesignal: idonesignal, paisotros: nombrePais, ciudadotros: nombreCiudad)
-                .subscribe(onNext: { result in
-                    switch result {
-                    case .success(let json):
-                        let success = json["success"].int ?? 0
+        let _fechaFormat = formatDateToMDY(fechaNacimientoDate ?? Date())
+        let _genero = generoSeleccionado == .masculino ? 1 : 2
+        let _municipio = selectedMunicipio?.id ?? 0
+        
+        viewModelRegistrarse.registrarseRX(nombre: nombre, apellido: apellido, fecha: _fechaFormat, genero: _genero, municipio: _municipio, correo: correoElectronico, contrasena: password, idonesignal: idonesignal, paisotros: nombrePais, ciudadotros: nombreCiudad)
+            .subscribe(onNext: { result in
+                switch result {
+                case .success(let json):
+                    let success = json["success"].int ?? 0
+                    
+                    switch success {
+                    case 1:
+                        // correo ya registrado
+                        popMensajeString = TextoIdiomaController.localizedString(forKey: "key-correo-ya-registrado")
+                        popMensaje = true
+                    case 2:
+                        // usuario registrado
+                        let _id = json["id"].int ?? 0
+                        let _token = json["token"].string ?? ""
                         
-                        switch success {
-                        case 1:
-                            // correo ya registrado
-                            popMensajeString = TextoIdiomaController.localizedString(forKey: "key-correo-ya-registrado")
-                            popMensaje = true
-                        case 2:
-                            // usuario registrado
-                            let _id = json["id"].int ?? 0
-                            let _token = json["token"].string ?? ""
-                            
-                            idCliente = String(_id)
-                            idToken = _token
-                            boolPantallaPrincipal = true
-                            print("usuario registrado")
-                        default:
-                            // error
-                            self.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
-                        }
-                        
-                    case .failure(_):
-                        self.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
+                        idCliente = String(_id)
+                        idToken = _token
+                        boolPantallaPrincipal = true
+                    default:
+                        // error
+                        toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
                     }
-                }, onError: { error in
-                    self.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
-                })
-                .disposed(by: viewModelRegistrarse.disposeBag)
-        }
+                    
+                case .failure(_):
+                    toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
+                }
+            }, onError: { error in
+                toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
+            })
+            .disposed(by: viewModelRegistrarse.disposeBag)
     }
     
     private func fetchMunicipios(idDepa: Int) {
@@ -464,45 +452,26 @@ struct RegistroView: View {
                         }
                     default:
                         // error
-                        self.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
+                        toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
                     }
                     
                 case .failure(let error):
                     print("Error: \(error)")
-                    self.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
+                    toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
                 }
             }, onError: { error in
                 print("Error en la suscripción: \(error)")
-                self.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
+                toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
             })
             .disposed(by: viewModel.disposeBag)
     }
     
     private func formatDateToMDY(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd-yyyy"
-        return formatter.string(from: date)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.string(from: date)
     }
-    
-    
-    // Función para configurar y mostrar el toast
-    func showCustomToast(with mensaje: String, tipoColor: ToastColor) {
-        let titleColor = tipoColor.color
-        customToast = AlertToast(
-            displayMode: .banner(.pop),
-            type: .regular,
-            title: mensaje,
-            subTitle: nil,
-            style: .style(
-                backgroundColor: titleColor,
-                titleColor: Color.white,
-                subTitleColor: Color.blue,
-                titleFont: .headline,
-                subTitleFont: nil
-            )
-        )
-        showToastBool = true
-    }
+ 
 }
 
 #Preview {

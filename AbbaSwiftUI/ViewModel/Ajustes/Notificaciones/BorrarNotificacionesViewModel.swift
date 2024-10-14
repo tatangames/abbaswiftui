@@ -27,7 +27,7 @@ class BorrarNotificacionesViewModel: ObservableObject {
         loadingSpinner = true
         
         let encodeURL = apiBorrarNotificaciones
-        let headers: HTTPHeaders = ["Authorization": "Bearer \(idToken)"]
+        let headers:HTTPHeaders=["Authorization": "Bearer \(idToken)"]
         let parameters: [String: Any] = ["idiomaplan": idiomaPlan]
         
         Observable<JSON>.create { observer in

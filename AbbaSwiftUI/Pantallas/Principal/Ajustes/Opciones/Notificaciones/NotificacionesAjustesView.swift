@@ -22,14 +22,11 @@ struct NotificacionesAjustesView: View {
     @AppStorage(DatosGuardadosKeys.idiomaApp) private var idiomaApp:Int = 0
     
     @StateObject private var toastViewModel = ToastViewModel()
-    // @State private var showToastBool: Bool = false
+    @StateObject var viewModel = ListaNotificacionesViewModel()
+    @StateObject var viewModelBorrarNoti = BorrarNotificacionesViewModel()
     @State private var openLoadingSpinner: Bool = false
     @State private var openLoadingSpinnerBorrarNoti: Bool = false
     @State private var password: String = ""
-    
-    @StateObject var viewModel = ListaNotificacionesViewModel()
-    @StateObject var viewModelBorrarNoti = BorrarNotificacionesViewModel()
-    
     @State private var boolVistaHabilitar: Bool = false
     @State private var boolVistaHayDatos: Bool = false
     @State private var popBorrarNotificaciones: Bool = false
@@ -38,7 +35,6 @@ struct NotificacionesAjustesView: View {
         NavigationView {
             ZStack {
                 VStack() {
-                    
                     // Solo se habilita si hay informacion, se ocultara al eliminar notificaciones
                     if(boolVistaHabilitar){
                         if(boolVistaHayDatos){
@@ -180,9 +176,9 @@ struct NotificacionesAjustesView: View {
                 }
             }
             .background(temaApp == 1 ? Color.black : Color.white) // fondo de pantalla
-            .toast(isPresenting: $toastViewModel.showToastBool, duration: 3, tapToDismiss: false) {
+            .toast(isPresenting: $toastViewModel.showToastBool, alert: {
                 toastViewModel.customToast
-            }
+            })
             .onReceive(viewModel.$loadingSpinner) { loading in
                 openLoadingSpinner = loading
             }

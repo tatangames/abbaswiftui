@@ -30,7 +30,7 @@ let apiListadoNotificaciones = baseUrl+"app/notificaciones/listado"
 let apiBorrarNotificaciones = baseUrl+"app/notificacion/borrarlistado"
 let apiListaInsigniasPorGanar = baseUrl+"app/listado/insignias/faltantes"
 let apiInformacionPerfil = baseUrl+"app/solicitar/informacion/perfil"
-
+let apiActualizarPerfil = baseUrl+"app/actualizar/perfil/usuario"
 
 
 

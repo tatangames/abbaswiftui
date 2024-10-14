@@ -27,21 +27,14 @@ struct AjustesView: View {
     @State private var openLoadingSpinner: Bool = true
     @State private var primerLetra:String = ""
     @State private var nombreUsuario:String = ""
-    @Environment(\.colorScheme) var colorScheme
     @State private var showThemeChangeSheet:Bool = false
     @State private var popCerrarSesion:Bool = false
-    
-    // Variable para almacenar el contenido del toast
-    @State private var customToast: AlertToast = AlertToast(displayMode: .banner(.slide), type: .regular, title: "", style: .style(backgroundColor: .clear, titleColor: .white, subTitleColor: .blue, titleFont: .headline, subTitleFont: nil))
-    
-    @StateObject private var viewModel = AjustesViewModel()
     @State private var boolModalCambioIdioma = false
     @State private var mostrarModal = false
-    
-        
     @State private var vistaSeleccionada: EnumTipoVistaAjustes?
-    
- 
+    @Environment(\.colorScheme) var colorScheme
+    @StateObject private var viewModel = AjustesViewModel()
+    @StateObject private var toastViewModel = ToastViewModel()
     
     var body: some View {
         ZStack {
@@ -75,11 +68,7 @@ struct AjustesView: View {
                         .listRowInsets(EdgeInsets())
                         .listRowSeparator(.hidden)
                         .listRowBackground(temaApp == 1 ? Color("coscurov1") : .white)
-                        
-                        
-                        
-                        
-                        
+                                                
                         // *** NOTIFICACIONES
                         VStack {
                             HStack {
@@ -197,7 +186,6 @@ struct AjustesView: View {
                         .listRowBackground(temaApp == 1 ? Color("coscurov1") : .white)
                         
                         
-                        
                         // *** CERRAR SESION
                         VStack {
                             HStack {
@@ -217,9 +205,6 @@ struct AjustesView: View {
                         .listRowInsets(EdgeInsets())
                         .listRowSeparator(.hidden)
                         .listRowBackground(temaApp == 1 ? Color("coscurov1") : .white)
-                        
-                        
-                        
                     }
                     .listStyle(InsetGroupedListStyle())
                     .scrollContentBackground(.hidden)
@@ -227,7 +212,6 @@ struct AjustesView: View {
                 }
             }
             .onAppear {
-                
                 if(!unaVezPeticion){
                     unaVezPeticion = true
                     viewModel.fetchUserData(idToken: idToken, idCliente: idCliente) { result in
@@ -249,22 +233,20 @@ struct AjustesView: View {
                                 
                                 hasDatosCargados = true
                             default:
-                                mensajeError()
+                                toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
                             }
                             
                         case .failure(_):
-                            mensajeError()
+                            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
                         }
                     }
                 }
-                
             }
             .sheet(isPresented: $showThemeChangeSheet) {
                 ThemeChangeView(scheme: colorScheme)
                     .presentationDetents([.height(410)])
                     .presentationBackground(.clear)
             }
-            
             .navigationTitle(TextoIdiomaController.localizedString(forKey: "key-ajustes"))
             
             if popCerrarSesion {
@@ -285,9 +267,9 @@ struct AjustesView: View {
                     .zIndex(10)
             }
         }
-        
-        
-        
+        .toast(isPresenting: $toastViewModel.showToastBool, alert: {
+            toastViewModel.customToast
+        })
         .onReceive(viewModel.$loadingSpinner) { loading in
             openLoadingSpinner = loading
         }
@@ -297,11 +279,9 @@ struct AjustesView: View {
                 cambiarIdioma: { nuevoIdioma in
                     //  idiomaApp = nuevoIdioma
                     idiomaSettings.idioma = nuevoIdioma
-                    
                 }
             )
         }
-        
         .fullScreenCover(item: $vistaSeleccionada) { view in
             switch view {
             case .perfil:
@@ -318,16 +298,5 @@ struct AjustesView: View {
         }
     }
     
-    
-    
-    func mensajeError(){
-        
-    }
-    
-    
-    func cambiarIdioma(nuevoIdioma: String) {
-        // Aquí va la lógica para cambiar el idioma
-        print("Idioma cambiado a: \(nuevoIdioma)")
-    }
     
 }

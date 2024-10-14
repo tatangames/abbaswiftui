@@ -283,6 +283,112 @@ struct FechaNacimientoPicker: View {
 }
 
 
+
+struct FechaNacimientoPickerPerfil: View {
+    @Binding var fechaNacimiento: Date?
+    @State private var isDatePickerPresented: Bool = false
+    @State private var fechaFormateada: String = ""
+    @AppStorage(DatosGuardadosKeys.idiomaApp) private var idiomaApp: Int = 0
+
+    // Define la fecha predeterminada y el rango del DatePicker
+    private var defaultDate: Date {
+        fechaNacimiento ?? Calendar.current.date(from: DateComponents(year: 2000, month: 1, day: 1))!
+    }
+    
+    // Definir el rango para que incluya la fecha predeterminada como centro
+    private var dateRange: ClosedRange<Date> {
+        let calendar = Calendar.current
+        let minDate = calendar.date(byAdding: .year, value: -100, to: defaultDate) ?? defaultDate
+        let maxDate = calendar.date(byAdding: .year, value: 100, to: defaultDate) ?? defaultDate
+        return minDate...maxDate
+    }
+
+    var body: some View {
+        VStack {
+            Button(action: {
+                isDatePickerPresented = true
+            }) {
+                HStack {
+                    if let fecha = fechaNacimiento {
+                        Text(fechaFormateada.isEmpty ? formatFecha(fecha) : fechaFormateada)
+                            .foregroundColor(.black)
+                    } else {
+                        Text(TextoIdiomaController.localizedString(forKey: "key-seleccionar-fecha"))
+                            .foregroundColor(.gray)
+                    }
+                    Spacer()
+                    Image(systemName: "calendar")
+                        .foregroundColor(.gray)
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding()
+                .background(Color(UIColor.systemGray6))
+                .cornerRadius(8)
+            }
+            .sheet(isPresented: $isDatePickerPresented) {
+                VStack {
+                    DatePicker(
+                        "",
+                        selection: Binding(
+                            get: { fechaNacimiento ?? defaultDate },
+                            set: { newDate in
+                                fechaNacimiento = newDate
+                                fechaFormateada = idiomaApp == 1 ? formatDateToDMY(newDate) : formatDateToMDY(newDate)
+                            }
+                        ),
+                        in: dateRange,
+                        displayedComponents: .date
+                    )
+                    .datePickerStyle(WheelDatePickerStyle())
+                    .environment(\.locale, idiomaApp == 1 ? Locale(identifier: "es") : Locale(identifier: "en"))
+                    .labelsHidden()
+                    .padding()
+
+                    Button(TextoIdiomaController.localizedString(forKey: "key-confirmar")) {
+                        isDatePickerPresented = false
+                    }
+                    .padding()
+                    .foregroundColor(.black)
+                }
+            }
+        }
+        .padding()
+        .onAppear {
+            // Actualizar la fecha formateada si ya hay una fecha asignada
+            if let fecha = fechaNacimiento {
+                fechaFormateada = idiomaApp == 1 ? formatDateToDMY(fecha) : formatDateToMDY(fecha)
+            }
+        }
+    }
+
+    private func formatFecha(_ fecha: Date) -> String {
+        return idiomaApp == 1 ? formatDateToDMY(fecha) : formatDateToMDY(fecha)
+    }
+    
+    // Formateador de fecha Ingles
+    private func formatDateToMDY(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM-dd-yyyy"
+        return formatter.string(from: date)
+    }
+    
+    // Formateador de fecha Español
+    private func formatDateToDMY(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd-MM-yyyy"
+        return formatter.string(from: date)
+    }
+}
+
+
+
+
+
+
+
+
+
+
 enum Genero: String, CaseIterable, Identifiable {
     case ninguno = "key-seleccionar-opcion"
     case masculino = "key-masculino"

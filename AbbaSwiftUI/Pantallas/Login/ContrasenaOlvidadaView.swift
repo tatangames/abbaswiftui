@@ -18,19 +18,14 @@ import Foundation
 struct ContrasenaOlvidadaView: View {
     
     @Environment(\.dismiss) var dismiss
-    
-    @State private var showToastBool:Bool = false
-    @State private var openLoadingSpinner: Bool = false
     @AppStorage(DatosGuardadosKeys.temaApp) private var temaApp:Int = 0
     @AppStorage(DatosGuardadosKeys.idiomaApp) private var idiomaApp:Int = 0
+    @State private var showToastBool:Bool = false
+    @State private var openLoadingSpinner: Bool = false
     @State private var boolPantallaCodigoOTP: Bool = false
     @State private var correo:String = ""
-    
+    @StateObject private var toastViewModel = ToastViewModel()
     let viewModel = CorreoOTPViewModel()
-    
-    
-    // Variable para almacenar el contenido del toast
-    @State private var customToast: AlertToast = AlertToast(displayMode: .banner(.slide), type: .regular, title: "", style: .style(backgroundColor: .clear, titleColor: .white, subTitleColor: .blue, titleFont: .headline, subTitleFont: nil))
     
     var body: some View {
         ZStack {
@@ -94,9 +89,8 @@ struct ContrasenaOlvidadaView: View {
                     }
                 }
             }
-            .background(CustomNavigationBarModifier(backgroundColor: temaApp == 1 ? .black : .white,
-                                                    titleColor: temaApp == 1 ? .white : .black))
-            
+            .background(CustomNavigationBarModifier(backgroundColor: .white, // toolbar
+                                                    titleColor: .black))
             .onTapGesture {
                 hideKeyboard()
             }
@@ -107,9 +101,9 @@ struct ContrasenaOlvidadaView: View {
             }
         }
         .background(temaApp == 1 ? Color.black : Color.white)
-        .toast(isPresenting: $showToastBool, duration: 3, tapToDismiss: false) {
-            customToast
-        }
+        .toast(isPresenting: $toastViewModel.showToastBool, alert: {
+            toastViewModel.customToast
+        })
         .onReceive(viewModel.$loadingSpinner) { loading in
             openLoadingSpinner = loading
         }
@@ -119,70 +113,46 @@ struct ContrasenaOlvidadaView: View {
     }
     
     private func verificarCampos(){
-        
         if(correo.isEmpty){
-            showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-requerido"), tipoColor: .gris)
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-requerido"), tipoColor: .gris)
             return
         }
-        
         if !isValidEmail(correo) {
-            showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-no-valido"), tipoColor: .gris)
+            toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-no-valido"), tipoColor: .gris)
             return
         }
-        
         apiEnviarCodigo()
     }
     
     private func apiEnviarCodigo(){
-        if !viewModel.isRequestInProgress {
-            
-            viewModel.solicitarCodigoCorreoRX(correo: correo, idioma: idiomaApp)
-                .subscribe(onNext: { result in
-                    switch result {
-                    case .success(let json):
-                        let success = json["success"].int ?? 0
+        viewModel.solicitarCodigoCorreoRX(correo: correo, idioma: idiomaApp)
+            .subscribe(onNext: { result in
+                switch result {
+                case .success(let json):
+                    let success = json["success"].int ?? 0
+                    
+                    switch success {
+                    case 1:
+                        // correo no encontrado
+                        toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-no-encontrado"), tipoColor: .gris)
                         
-                        switch success {
-                        case 1:
-                            // correo no encontrado
-                            self.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-no-encontrado"), tipoColor: .gris)
-                            
-                        case 2:
-                            // codigo enviado
-                            boolPantallaCodigoOTP = true
-                        default:
-                            // error
-                            self.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
-                        }
-                        
-                    case .failure(_):
-                        self.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
+                    case 2:
+                        // codigo enviado
+                        boolPantallaCodigoOTP = true
+                    default:
+                        // error
+                        toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
                     }
-                }, onError: { error in
-                    self.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
-                })
-                .disposed(by: viewModel.disposeBag)
-        }
+                    
+                case .failure(_):
+                    toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
+                }
+            }, onError: { error in
+                toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
+            })
+            .disposed(by: viewModel.disposeBag)
     }
     
-    // Función para configurar y mostrar el toast
-    func showCustomToast(with mensaje: String, tipoColor: ToastColor) {
-        let titleColor = tipoColor.color
-        customToast = AlertToast(
-            displayMode: .banner(.pop),
-            type: .regular,
-            title: mensaje,
-            subTitle: nil,
-            style: .style(
-                backgroundColor: titleColor,
-                titleColor: Color.white,
-                subTitleColor: Color.blue,
-                titleFont: .headline,
-                subTitleFont: nil
-            )
-        )
-        showToastBool = true
-    }
 }
 
 #Preview {

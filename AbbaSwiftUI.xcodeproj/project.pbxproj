@@ -27,6 +27,7 @@
 		8F0B37F82CAE54F800A261E4 /* OneSignalInAppMessages in Frameworks */ = {isa = PBXBuildFile; productRef = 8F0B37F72CAE54F800A261E4 /* OneSignalInAppMessages */; };
 		8F0B37FA2CAE54F800A261E4 /* OneSignalLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 8F0B37F92CAE54F800A261E4 /* OneSignalLocation */; };
 		8F105B652CB078FF0036EF64 /* MunicipioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F105B642CB078FF0036EF64 /* MunicipioViewModel.swift */; };
+		8F23AF392CBC2FE800537F72 /* PerfilActualizarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F23AF382CBC2FE800537F72 /* PerfilActualizarViewModel.swift */; };
 		8F245FE02CB9808F00F145D1 /* ContrasenaAjustesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F245FDF2CB9808F00F145D1 /* ContrasenaAjustesView.swift */; };
 		8F245FE22CB9955800F145D1 /* InsigniasPorGanarAjustesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F245FE12CB9955800F145D1 /* InsigniasPorGanarAjustesView.swift */; };
 		8F245FE42CB9F3DB00F145D1 /* ToastViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F245FE32CB9F3DB00F145D1 /* ToastViewModel.swift */; };
@@ -138,6 +139,7 @@
 		8F0B37E82CAE544900A261E4 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		8F0B37EA2CAE544900A261E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F105B642CB078FF0036EF64 /* MunicipioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MunicipioViewModel.swift; sourceTree = "<group>"; };
+		8F23AF382CBC2FE800537F72 /* PerfilActualizarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilActualizarViewModel.swift; sourceTree = "<group>"; };
 		8F245FDF2CB9808F00F145D1 /* ContrasenaAjustesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContrasenaAjustesView.swift; sourceTree = "<group>"; };
 		8F245FE12CB9955800F145D1 /* InsigniasPorGanarAjustesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsigniasPorGanarAjustesView.swift; sourceTree = "<group>"; };
 		8F245FE32CB9F3DB00F145D1 /* ToastViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastViewModel.swift; sourceTree = "<group>"; };
@@ -531,6 +533,7 @@
 			isa = PBXGroup;
 			children = (
 				8F792FA42CBB3A030013211E /* PerfilViewModel.swift */,
+				8F23AF382CBC2FE800537F72 /* PerfilActualizarViewModel.swift */,
 			);
 			path = Perfil;
 			sourceTree = "<group>";
@@ -935,6 +938,7 @@
 				8F0B37D62CAE4F1700A261E4 /* DatosGuardadosKeys.swift in Sources */,
 				8F245FE22CB9955800F145D1 /* InsigniasPorGanarAjustesView.swift in Sources */,
 				8F245FE02CB9808F00F145D1 /* ContrasenaAjustesView.swift in Sources */,
+				8F23AF392CBC2FE800537F72 /* PerfilActualizarViewModel.swift in Sources */,
 				8F25FAF22CB33EF2001BE477 /* OTPInput.swift in Sources */,
 				8F2FEBA52CAEE78D00647572 /* StructReutilizable.swift in Sources */,
 				8F792FA22CBAF96A0013211E /* ModeloInsignias.swift in Sources */,
