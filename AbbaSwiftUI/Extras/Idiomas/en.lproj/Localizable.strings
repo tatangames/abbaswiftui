@@ -121,8 +121,9 @@ key-todas-las-insignias-ganadas="All badges earned";
 key-perfil="Profile";
 key-acceso-galeria-camara="Access to Gallery and Camera Denied";
 key-porfavor-habilitar-permiso-camara="Please enable Gallery & Camera permission in Settings.";
-
-
+key-mis-planes="My plans";
+key-buscar-planes="Search plans";
+key-completados="Completed";
 
 
 
@@ -228,9 +229,7 @@ completar_campos="Complete fields";
 meditacion_no_disponible="Meditation not available";
 devocional_completado="Completed Devotional";
 no_hay_devocionales_completados="No Devotionals completed";
-mis_planes="My plans";
-buscar_planes="Search plans";
-completados="Completed";
+
 compartidos="Shared";
 comunidad="Community";
 devocional_del_dia="Devotional of the day";

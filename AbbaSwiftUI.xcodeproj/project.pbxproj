@@ -58,6 +58,9 @@
 		8F2FEBB72CAF333600647572 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F2FEBB62CAF333600647572 /* LoginView.swift */; };
 		8F48F8862CB1BA4C001E1819 /* RegistrarseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F48F8852CB1BA4C001E1819 /* RegistrarseViewModel.swift */; };
 		8F5B10A02CB584920013078E /* PerfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F5B109F2CB584920013078E /* PerfilView.swift */; };
+		8F60386A2CBDF9D700E611F0 /* TabMisPlanesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6038692CBDF9D700E611F0 /* TabMisPlanesView.swift */; };
+		8F60386E2CBDFA1C00E611F0 /* TabsMisPlanesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F60386D2CBDFA1C00E611F0 /* TabsMisPlanesViewModel.swift */; };
+		8F6038712CBDFC1900E611F0 /* ModeloMisPlanes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F6038702CBDFC1900E611F0 /* ModeloMisPlanes.swift */; };
 		8F792F9C2CBADA6B0013211E /* BorrarNotificacionesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F792F9B2CBADA6B0013211E /* BorrarNotificacionesViewModel.swift */; };
 		8F792F9F2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F792F9E2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift */; };
 		8F792FA22CBAF96A0013211E /* ModeloInsignias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F792FA12CBAF96A0013211E /* ModeloInsignias.swift */; };
@@ -171,6 +174,9 @@
 		8F2FEBB62CAF333600647572 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8F48F8852CB1BA4C001E1819 /* RegistrarseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarseViewModel.swift; sourceTree = "<group>"; };
 		8F5B109F2CB584920013078E /* PerfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilView.swift; sourceTree = "<group>"; };
+		8F6038692CBDF9D700E611F0 /* TabMisPlanesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMisPlanesView.swift; sourceTree = "<group>"; };
+		8F60386D2CBDFA1C00E611F0 /* TabsMisPlanesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsMisPlanesViewModel.swift; sourceTree = "<group>"; };
+		8F6038702CBDFC1900E611F0 /* ModeloMisPlanes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeloMisPlanes.swift; sourceTree = "<group>"; };
 		8F792F9B2CBADA6B0013211E /* BorrarNotificacionesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorrarNotificacionesViewModel.swift; sourceTree = "<group>"; };
 		8F792F9E2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsiginiasPorGanarViewModel.swift; sourceTree = "<group>"; };
 		8F792FA12CBAF96A0013211E /* ModeloInsignias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeloInsignias.swift; sourceTree = "<group>"; };
@@ -331,6 +337,7 @@
 		8F105B632CB078EC0036EF64 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8F60386B2CBDF9F500E611F0 /* Devocional */,
 				8FD27AB12CB480EE00667C2F /* Ajustes */,
 				8F25FAE22CB2FA5C001BE477 /* Login */,
 			);
@@ -340,6 +347,7 @@
 		8F245FE72CBA2E4500F145D1 /* Modelos */ = {
 			isa = PBXGroup;
 			children = (
+				8F60386F2CBDFBFE00E611F0 /* Devocional */,
 				8F792FA02CBAF9550013211E /* Ajustes */,
 			);
 			path = Modelos;
@@ -503,6 +511,38 @@
 			path = Perfil;
 			sourceTree = "<group>";
 		};
+		8F6038682CBDF9C500E611F0 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				8F6038692CBDF9D700E611F0 /* TabMisPlanesView.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		8F60386B2CBDF9F500E611F0 /* Devocional */ = {
+			isa = PBXGroup;
+			children = (
+				8F60386C2CBDF9FB00E611F0 /* Tabs */,
+			);
+			path = Devocional;
+			sourceTree = "<group>";
+		};
+		8F60386C2CBDF9FB00E611F0 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				8F60386D2CBDFA1C00E611F0 /* TabsMisPlanesViewModel.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		8F60386F2CBDFBFE00E611F0 /* Devocional */ = {
+			isa = PBXGroup;
+			children = (
+				8F6038702CBDFC1900E611F0 /* ModeloMisPlanes.swift */,
+			);
+			path = Devocional;
+			sourceTree = "<group>";
+		};
 		8F792F9A2CBADA530013211E /* Notificaciones */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,6 +589,7 @@
 		8FD27AA62CB42C9800667C2F /* Devocional */ = {
 			isa = PBXGroup;
 			children = (
+				8F6038682CBDF9C500E611F0 /* Tabs */,
 				8FD27AAD2CB42E8A00667C2F /* DevocionalView.swift */,
 			);
 			path = Devocional;
@@ -926,6 +967,7 @@
 				8FDCC4502CB8BD9D00700F4A /* IdiomaSettings.swift in Sources */,
 				8FD27AAA2CB42E6700667C2F /* AjustesView.swift in Sources */,
 				8FDCC4522CB8D31B00700F4A /* NotificacionesAjustesView.swift in Sources */,
+				8F6038712CBDFC1900E611F0 /* ModeloMisPlanes.swift in Sources */,
 				8F25FAEE2CB331F6001BE477 /* NuevaPasswordLoginView.swift in Sources */,
 				8F25FAEA2CB312FE001BE477 /* CorreoOTPViewModel.swift in Sources */,
 				8F245FE62CB9FD1800F145D1 /* ListaNotificacionesViewModel.swift in Sources */,
@@ -933,6 +975,7 @@
 				8F2FEBA82CAEE90C00647572 /* ApiNetwork.swift in Sources */,
 				8F48F8862CB1BA4C001E1819 /* RegistrarseViewModel.swift in Sources */,
 				8F792FA52CBB3A030013211E /* PerfilViewModel.swift in Sources */,
+				8F60386A2CBDF9D700E611F0 /* TabMisPlanesView.swift in Sources */,
 				8F5B10A02CB584920013078E /* PerfilView.swift in Sources */,
 				8FD27AAE2CB42E8A00667C2F /* DevocionalView.swift in Sources */,
 				8F0B37D62CAE4F1700A261E4 /* DatosGuardadosKeys.swift in Sources */,
@@ -953,6 +996,7 @@
 				8FD27AB02CB42EA200667C2F /* InicioView.swift in Sources */,
 				8FD27AAC2CB42E7900667C2F /* BibliaView.swift in Sources */,
 				8F2FEB9B2CAEE66600647572 /* PopImg1BtnView.swift in Sources */,
+				8F60386E2CBDFA1C00E611F0 /* TabsMisPlanesViewModel.swift in Sources */,
 				8F25FAE12CB2E30F001BE477 /* PrincipalView.swift in Sources */,
 				8F105B652CB078FF0036EF64 /* MunicipioViewModel.swift in Sources */,
 				8F0B37AB2CAE4A7200A261E4 /* AbbaSwiftUIApp.swift in Sources */,

@@ -121,7 +121,9 @@ key-todas-las-insignias-ganadas="Todas las insignias ganadas";
 key-perfil="Perfil";
 key-acceso-galeria-camara="Acceso a Galería y Camara Denegado";
 key-porfavor-habilitar-permiso-camara="Por favor habilitar el permiso de Galería y Camara en Ajustes.";
-
+key-mis-planes="Mis Planes";
+key-buscar-planes="Buscar planes";
+key-completados="Completados";
 
 
 
@@ -224,9 +226,7 @@ completar_campos="Completar campos";
 meditacion_no_disponible="Meditación no disponible";
 devocional_completado="Devocional Completado";
 no_hay_devocionales_completados="No hay Devocionales completados";
-mis_planes="Mis Planes";
-buscar_planes="Buscar planes";
-completados="Completados";
+
 compartidos="Compartidos";
 comunidad="Comunidad";
 devocional_del_dia="Devocional del día";
