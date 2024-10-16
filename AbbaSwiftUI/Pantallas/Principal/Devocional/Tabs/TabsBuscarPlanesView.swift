@@ -1,8 +1,8 @@
 //
-//  TabMisPlanesView.swift
+//  TabsBuscarPlanesView.swift
 //  AbbaSwiftUI
 //
-//  Created by Jonathan  Moran on 14/10/24.
+//  Created by Jonathan  Moran on 15/10/24.
 //
 
 import SwiftUI
@@ -14,7 +14,10 @@ import Combine
 import Foundation
 import SDWebImageSwiftUI
 
-struct TabMisPlanesView: View {
+
+
+
+struct TabsBuscarPlanesView: View {
     
     @Environment(\.dismiss) var dismiss
     @AppStorage(DatosGuardadosKeys.temaApp) private var temaApp: Int = 0
@@ -22,19 +25,22 @@ struct TabMisPlanesView: View {
     @AppStorage(DatosGuardadosKeys.idCliente) private var idCliente:String = ""
     @AppStorage(DatosGuardadosKeys.idiomaApp) private var idiomaApp:Int = 0
     @StateObject private var toastViewModel = ToastViewModel()
-    @StateObject var viewModel = TabsMisPlanesViewModel()
+    @StateObject var viewModel = TabsBuscarPlanesViewModel()
     @State private var openLoadingSpinner: Bool = false
     
     @State private var boolTabs1UnaVez: Bool = true
     @State private var boolActivarVista: Bool = false
+    @State private var boolCambiarVista:Bool = false
+    @ObservedObject var settingsVista: TabsDevocionalSettings
     
     var body: some View {
         ZStack {
-            VStack() {
+            VStack {
                 
                 if(boolActivarVista){
                     
                     if(viewModel.misplanesArray.isEmpty){
+                        
                         VStack {
                             VStack {
                                 Image("libroa")
@@ -45,7 +51,7 @@ struct TabMisPlanesView: View {
                                 
                                 HStack {
                                     Spacer()
-                                    Text(TextoIdiomaController.localizedString(forKey: "key-seleccionar-planes-primero"))
+                                    Text(TextoIdiomaController.localizedString(forKey: "key-todos-los-planes"))
                                         .foregroundColor(temaApp == 1 ? .white : .black)
                                         .bold()
                                     Spacer()
@@ -62,10 +68,16 @@ struct TabMisPlanesView: View {
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                         .padding(.top, 20)
+                        
+                        
                     }else{
                         List(viewModel.misplanesArray) { planes in
-                            TabsMisPlanesRow(planes: planes, temaApp: temaApp)
-                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)) // Ajuste para quitar los márgenes laterales
+                            TabsBuscarPlanesRow(planes: planes, temaApp: temaApp)
+                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                .onTapGesture {
+                                    settingsVista.selectedBuscarPlanID = planes.id
+                                    boolCambiarVista = true
+                                }
                         }
                         .listStyle(InsetGroupedListStyle())
                         .scrollContentBackground(.hidden)
@@ -76,14 +88,15 @@ struct TabMisPlanesView: View {
             }.onAppear {
                 if(boolTabs1UnaVez){
                     boolTabs1UnaVez = false
-                    loadTabs1()
+                    loadTabs()
                 }
-                
+            }
+            .fullScreenCover(isPresented: $boolCambiarVista) {
+                InformacionPlanView(settings: settingsVista)
             }
             .onReceive(viewModel.$loadingSpinner) { loading in
                 openLoadingSpinner = loading
-            }
-            
+            }         
             if openLoadingSpinner {
                 LoadingSpinnerView()
                     .transition(.opacity) // Transición de opacidad
@@ -94,33 +107,31 @@ struct TabMisPlanesView: View {
             openLoadingSpinner = loading
         }
         .background(temaApp == 1 ? .black : .white)
+
     }
     
     
-    private func loadTabs1(){
+    private func loadTabs(){
         openLoadingSpinner = true
-        viewModel.tabsMisPlanesRX(idToken: idToken, idCliente: idCliente, idiomaApp: idiomaApp) { result in
+        viewModel.tabsBuscarPlanesRX(idToken: idToken, idCliente: idCliente, idiomaApp: idiomaApp) { result in
             switch result {
             case .success(let json):
                 let success = json["success"].int ?? 0
                 switch success {
                 case 1:
-                                        
-                    let _haynfo = json["hayinfo"].int ?? 0
-                    
-                    let listadoJSON = json["listado"].arrayValue
+                              
+                    let listadoJSON = json["listado2"].arrayValue
                     self.viewModel.misplanesArray = listadoJSON.compactMap { itemJSON in
-                        if let _idplan = itemJSON["idplan"].int,
+                        if let _id = itemJSON["id"].int,
                            let _titulo = itemJSON["titulo"].string,
-                           let _subtitulo = itemJSON["subtitulo"].string,
                            let _imagen = itemJSON["imagen"].string{
-                            return ModeloMisPlanesListado(idPlanes: _idplan, titulo: _titulo, subtitulo: _subtitulo, imagen: _imagen)
+                            return ModeloBuscarPlanesListado(id: _id, titulo: _titulo, imagen: _imagen)
                         }
                         return nil
                     }
                     
                     boolActivarVista = true
-                    
+                                        
                 default:
                     mensajeError()
                 }
@@ -137,10 +148,8 @@ struct TabMisPlanesView: View {
     
 }
 
-
-
-struct TabsMisPlanesRow: View {
-    let planes: ModeloMisPlanesListado
+struct TabsBuscarPlanesRow: View {
+    let planes: ModeloBuscarPlanesListado
     let temaApp: Int
 
     var body: some View {

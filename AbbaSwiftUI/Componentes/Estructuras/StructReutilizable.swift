@@ -587,7 +587,11 @@ struct LineaHorizontal: View {
 }
 
 
-
+enum EnumTipoVistaTabsDevocional: Identifiable {
+    case informacion
+ 
+    var id: Self { self }
+}
 
 enum EnumTipoVistaAjustes: Identifiable {
     case perfil
@@ -598,6 +602,7 @@ enum EnumTipoVistaAjustes: Identifiable {
  
     var id: Self { self }
 }
+
 
 
 struct CambiarIdiomaModal: View {

@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+class TabsDevocionalSettings: ObservableObject {
+    @Published var selectedBuscarPlanID: Int = 0
+}
+
 struct DevocionalView: View {
 
     @EnvironmentObject var idiomaSettings: IdiomaSettings
@@ -22,7 +26,7 @@ struct DevocionalView: View {
     @StateObject private var toastViewModel = ToastViewModel()
     
     @State private var selectedTab = 0
-    
+    @StateObject private var settings = TabsDevocionalSettings()
     
 
     var body: some View {
@@ -30,18 +34,22 @@ struct DevocionalView: View {
             // Encabezado de los tabs
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) { // Puedes ajustar el espacio entre los botones
-                    TabButtonDevocional(title: TextoIdiomaController.localizedString(forKey: "key-mis-planes"), isSelected: selectedTab == 0) {
+                    TabButtonDevocional(title: TextoIdiomaController.localizedString(forKey: "key-mis-planes"), isSelected: selectedTab == 0, temaApp: temaApp) {
                         selectedTab = 0
                     }
-                    TabButtonDevocional(title: TextoIdiomaController.localizedString(forKey: "key-buscar-planes"), isSelected: selectedTab == 1) {
+                    TabButtonDevocional(title: TextoIdiomaController.localizedString(forKey: "key-buscar-planes"), isSelected: selectedTab == 1,temaApp: temaApp) {
                         selectedTab = 1
                     }
-                    TabButtonDevocional(title: TextoIdiomaController.localizedString(forKey: "key-completados"), isSelected: selectedTab == 2) {
+                   /* TabButtonDevocional(title: TextoIdiomaController.localizedString(forKey: "key-completados"), isSelected: selectedTab == 2, temaApp: temaApp) {
                         selectedTab = 2
-                    }
+                    }*/
                 }
                 .padding()
-                .background(temaApp == 1 ? Color.black : Color.white)
+                .background(
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(temaApp == 1 ? Color.black : Color.white)
+                )
+                .padding(.horizontal)
             }
 
             // Contenido de los tabs
@@ -49,11 +57,10 @@ struct DevocionalView: View {
                 TabMisPlanesView()
                     .tag(0)
                 
-                BuscarView()
+                TabsBuscarPlanesView(settingsVista: settings)
                     .tag(1)
                 
-                FinalizadosView()
-                    .tag(2)
+               
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)) // Oculta los indicadores predeterminados
         }
@@ -66,36 +73,22 @@ struct DevocionalView: View {
 struct TabButtonDevocional: View {
     var title: String
     var isSelected: Bool
+    var temaApp: Int
     var action: () -> Void
 
     var body: some View {
         Button(action: action) {
             Text(title)
-                .font(.headline)
-                .foregroundColor(isSelected ? .white : .blue)
-                .padding(.vertical, 8)
-                .padding(.horizontal, 16)
-                .background(isSelected ? Color.blue : Color.clear)
-                .cornerRadius(10)
+                    .font(.headline)
+                    .foregroundColor(isSelected ? .white : (temaApp == 1 ? .gray : .blue)) // Cambia el color del texto según el tema
+                    .padding(.vertical, 8)
+                    .padding(.horizontal, 16)
+                    .background(
+                        isSelected ? (temaApp == 1 ? Color.gray : Color.blue) : Color.clear // Cambia el color de fondo según el tema y si está seleccionado
+                    )
+                    .cornerRadius(10)
         }
     }
 }
 
-
-
-struct BuscarView: View {
-    var body: some View {
-        Text("Contenido de Buscar")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.yellow.opacity(0.1))
-    }
-}
-
-struct FinalizadosView: View {
-    var body: some View {
-        Text("Contenido de Finalizados")
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.red.opacity(0.1))
-    }
-}
 

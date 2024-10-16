@@ -124,6 +124,11 @@ key-porfavor-habilitar-permiso-camara="Por favor habilitar el permiso de Galerí
 key-mis-planes="Mis Planes";
 key-buscar-planes="Buscar planes";
 key-completados="Completados";
+key-todos-los-planes="Todos los Planes se han agregado";
+key-seleccionar-planes-primero="Seleccionar un Plan en 'Buscar Planes' primero";
+key-informacion="Información";
+
+
 
 
 

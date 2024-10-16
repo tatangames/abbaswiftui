@@ -10,7 +10,7 @@ import Foundation
 struct ModeloMisPlanes: Codable {
     let success: Int
     let hayinfo: Int
-    let listado: [ModeloMisPlanesListado]  // Changed to an array
+    let listado: [ModeloMisPlanesListado]
 }
 
 struct ModeloMisPlanesListado: Codable, Identifiable {
@@ -18,7 +18,6 @@ struct ModeloMisPlanesListado: Codable, Identifiable {
     let titulo: String
     let subtitulo: String
     let imagen: String
-    let imagenPortada: String
     
     // Propiedad `id` para Identifiable
     let id: UUID = UUID()  // Genera un identificador único automáticamente
@@ -28,6 +27,18 @@ struct ModeloMisPlanesListado: Codable, Identifiable {
         case titulo
         case subtitulo
         case imagen
-        case imagenPortada      
     }
+}
+
+
+struct ModeloBuscarPlanes: Codable {
+    let success: Int
+    let hayinfo: Int
+    let listado2: [ModeloBuscarPlanesListado]
+}
+
+struct ModeloBuscarPlanesListado: Codable, Identifiable {
+    let id: Int
+    let titulo: String
+    let imagen: String 
 }

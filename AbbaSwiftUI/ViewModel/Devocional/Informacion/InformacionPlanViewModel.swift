@@ -1,8 +1,8 @@
 //
-//  TabsMisPlanesViewModel.swift
+//  InformacionPlanViewModel.swift
 //  AbbaSwiftUI
 //
-//  Created by Jonathan  Moran on 14/10/24.
+//  Created by Jonathan  Moran on 15/10/24.
 //
 
 import Foundation
@@ -10,16 +10,15 @@ import RxSwift
 import Alamofire
 import SwiftyJSON
 
-class TabsMisPlanesViewModel: ObservableObject {
+class InformacionPlanViewModel: ObservableObject {
     @Published var jsonResponse: JSON?
     @Published var loadingSpinner: Bool = false
     @Published var isRequestInProgress: Bool = false
     @Published var error: Error?
-    @Published var misplanesArray: [ModeloMisPlanesListado] = []
     
     private let disposeBag = DisposeBag()
      
-    func tabsMisPlanesRX(idToken: String, idCliente: String, idiomaApp: Int, completion: @escaping (Result<JSON, Error>) -> Void) {
+    func informacionPlanRX(idToken: String, idPlan: Int, idiomaApp: Int, completion: @escaping (Result<JSON, Error>) -> Void) {
         // Verificar si ya hay una solicitud en curso
         guard !isRequestInProgress else { return }
         
@@ -27,10 +26,10 @@ class TabsMisPlanesViewModel: ObservableObject {
         isRequestInProgress = true
         loadingSpinner = true
         
-        let encodeURL = apiListadoMisPlanes
+        let encodeURL = apiInformacionPlanNuevo
         let headers: HTTPHeaders = ["Authorization": "Bearer \(idToken)"]
         let parameters: [String: Any] = [
-            "iduser": idCliente,
+            "idplan": idPlan,
             "idiomaplan": idiomaApp
         ]
         

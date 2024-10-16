@@ -124,6 +124,10 @@ key-porfavor-habilitar-permiso-camara="Please enable Gallery & Camera permission
 key-mis-planes="My plans";
 key-buscar-planes="Search plans";
 key-completados="Completed";
+key-todos-los-planes="All Plans have been added";
+key-seleccionar-planes-primero="Select a Plan in 'Search Plans' first";
+key-informacion="Information";
+
 
 
 

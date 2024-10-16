@@ -32,7 +32,8 @@ let apiListaInsigniasPorGanar = baseUrl+"app/listado/insignias/faltantes"
 let apiInformacionPerfil = baseUrl+"app/solicitar/informacion/perfil"
 let apiActualizarPerfil = baseUrl+"app/actualizar/perfil/usuario"
 let apiListadoMisPlanes = baseUrl+"app/plan/listado/misplanes"
-
+let apiListadoBuscarPlanes = baseUrl+"app/buscar/planes/nuevos"
+let apiInformacionPlanNuevo = baseUrl+"app/plan/seleccionado/informacion"
 
 
 
