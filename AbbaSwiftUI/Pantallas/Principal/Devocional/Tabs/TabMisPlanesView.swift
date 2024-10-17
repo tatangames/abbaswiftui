@@ -28,6 +28,9 @@ struct TabMisPlanesView: View {
     @State private var boolTabs1UnaVez: Bool = true
     @State private var boolActivarVista: Bool = false
     
+    // GLOBAL PARA CAMBIOS
+    @ObservedObject var settingsGlobal: GlobalVariablesSettings
+    
     var body: some View {
         ZStack {
             VStack() {
@@ -74,14 +77,23 @@ struct TabMisPlanesView: View {
                 }
                 
             }.onAppear {
+                
+                if settingsGlobal.updateTabsMiPlan {
+                    settingsGlobal.updateTabsMiPlan = false
+                }
+                
                 if(boolTabs1UnaVez){
                     boolTabs1UnaVez = false
-                    loadTabs1()
+                    loadTabs()
                 }
                 
             }
-            .onReceive(viewModel.$loadingSpinner) { loading in
-                openLoadingSpinner = loading
+            .onChange(of: settingsGlobal.updateTabsMiPlan) { newValue in
+                if newValue {
+                    settingsGlobal.updateTabsMiPlan = false
+                    boolActivarVista = false
+                    loadTabs()
+                }
             }
             
             if openLoadingSpinner {
@@ -93,11 +105,14 @@ struct TabMisPlanesView: View {
         .onReceive(viewModel.$loadingSpinner) { loading in
             openLoadingSpinner = loading
         }
+        
+        
+        
         .background(temaApp == 1 ? .black : .white)
     }
     
     
-    private func loadTabs1(){
+    private func loadTabs(){
         openLoadingSpinner = true
         viewModel.tabsMisPlanesRX(idToken: idToken, idCliente: idCliente, idiomaApp: idiomaApp) { result in
             switch result {
@@ -105,8 +120,6 @@ struct TabMisPlanesView: View {
                 let success = json["success"].int ?? 0
                 switch success {
                 case 1:
-                                        
-                    let _haynfo = json["hayinfo"].int ?? 0
                     
                     let listadoJSON = json["listado"].arrayValue
                     self.viewModel.misplanesArray = listadoJSON.compactMap { itemJSON in

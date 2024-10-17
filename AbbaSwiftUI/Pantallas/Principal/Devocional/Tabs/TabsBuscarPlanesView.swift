@@ -31,7 +31,13 @@ struct TabsBuscarPlanesView: View {
     @State private var boolTabs1UnaVez: Bool = true
     @State private var boolActivarVista: Bool = false
     @State private var boolCambiarVista:Bool = false
-    @ObservedObject var settingsVista: TabsDevocionalSettings
+    
+    // GLOBAL PARA CAMBIOS
+    @ObservedObject var settingsGlobal: GlobalVariablesSettings
+    @State private var isModifiedVista: Bool = false
+    
+    
+    
     
     var body: some View {
         ZStack {
@@ -75,7 +81,7 @@ struct TabsBuscarPlanesView: View {
                             TabsBuscarPlanesRow(planes: planes, temaApp: temaApp)
                                 .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                                 .onTapGesture {
-                                    settingsVista.selectedBuscarPlanID = planes.id
+                                    settingsGlobal.selectedBuscarPlanID = planes.id
                                     boolCambiarVista = true
                                 }
                         }
@@ -86,22 +92,37 @@ struct TabsBuscarPlanesView: View {
                 }
                 
             }.onAppear {
+                
+                if settingsGlobal.updateTabsBuscarPlan {
+                    settingsGlobal.updateTabsBuscarPlan = false
+                }
+                
                 if(boolTabs1UnaVez){
                     boolTabs1UnaVez = false
                     loadTabs()
                 }
             }
             .fullScreenCover(isPresented: $boolCambiarVista) {
-                InformacionPlanView(settings: settingsVista)
+                InformacionPlanView(settingsVista: settingsGlobal)
             }
             .onReceive(viewModel.$loadingSpinner) { loading in
                 openLoadingSpinner = loading
-            }         
+            }     
+            .onChange(of: settingsGlobal.updateTabsBuscarPlan) { newValue in
+                if newValue {
+                    settingsGlobal.updateTabsBuscarPlan = false
+                    boolActivarVista = false
+                    loadTabs()
+                }
+            }
+       
+            
             if openLoadingSpinner {
                 LoadingSpinnerView()
                     .transition(.opacity) // Transición de opacidad
                     .zIndex(10)
             }
+            
         }
         .onReceive(viewModel.$loadingSpinner) { loading in
             openLoadingSpinner = loading

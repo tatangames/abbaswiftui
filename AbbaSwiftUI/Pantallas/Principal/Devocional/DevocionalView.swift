@@ -7,12 +7,7 @@
 
 import SwiftUI
 
-class TabsDevocionalSettings: ObservableObject {
-    @Published var selectedBuscarPlanID: Int = 0
-}
-
 struct DevocionalView: View {
-
     @EnvironmentObject var idiomaSettings: IdiomaSettings
     @AppStorage(DatosGuardadosKeys.idToken) private var idToken:String = ""
     @AppStorage(DatosGuardadosKeys.idCliente) private var idCliente:String = ""
@@ -26,23 +21,23 @@ struct DevocionalView: View {
     @StateObject private var toastViewModel = ToastViewModel()
     
     @State private var selectedTab = 0
-    @StateObject private var settings = TabsDevocionalSettings()
     
-
+    @ObservedObject var settingsGlobal: GlobalVariablesSettings
+    
+    
+    
     var body: some View {
         VStack {
             // Encabezado de los tabs
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 16) { // Puedes ajustar el espacio entre los botones
+                    
                     TabButtonDevocional(title: TextoIdiomaController.localizedString(forKey: "key-mis-planes"), isSelected: selectedTab == 0, temaApp: temaApp) {
                         selectedTab = 0
                     }
                     TabButtonDevocional(title: TextoIdiomaController.localizedString(forKey: "key-buscar-planes"), isSelected: selectedTab == 1,temaApp: temaApp) {
                         selectedTab = 1
                     }
-                   /* TabButtonDevocional(title: TextoIdiomaController.localizedString(forKey: "key-completados"), isSelected: selectedTab == 2, temaApp: temaApp) {
-                        selectedTab = 2
-                    }*/
                 }
                 .padding()
                 .background(
@@ -54,13 +49,12 @@ struct DevocionalView: View {
 
             // Contenido de los tabs
             TabView(selection: $selectedTab) {
-                TabMisPlanesView()
+                TabMisPlanesView(settingsGlobal: settingsGlobal)
                     .tag(0)
                 
-                TabsBuscarPlanesView(settingsVista: settings)
+                TabsBuscarPlanesView(settingsGlobal: settingsGlobal)
                     .tag(1)
-                
-               
+                               
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never)) // Oculta los indicadores predeterminados
         }

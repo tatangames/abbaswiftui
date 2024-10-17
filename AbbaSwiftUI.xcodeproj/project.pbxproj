@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		344CAFF0FA1DA9173AADA967 /* Pods_AbbaSwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0BA244CD45975F0D3C5F1E0 /* Pods_AbbaSwiftUI.framework */; };
 		67E92D1E2ED4161985376D7A /* Pods_AbbaSwiftUI_AbbaSwiftUIUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 827E04458DC15BC0B179DED0 /* Pods_AbbaSwiftUI_AbbaSwiftUIUITests.framework */; };
+		8F06A1182CC08A9900165504 /* HTMLDatos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F06A1172CC08A9900165504 /* HTMLDatos.swift */; };
+		8F06A11B2CC0BB4800165504 /* GlobalVariablesSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F06A11A2CC0BB4800165504 /* GlobalVariablesSettings.swift */; };
 		8F0B37AB2CAE4A7200A261E4 /* AbbaSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0B37AA2CAE4A7200A261E4 /* AbbaSwiftUIApp.swift */; };
 		8F0B37AF2CAE4A7400A261E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F0B37AE2CAE4A7400A261E4 /* Assets.xcassets */; };
 		8F0B37B22CAE4A7400A261E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F0B37B12CAE4A7400A261E4 /* Preview Assets.xcassets */; };
@@ -126,6 +128,8 @@
 		827E04458DC15BC0B179DED0 /* Pods_AbbaSwiftUI_AbbaSwiftUIUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AbbaSwiftUI_AbbaSwiftUIUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82B6438D87DD3ABDE01D3C19 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		84928A548F8542BE9870B067 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F06A1172CC08A9900165504 /* HTMLDatos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLDatos.swift; sourceTree = "<group>"; };
+		8F06A11A2CC0BB4800165504 /* GlobalVariablesSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariablesSettings.swift; sourceTree = "<group>"; };
 		8F0B37A72CAE4A7200A261E4 /* AbbaSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbbaSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0B37AA2CAE4A7200A261E4 /* AbbaSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbbaSwiftUIApp.swift; sourceTree = "<group>"; };
 		8F0B37AE2CAE4A7400A261E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -245,6 +249,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F06A1192CC0BB3C00165504 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				8F06A11A2CC0BB4800165504 /* GlobalVariablesSettings.swift */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
 		8F0B379E2CAE4A7200A261E4 = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +328,7 @@
 		8F0B37D42CAE4EF200A261E4 /* Extras */ = {
 			isa = PBXGroup;
 			children = (
+				8F06A1192CC0BB3C00165504 /* Global */,
 				8F2FEBAD2CAF044000647572 /* Idiomas */,
 				8F0B37D52CAE4F1600A261E4 /* DatosGuardadosKeys.swift */,
 			);
@@ -438,6 +451,7 @@
 				8F25FAF12CB33EF2001BE477 /* OTPInput.swift */,
 				8FD27AB42CB4BA0000667C2F /* ThemeChangeView.swift */,
 				8F245FE32CB9F3DB00F145D1 /* ToastViewModel.swift */,
+				8F06A1172CC08A9900165504 /* HTMLDatos.swift */,
 			);
 			path = Estructuras;
 			sourceTree = "<group>";
@@ -992,6 +1006,7 @@
 				8F25FAF02CB333CA001BE477 /* ResetPasswordViewModel.swift in Sources */,
 				8F245FE92CBA2E6300F145D1 /* ModeloNotificacionPager.swift in Sources */,
 				8F792F9C2CBADA6B0013211E /* BorrarNotificacionesViewModel.swift in Sources */,
+				8F06A1182CC08A9900165504 /* HTMLDatos.swift in Sources */,
 				8FDCC4502CB8BD9D00700F4A /* IdiomaSettings.swift in Sources */,
 				8FD27AAA2CB42E6700667C2F /* AjustesView.swift in Sources */,
 				8FDCC4522CB8D31B00700F4A /* NotificacionesAjustesView.swift in Sources */,
@@ -1003,6 +1018,7 @@
 				8F2FEBA82CAEE90C00647572 /* ApiNetwork.swift in Sources */,
 				8F48F8862CB1BA4C001E1819 /* RegistrarseViewModel.swift in Sources */,
 				8F792FA52CBB3A030013211E /* PerfilViewModel.swift in Sources */,
+				8F06A11B2CC0BB4800165504 /* GlobalVariablesSettings.swift in Sources */,
 				8F60386A2CBDF9D700E611F0 /* TabMisPlanesView.swift in Sources */,
 				8F5B10A02CB584920013078E /* PerfilView.swift in Sources */,
 				8F611A522CBF4B0300F384EE /* InformacionPlanView.swift in Sources */,

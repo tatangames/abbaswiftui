@@ -127,8 +127,8 @@ key-completados="Completados";
 key-todos-los-planes="Todos los Planes se han agregado";
 key-seleccionar-planes-primero="Seleccionar un Plan en 'Buscar Planes' primero";
 key-informacion="Información";
-
-
+key-iniciar-plan-conamigos="Iniciar con Amigos";
+key-iniciar-plan="Iniciar Plan";
 
 
 
@@ -314,9 +314,7 @@ enviadas="Enviadas";
 recibidas="Recibidas";
 
 
-iniciar_con_amigos="Iniciar con Amigos";
-seleccionar_cinco_amigos="Seleccionar máximo 5 amigos";
-iniciar_plan="Iniciar Plan";
+
 maximo_cinco_amigos="Máximo 5 amigos";
 minimo_uno_amigo="Mínimo 1 amigo se requiere";
 error="Error";

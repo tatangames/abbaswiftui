@@ -15,6 +15,10 @@ struct PrincipalView: View {
         UITabBar.appearance().backgroundColor = UIColor.white
     }
     
+    // GLOBAL PARA CAMBIOS
+    @StateObject private var settings = GlobalVariablesSettings()
+    
+    
     var body: some View {
         TabView {
             InicioView()
@@ -23,7 +27,7 @@ struct PrincipalView: View {
                     Text(TextoIdiomaController.localizedString(forKey: "key-inicio"))
                 }
 
-            DevocionalView()
+            DevocionalView(settingsGlobal: settings)
                 .tabItem {
                     Image(systemName: "book.fill")
                     Text(TextoIdiomaController.localizedString(forKey: "key-devocional"))
@@ -35,7 +39,7 @@ struct PrincipalView: View {
                     Text(TextoIdiomaController.localizedString(forKey: "key-biblia"))
                 }
             
-            AjustesView()
+            AjustesView(settingsGlobal: settings)
                 .tabItem {
                     Image(systemName: "gearshape.fill")
                     Text(TextoIdiomaController.localizedString(forKey: "key-ajustes"))

@@ -127,10 +127,8 @@ key-completados="Completed";
 key-todos-los-planes="All Plans have been added";
 key-seleccionar-planes-primero="Select a Plan in 'Search Plans' first";
 key-informacion="Information";
-
-
-
-
+key-iniciar-plan-conamigos="Start with Friends";
+key-iniciar-plan="Start plan";
 
 
 
@@ -318,9 +316,7 @@ recibidas="Received";
 
 iniciar_con_amigos="Start with Friends";
 seleccionar_cinco_amigos="Select maximum 5 friends";
-iniciar_plan="Start plan";
-maximo_cinco_amigos="Maximum 5 friends";
-minimo_uno_amigo="Minimum 1 friend required";
+
 error="Error";
 plan_ya_estaba_iniciado="Plan was already started";
 ocultar="Hide";

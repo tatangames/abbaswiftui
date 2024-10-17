@@ -36,6 +36,10 @@ struct AjustesView: View {
     @StateObject private var viewModel = AjustesViewModel()
     @StateObject private var toastViewModel = ToastViewModel()
     
+    
+    // GLOBAL PARA CAMBIOS
+    @ObservedObject var settingsGlobal: GlobalVariablesSettings
+    
     var body: some View {
         ZStack {
             VStack {
@@ -107,7 +111,6 @@ struct AjustesView: View {
                             .onTapGesture {
                                 
                                 vistaSeleccionada = .contrasena
-                                
                               
                             }
                             LineaHorizontal(altura: 0.3, espaciado: 40, temaApp: temaApp)
@@ -212,6 +215,7 @@ struct AjustesView: View {
                 }
             }
             .onAppear {
+                
                 if(!unaVezPeticion){
                     unaVezPeticion = true
                     viewModel.fetchUserData(idToken: idToken, idCliente: idCliente) { result in
@@ -279,6 +283,9 @@ struct AjustesView: View {
                 cambiarIdioma: { nuevoIdioma in
                     //  idiomaApp = nuevoIdioma
                     idiomaSettings.idioma = nuevoIdioma
+
+                    settingsGlobal.updateTabsMiPlan = true
+                    settingsGlobal.updateTabsBuscarPlan = true
                 }
             )
         }
