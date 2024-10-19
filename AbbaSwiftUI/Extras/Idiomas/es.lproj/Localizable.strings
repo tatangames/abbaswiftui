@@ -129,9 +129,9 @@ key-seleccionar-planes-primero="Seleccionar un Plan en 'Buscar Planes' primero";
 key-informacion="Información";
 key-iniciar-plan-conamigos="Iniciar con Amigos";
 key-iniciar-plan="Iniciar Plan";
-
-
-
+key-amigos-requeridos="Se requiere una lista de amigos";
+key-seleccionar-minimo-un-amigo="Seleccionar mínimo un amigo";
+key-amigos="Amigos";
 
 
 

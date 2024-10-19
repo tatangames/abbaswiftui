@@ -42,3 +42,23 @@ struct ModeloBuscarPlanesListado: Codable, Identifiable {
     let titulo: String
     let imagen: String 
 }
+
+
+struct ModeloListaAmigosAceptados: Codable {
+    let success: Int
+    let hayinfo: Int
+    let listado: [ModeloListaAmigosAceptadosListado]
+}
+
+struct ModeloListaAmigosAceptadosListado: Codable, Identifiable {
+    let id: Int
+    let idUserEnvia: Int
+    let idUserRecibe: Int
+    let idUsuario: Int
+    let nombre: String
+    let iglesia: String
+    let correo:String
+    let pais: String
+    let hayimagen: Int
+    let imagen: String
+}

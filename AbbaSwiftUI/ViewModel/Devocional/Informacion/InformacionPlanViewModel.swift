@@ -99,7 +99,7 @@ class InformacionPlanIniciarPlanViewModel: ObservableObject {
         let headers: HTTPHeaders = ["Authorization": "Bearer \(idToken)"]
         let parameters: [String: Any] = [
             "idplan": idPlan,
-            "iduser": idPlan
+            "iduser": idCliente
         ]
         
         Observable<JSON>.create { observer in

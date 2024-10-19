@@ -151,7 +151,6 @@ struct TabMisPlanesView: View {
 }
 
 
-
 struct TabsMisPlanesRow: View {
     let planes: ModeloMisPlanesListado
     let temaApp: Int

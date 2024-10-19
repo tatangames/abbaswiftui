@@ -15,8 +15,6 @@ import Foundation
 import SDWebImageSwiftUI
 
 struct InformacionPlanView: View {
-    
-    
     @AppStorage(DatosGuardadosKeys.idToken) private var idToken:String = ""
     @AppStorage(DatosGuardadosKeys.idCliente) private var idCliente:String = ""
     @AppStorage(DatosGuardadosKeys.temaApp) private var temaApp: Int = 0
@@ -31,12 +29,12 @@ struct InformacionPlanView: View {
     @State private var urlImagen:String = ""
     @State private var titulo:String = ""
     @State private var popIniciarPlanSolo: Bool = false
+    @State private var boolCambiarVista: Bool = false
     
     @ObservedObject var settingsVista: GlobalVariablesSettings
-    
     @Environment(\.dismiss) var dismiss
     
-    //@Binding var isModified: Bool
+    @State private var boolInicioPlanConAmigos:Bool = false
     
     var body: some View {
         
@@ -65,7 +63,7 @@ struct InformacionPlanView: View {
                                     Spacer() // Este Spacer empuja el texto hacia la izquierda
                                 }
                                 .padding()
-                                           
+                                
                                 // *** BOTONES
                                 
                                 Button(action: {
@@ -82,7 +80,7 @@ struct InformacionPlanView: View {
                                 .padding(.top, 40)
                                 .opacity(1.0)
                                 .buttonStyle(NoOpacityChangeButtonStyle())
-                                                                
+                                
                                 
                                 HStack {
                                     // Imagen a la izquierda
@@ -97,6 +95,7 @@ struct InformacionPlanView: View {
                                         Spacer() // Este Spacer empuja el botón hacia abajo
                                         Button(action: {
                                             // Acción del botón
+                                            boolCambiarVista = true
                                         }) {
                                             Text(TextoIdiomaController.localizedString(forKey: "key-iniciar-plan-conamigos"))
                                                 .font(.headline)
@@ -132,6 +131,15 @@ struct InformacionPlanView: View {
                 .onReceive(viewModelIniciarSolo.$loadingSpinner) { loading in
                     openLoadingSpinner = loading
                 }
+                .fullScreenCover(isPresented: $boolCambiarVista) {
+                    ListaAmigosIniciarPlanView(settingsVista: settingsVista, boolInicioPlanConAmigos: $boolInicioPlanConAmigos)
+                }
+                .onChange(of: boolInicioPlanConAmigos) { newValue in
+                            if newValue {
+                                print("boolInicioPlanConAmigos cambió a true, se hará un dismiss en InformacionPlanView")
+                                
+                            }
+                        }
                 
                 if popIniciarPlanSolo {
                     PopImg2BtnView(isActive: $popIniciarPlanSolo, imagen: .constant("infocolor"), descripcion: .constant(TextoIdiomaController.localizedString(forKey: "key-iniciar-plan")), txtCancelar: .constant(TextoIdiomaController.localizedString(forKey: "key-no")),
@@ -155,9 +163,6 @@ struct InformacionPlanView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                      
-                        settingsVista.updateTabsMiPlan = true
-                        settingsVista.updateTabsBuscarPlan = true
                         dismiss()
                     }) {
                         Image(systemName: "arrow.left")
@@ -201,7 +206,7 @@ struct InformacionPlanView: View {
                     
                     urlImagen = _imagen
                     titulo = _titulo
-                                        
+                    
                     boolActivarVista = true
                     
                 default:
@@ -225,10 +230,10 @@ struct InformacionPlanView: View {
                 switch success {
                 case 1:
                     // plan ya estaba seleccionado
-                    print("aaa")
+                    salir()
                 case 2:
                     // plan seleccionado correcto
-                    print("eee")
+                    salir()
                 default:
                     mensajeError()
                 }
@@ -237,15 +242,16 @@ struct InformacionPlanView: View {
                 mensajeError()
             }
         }
-        
     }
     
-    
+    private func salir(){
+        settingsVista.updateTabsMiPlan = true
+        settingsVista.updateTabsBuscarPlan = true
+        dismiss()
+    }
     
     private func mensajeError(){
         toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
     }
-    
-    
 }
 

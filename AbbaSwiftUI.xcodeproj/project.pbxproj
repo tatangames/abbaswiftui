@@ -11,6 +11,8 @@
 		67E92D1E2ED4161985376D7A /* Pods_AbbaSwiftUI_AbbaSwiftUIUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 827E04458DC15BC0B179DED0 /* Pods_AbbaSwiftUI_AbbaSwiftUIUITests.framework */; };
 		8F06A1182CC08A9900165504 /* HTMLDatos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F06A1172CC08A9900165504 /* HTMLDatos.swift */; };
 		8F06A11B2CC0BB4800165504 /* GlobalVariablesSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F06A11A2CC0BB4800165504 /* GlobalVariablesSettings.swift */; };
+		8F0ADAF52CC1F8D7005F84C4 /* ListaAmigosIniciarPlanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0ADAF42CC1F8D7005F84C4 /* ListaAmigosIniciarPlanViewModel.swift */; };
+		8F0ADAF72CC1F8ED005F84C4 /* ListaAmigosIniciarPlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0ADAF62CC1F8ED005F84C4 /* ListaAmigosIniciarPlanView.swift */; };
 		8F0B37AB2CAE4A7200A261E4 /* AbbaSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F0B37AA2CAE4A7200A261E4 /* AbbaSwiftUIApp.swift */; };
 		8F0B37AF2CAE4A7400A261E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F0B37AE2CAE4A7400A261E4 /* Assets.xcassets */; };
 		8F0B37B22CAE4A7400A261E4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F0B37B12CAE4A7400A261E4 /* Preview Assets.xcassets */; };
@@ -130,6 +132,8 @@
 		84928A548F8542BE9870B067 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F06A1172CC08A9900165504 /* HTMLDatos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLDatos.swift; sourceTree = "<group>"; };
 		8F06A11A2CC0BB4800165504 /* GlobalVariablesSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariablesSettings.swift; sourceTree = "<group>"; };
+		8F0ADAF42CC1F8D7005F84C4 /* ListaAmigosIniciarPlanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaAmigosIniciarPlanViewModel.swift; sourceTree = "<group>"; };
+		8F0ADAF62CC1F8ED005F84C4 /* ListaAmigosIniciarPlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaAmigosIniciarPlanView.swift; sourceTree = "<group>"; };
 		8F0B37A72CAE4A7200A261E4 /* AbbaSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AbbaSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F0B37AA2CAE4A7200A261E4 /* AbbaSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbbaSwiftUIApp.swift; sourceTree = "<group>"; };
 		8F0B37AE2CAE4A7400A261E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -572,6 +576,7 @@
 			isa = PBXGroup;
 			children = (
 				8F611A512CBF4B0300F384EE /* InformacionPlanView.swift */,
+				8F0ADAF62CC1F8ED005F84C4 /* ListaAmigosIniciarPlanView.swift */,
 			);
 			path = Informacion;
 			sourceTree = "<group>";
@@ -580,6 +585,7 @@
 			isa = PBXGroup;
 			children = (
 				8F611A542CBF591000F384EE /* InformacionPlanViewModel.swift */,
+				8F0ADAF42CC1F8D7005F84C4 /* ListaAmigosIniciarPlanViewModel.swift */,
 			);
 			path = Informacion;
 			sourceTree = "<group>";
@@ -1015,6 +1021,7 @@
 				8F25FAEA2CB312FE001BE477 /* CorreoOTPViewModel.swift in Sources */,
 				8F245FE62CB9FD1800F145D1 /* ListaNotificacionesViewModel.swift in Sources */,
 				8F2FEBB32CAF123900647572 /* TextoIdiomaController.swift in Sources */,
+				8F0ADAF72CC1F8ED005F84C4 /* ListaAmigosIniciarPlanView.swift in Sources */,
 				8F2FEBA82CAEE90C00647572 /* ApiNetwork.swift in Sources */,
 				8F48F8862CB1BA4C001E1819 /* RegistrarseViewModel.swift in Sources */,
 				8F792FA52CBB3A030013211E /* PerfilViewModel.swift in Sources */,
@@ -1031,6 +1038,7 @@
 				8F2FEBA52CAEE78D00647572 /* StructReutilizable.swift in Sources */,
 				8F792FA22CBAF96A0013211E /* ModeloInsignias.swift in Sources */,
 				8F245FE42CB9F3DB00F145D1 /* ToastViewModel.swift in Sources */,
+				8F0ADAF52CC1F8D7005F84C4 /* ListaAmigosIniciarPlanViewModel.swift in Sources */,
 				8F2FEBAA2CAEF02900647572 /* LoginPresentacionView.swift in Sources */,
 				8F611A552CBF591000F384EE /* InformacionPlanViewModel.swift in Sources */,
 				8F2FEBA32CAEE77200647572 /* CustomModal2ButtonView.swift in Sources */,

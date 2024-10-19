@@ -129,6 +129,12 @@ key-seleccionar-planes-primero="Select a Plan in 'Search Plans' first";
 key-informacion="Information";
 key-iniciar-plan-conamigos="Start with Friends";
 key-iniciar-plan="Start plan";
+key-amigos-requeridos="A friends list is required";
+key-seleccionar-minimo-un-amigo="Select at least one friend";
+key-amigos="Friends";
+
+
+
 
 
 

@@ -35,5 +35,5 @@ let apiListadoMisPlanes = baseUrl+"app/plan/listado/misplanes"
 let apiListadoBuscarPlanes = baseUrl+"app/buscar/planes/nuevos"
 let apiInformacionPlanNuevo = baseUrl+"app/plan/seleccionado/informacion"
 let apiIniciarPlanSolo = baseUrl+"app/plan/nuevo/seleccionar"
-
-
+let apiListaAmigosIniciarPlan = baseUrl+"app/comunidad/listado/solicitud/aceptadas"
+let apiIniciarPlanConAmigos = baseUrl+"app/comunidadplan/iniciar/plan/amigosiphone"
