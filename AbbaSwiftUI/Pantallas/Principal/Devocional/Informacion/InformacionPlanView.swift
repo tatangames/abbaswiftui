@@ -135,11 +135,13 @@ struct InformacionPlanView: View {
                     ListaAmigosIniciarPlanView(settingsVista: settingsVista, boolInicioPlanConAmigos: $boolInicioPlanConAmigos)
                 }
                 .onChange(of: boolInicioPlanConAmigos) { newValue in
-                            if newValue {
-                                print("boolInicioPlanConAmigos cambió a true, se hará un dismiss en InformacionPlanView")
-                                
-                            }
-                        }
+                    if newValue {
+                        
+                        settingsVista.updateTabsBuscarPlan = true
+                        settingsVista.updateTabsMiPlan = true
+                        dismiss()
+                    }
+                }
                 
                 if popIniciarPlanSolo {
                     PopImg2BtnView(isActive: $popIniciarPlanSolo, imagen: .constant("infocolor"), descripcion: .constant(TextoIdiomaController.localizedString(forKey: "key-iniciar-plan")), txtCancelar: .constant(TextoIdiomaController.localizedString(forKey: "key-no")),
@@ -194,7 +196,7 @@ struct InformacionPlanView: View {
     private func loadData(){
         
         openLoadingSpinner = true
-        viewModel.informacionPlanRX(idToken: idToken, idPlan: settingsVista.selectedBuscarPlanID, idiomaApp: idiomaApp) { result in
+        viewModel.informacionPlanRX(idToken: idToken, idPlan: settingsVista.selectedPlanIDGlobal, idiomaApp: idiomaApp) { result in
             switch result {
             case .success(let json):
                 let success = json["success"].int ?? 0
@@ -222,7 +224,7 @@ struct InformacionPlanView: View {
     
     private func serverIniciarPlan(){
         
-        viewModelIniciarSolo.iniciarPlanSoloRX(idToken: idToken, idPlan: settingsVista.selectedBuscarPlanID, idCliente: idCliente) { result in
+        viewModelIniciarSolo.iniciarPlanSoloRX(idToken: idToken, idPlan: settingsVista.selectedPlanIDGlobal, idCliente: idCliente) { result in
             switch result {
             case .success(let json):
                 

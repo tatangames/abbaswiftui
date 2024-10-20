@@ -84,6 +84,7 @@ struct LoginView: View {
                 }
                 .padding()
                 .navigationTitle(TextoIdiomaController.localizedString(forKey: "key-iniciar-sesion"))
+                .navigationBarTitleDisplayMode(.inline)
                 .navigationBarBackButtonHidden(true)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
@@ -92,10 +93,10 @@ struct LoginView: View {
                         }) {
                             HStack {
                                 Image(systemName: "arrow.left")
-                                    .foregroundColor(temaApp == 1 ? .white : .black)
+                                    .foregroundColor(.black)
                                 
                                 Text(TextoIdiomaController.localizedString(forKey: "key-atras"))
-                                    .foregroundColor(temaApp == 1 ? .white : .black)
+                                    .foregroundColor(.black)
                             }
                         }
                     }
@@ -131,6 +132,8 @@ struct LoginView: View {
     }
     
     private func verificarCampos(){
+        
+        hideKeyboard()
         
         if(correo.isEmpty){
             toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-requerido"), tipoColor: .gris)

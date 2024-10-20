@@ -69,6 +69,7 @@ struct NuevaPasswordLoginView: View {
                 .padding()
                 .navigationTitle(TextoIdiomaController.localizedString(forKey: "key-nueva-contrasena"))
                 .navigationBarBackButtonHidden(true)
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
@@ -76,10 +77,10 @@ struct NuevaPasswordLoginView: View {
                         }) {
                             HStack {
                                 Image(systemName: "arrow.left")
-                                    .foregroundColor(temaApp == 1 ? .white : .black)
+                                    .foregroundColor(.black)
                                 
                                 Text(TextoIdiomaController.localizedString(forKey: "key-atras"))
-                                    .foregroundColor(temaApp == 1 ? .white : .black)
+                                    .foregroundColor(.black)
                             }
                         }
                     }
@@ -119,6 +120,8 @@ struct NuevaPasswordLoginView: View {
     }
     
     private func verificarCampos(){
+        
+        hideKeyboard()
         if(password.isEmpty){
             toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-password-requerido"), tipoColor: .gris)
             return

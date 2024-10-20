@@ -73,6 +73,7 @@ struct ContrasenaOlvidadaView: View {
                 .padding()
                 .navigationTitle(TextoIdiomaController.localizedString(forKey: "key-recuperacion"))
                 .navigationBarBackButtonHidden(true)
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
@@ -80,10 +81,10 @@ struct ContrasenaOlvidadaView: View {
                         }) {
                             HStack {
                                 Image(systemName: "arrow.left")
-                                    .foregroundColor(temaApp == 1 ? .white : .black)
+                                    .foregroundColor(.black)
                                 
                                 Text(TextoIdiomaController.localizedString(forKey: "key-atras"))
-                                    .foregroundColor(temaApp == 1 ? .white : .black)
+                                    .foregroundColor(.black)
                             }
                         }
                     }
@@ -113,6 +114,9 @@ struct ContrasenaOlvidadaView: View {
     }
     
     private func verificarCampos(){
+        
+        hideKeyboard()
+        
         if(correo.isEmpty){
             toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-correo-requerido"), tipoColor: .gris)
             return

@@ -27,6 +27,7 @@ struct TabMisPlanesView: View {
     
     @State private var boolTabs1UnaVez: Bool = true
     @State private var boolActivarVista: Bool = false
+    @State private var boolCambiarVista:Bool = false
     
     // GLOBAL PARA CAMBIOS
     @ObservedObject var settingsGlobal: GlobalVariablesSettings
@@ -68,7 +69,11 @@ struct TabMisPlanesView: View {
                     }else{
                         List(viewModel.misplanesArray) { planes in
                             TabsMisPlanesRow(planes: planes, temaApp: temaApp)
-                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)) // Ajuste para quitar los márgenes laterales
+                                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                .onTapGesture {
+                                    settingsGlobal.selectedPlanIDGlobal = planes.idPlanes
+                                    boolCambiarVista = true
+                                }
                         }
                         .listStyle(InsetGroupedListStyle())
                         .scrollContentBackground(.hidden)
@@ -77,16 +82,13 @@ struct TabMisPlanesView: View {
                 }
                 
             }.onAppear {
-                
                 if settingsGlobal.updateTabsMiPlan {
                     settingsGlobal.updateTabsMiPlan = false
                 }
-                
                 if(boolTabs1UnaVez){
                     boolTabs1UnaVez = false
                     loadTabs()
                 }
-                
             }
             .onChange(of: settingsGlobal.updateTabsMiPlan) { newValue in
                 if newValue {
@@ -94,6 +96,9 @@ struct TabMisPlanesView: View {
                     boolActivarVista = false
                     loadTabs()
                 }
+            }
+            .fullScreenCover(isPresented: $boolCambiarVista) {
+                BloqueFechaDevocionalView(settingsVista: settingsGlobal)
             }
             
             if openLoadingSpinner {
@@ -105,9 +110,6 @@ struct TabMisPlanesView: View {
         .onReceive(viewModel.$loadingSpinner) { loading in
             openLoadingSpinner = loading
         }
-        
-        
-        
         .background(temaApp == 1 ? .black : .white)
     }
     

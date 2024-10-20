@@ -70,6 +70,7 @@ struct CodigoOTPView: View {
                 .padding()
                 .navigationTitle(TextoIdiomaController.localizedString(forKey: "key-codigo"))
                 .navigationBarBackButtonHidden(true)
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
@@ -77,10 +78,10 @@ struct CodigoOTPView: View {
                         }) {
                             HStack {
                                 Image(systemName: "arrow.left")
-                                    .foregroundColor(temaApp == 1 ? .white : .black)
+                                    .foregroundColor(.black)
                                 
                                 Text(TextoIdiomaController.localizedString(forKey: "key-atras"))
-                                    .foregroundColor(temaApp == 1 ? .white : .black)
+                                    .foregroundColor(.black)
                             }
                         }
                     }
@@ -112,6 +113,9 @@ struct CodigoOTPView: View {
     }
     
     private func verificarCampos(){
+        
+        hideKeyboard()
+        
         if(codigo.isEmpty){
             toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-codigo-requerido"), tipoColor: .gris)
             return

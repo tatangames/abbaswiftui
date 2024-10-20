@@ -8,7 +8,7 @@
 import Foundation
 
 class GlobalVariablesSettings: ObservableObject {
-    @Published var selectedBuscarPlanID: Int = 0
+    @Published var selectedPlanIDGlobal: Int = 0
     
     // para actualizar los Tabs de Devocional
     @Published var updateTabsBuscarPlan: Bool = false

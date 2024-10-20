@@ -27,15 +27,17 @@ struct ListaAmigosIniciarPlanView: View {
     @AppStorage(DatosGuardadosKeys.idiomaApp) private var idiomaApp:Int = 0
     @State private var showToastBool:Bool = false
     @State private var openLoadingSpinner: Bool = true
+    @State private var selectedFriendIDs: [ModeloListaAmigosAceptadosListado] = []
+    @State private var popIniciarPlan: Bool = false
+    @State private var popAmigosSonRequeridos: Bool = false
     @StateObject private var toastViewModel = ToastViewModel()
     @StateObject var viewModel = ListaAmigosIniciarPlanViewModel()
     @StateObject var viewModelIniciar = ListaAmigosIniciarPlanEnviarViewModel()
-    @State private var popIniciarPlan: Bool = false
     @ObservedObject var settingsVista: GlobalVariablesSettings
     
     @Environment(\.dismiss) var dismiss
-    @State private var selectedFriendIDs: [ModeloListaAmigosAceptadosListado] = []
-    
+ 
+    // para cerrar tambien ventana informacionPlanView
     @Binding var boolInicioPlanConAmigos: Bool
         
     var body: some View {
@@ -72,8 +74,7 @@ struct ListaAmigosIniciarPlanView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                         .padding(.top, 20)
                     }else{
-                        
-                        
+                                                
                         List(viewModel.misAmigosArray) { amigo in
                             let isSelected = selectedFriendIDs.contains(where: { $0.id == amigo.id })
                             
@@ -97,11 +98,9 @@ struct ListaAmigosIniciarPlanView: View {
                         .scrollContentBackground(.hidden)
                         .background(temaApp == 1 ? Color.black : Color(UIColor.systemGray6))
                         
-                        
-                        
                         Button(action: {
                             if selectedFriendIDs.isEmpty {
-                                toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-seleccionar-minimo-un-amigo"), tipoColor: .gris)
+                                popAmigosSonRequeridos = true
                             }else{
                                 popIniciarPlan = true
                             }
@@ -137,8 +136,12 @@ struct ListaAmigosIniciarPlanView: View {
                         iniciarPlanAmigos()
                     }).zIndex(1)
                 }
-                
-                
+                                
+                if popAmigosSonRequeridos {
+                    PopImg1BtnView(isActive: $popAmigosSonRequeridos, imagen: .constant("amigos"), bLlevaTitulo: .constant(false), titulo: .constant(""), descripcion: .constant(TextoIdiomaController.localizedString(forKey: "key-amigos-requeridos")), txtAceptar: .constant(TextoIdiomaController.localizedString(forKey: "key-aceptar")), acceptAction: {})
+                        .zIndex(1)
+                }
+                                
                 if openLoadingSpinner {
                     LoadingSpinnerView()
                         .transition(.opacity) // Transición de opacidad
@@ -150,8 +153,6 @@ struct ListaAmigosIniciarPlanView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
-                        
-                        boolInicioPlanConAmigos = true
                         dismiss()
                     }) {
                         Image(systemName: "arrow.left")
@@ -174,8 +175,7 @@ struct ListaAmigosIniciarPlanView: View {
             .onReceive(viewModel.$loadingSpinner) { loading in
                 openLoadingSpinner = loading
             }
-            
-            .onReceive(viewModel.$loadingSpinner) { loading in
+            .onReceive(viewModelIniciar.$loadingSpinner) { loading in
                 openLoadingSpinner = loading
             }
         } // end-navigationView
@@ -184,22 +184,17 @@ struct ListaAmigosIniciarPlanView: View {
     }
     
     private func iniciarPlanAmigos(){
-      
-        viewModelIniciar.iniciarPlanAmigosRX(idToken: idToken, idPlan: settingsVista.selectedBuscarPlanID, idCliente: idCliente, idiomaApp: idiomaApp, selectedFriends: selectedFriendIDs) { result in
+       openLoadingSpinner = true
+        viewModelIniciar.iniciarPlanAmigosRX(idToken: idToken, idPlan: settingsVista.selectedPlanIDGlobal, idCliente: idCliente, idiomaApp: idiomaApp, selectedFriends: selectedFriendIDs) { result in
             switch result {
             case .success(let json):
-                
-                print("RESPUESTA")
-                print(json)
-                
+                             
                 let success = json["success"].int ?? 0
                 switch success {
                 case 1:
-                  print("plan ya habia guardado")
-                    
+                    salir()
                 case 2:
-                  print("guardado")
-            
+                    salir()
                 default:
                     mensajeError()
                 }
@@ -208,6 +203,11 @@ struct ListaAmigosIniciarPlanView: View {
                 mensajeError()
             }
         }
+    }
+    
+    private func salir(){
+        boolInicioPlanConAmigos = true
+        dismiss()
     }
     
     private func loadData(){
@@ -248,8 +248,7 @@ struct ListaAmigosIniciarPlanView: View {
             }
         }
     }
-  
-    
+      
     private func mensajeError(){
         toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-error-intentar-de-nuevo"), tipoColor: .rojo)
     }
@@ -293,7 +292,7 @@ struct TabsMisAmigosIniciarPlanRow: View {
                         Image(systemName: "network") // Icono de bandera
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 20, height: 15)
+                            .frame(width: 15, height: 15)
                         
                         Text(amigos.pais)
                             .font(.subheadline)

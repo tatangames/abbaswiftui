@@ -268,6 +268,7 @@ struct RegistroView: View {
                 .padding()
                 .navigationTitle(TextoIdiomaController.localizedString(forKey: "key-registro"))
                 .navigationBarBackButtonHidden(true)
+                .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {
@@ -331,6 +332,8 @@ struct RegistroView: View {
     }
     
     private func verificarCampos(){
+        
+        hideKeyboard()
         
         if(nombre.isEmpty){
             toastViewModel.showCustomToast(with: TextoIdiomaController.localizedString(forKey: "key-nombre-requerido"), tipoColor: .gris)
