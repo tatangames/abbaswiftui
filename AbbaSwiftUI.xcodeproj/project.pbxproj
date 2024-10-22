@@ -73,6 +73,9 @@
 		8F792F9F2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F792F9E2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift */; };
 		8F792FA22CBAF96A0013211E /* ModeloInsignias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F792FA12CBAF96A0013211E /* ModeloInsignias.swift */; };
 		8F792FA52CBB3A030013211E /* PerfilViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F792FA42CBB3A030013211E /* PerfilViewModel.swift */; };
+		8FA17F7B2CC7135C00F52765 /* TextoDevocionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA17F7A2CC7135C00F52765 /* TextoDevocionalView.swift */; };
+		8FA17F7D2CC7136A00F52765 /* TextoDevocionalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA17F7C2CC7136A00F52765 /* TextoDevocionalViewModel.swift */; };
+		8FA17F802CC73A3000F52765 /* WebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA17F7F2CC73A3000F52765 /* WebViewRepresentable.swift */; };
 		8FD0AD3B2CC4199F008207E5 /* BloqueFechaDevocionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0AD3A2CC4199F008207E5 /* BloqueFechaDevocionalView.swift */; };
 		8FD0AD3E2CC42069008207E5 /* BloqueFechasDevocionalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0AD3D2CC42069008207E5 /* BloqueFechasDevocionalViewModel.swift */; };
 		8FD0AD402CC42338008207E5 /* ModeloBloqueFecha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FD0AD3F2CC42338008207E5 /* ModeloBloqueFecha.swift */; };
@@ -201,6 +204,9 @@
 		8F792F9E2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsiginiasPorGanarViewModel.swift; sourceTree = "<group>"; };
 		8F792FA12CBAF96A0013211E /* ModeloInsignias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeloInsignias.swift; sourceTree = "<group>"; };
 		8F792FA42CBB3A030013211E /* PerfilViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewModel.swift; sourceTree = "<group>"; };
+		8FA17F7A2CC7135C00F52765 /* TextoDevocionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextoDevocionalView.swift; sourceTree = "<group>"; };
+		8FA17F7C2CC7136A00F52765 /* TextoDevocionalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextoDevocionalViewModel.swift; sourceTree = "<group>"; };
+		8FA17F7F2CC73A3000F52765 /* WebViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewRepresentable.swift; sourceTree = "<group>"; };
 		8FD0AD3A2CC4199F008207E5 /* BloqueFechaDevocionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloqueFechaDevocionalView.swift; sourceTree = "<group>"; };
 		8FD0AD3D2CC42069008207E5 /* BloqueFechasDevocionalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloqueFechasDevocionalViewModel.swift; sourceTree = "<group>"; };
 		8FD0AD3F2CC42338008207E5 /* ModeloBloqueFecha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeloBloqueFecha.swift; sourceTree = "<group>"; };
@@ -456,6 +462,7 @@
 		8F2FEB952CAEE63800647572 /* Estructuras */ = {
 			isa = PBXGroup;
 			children = (
+				8FA17F7E2CC73A2700F52765 /* Html */,
 				8F2FEB9E2CAEE72C00647572 /* CustomModalView.swift */,
 				8F2FEBA02CAEE75400647572 /* LoadingSpinnerView.swift */,
 				8F2FEBA22CAEE77200647572 /* CustomModal2ButtonView.swift */,
@@ -635,10 +642,19 @@
 			path = Perfil;
 			sourceTree = "<group>";
 		};
+		8FA17F7E2CC73A2700F52765 /* Html */ = {
+			isa = PBXGroup;
+			children = (
+				8FA17F7F2CC73A3000F52765 /* WebViewRepresentable.swift */,
+			);
+			path = Html;
+			sourceTree = "<group>";
+		};
 		8FD0AD392CC41978008207E5 /* BloqueFechas */ = {
 			isa = PBXGroup;
 			children = (
 				8FD0AD3A2CC4199F008207E5 /* BloqueFechaDevocionalView.swift */,
+				8FA17F7A2CC7135C00F52765 /* TextoDevocionalView.swift */,
 			);
 			path = BloqueFechas;
 			sourceTree = "<group>";
@@ -648,6 +664,7 @@
 			children = (
 				8FD0AD3D2CC42069008207E5 /* BloqueFechasDevocionalViewModel.swift */,
 				8FD0AD412CC46EC2008207E5 /* BloqueFechasCompartirPreguntasViewModel.swift */,
+				8FA17F7C2CC7136A00F52765 /* TextoDevocionalViewModel.swift */,
 			);
 			path = BloqueFechas;
 			sourceTree = "<group>";
@@ -1049,6 +1066,7 @@
 				8F25FAEE2CB331F6001BE477 /* NuevaPasswordLoginView.swift in Sources */,
 				8F25FAEA2CB312FE001BE477 /* CorreoOTPViewModel.swift in Sources */,
 				8F245FE62CB9FD1800F145D1 /* ListaNotificacionesViewModel.swift in Sources */,
+				8FA17F802CC73A3000F52765 /* WebViewRepresentable.swift in Sources */,
 				8F2FEBB32CAF123900647572 /* TextoIdiomaController.swift in Sources */,
 				8F0ADAF72CC1F8ED005F84C4 /* ListaAmigosIniciarPlanView.swift in Sources */,
 				8FD0AD3E2CC42069008207E5 /* BloqueFechasDevocionalViewModel.swift in Sources */,
@@ -1085,6 +1103,8 @@
 				8F60386E2CBDFA1C00E611F0 /* TabsMisPlanesViewModel.swift in Sources */,
 				8F611A4D2CBF3A2D00F384EE /* TabsBuscarPlanesViewModel.swift in Sources */,
 				8F25FAE12CB2E30F001BE477 /* PrincipalView.swift in Sources */,
+				8FA17F7B2CC7135C00F52765 /* TextoDevocionalView.swift in Sources */,
+				8FA17F7D2CC7136A00F52765 /* TextoDevocionalViewModel.swift in Sources */,
 				8F105B652CB078FF0036EF64 /* MunicipioViewModel.swift in Sources */,
 				8F0B37AB2CAE4A7200A261E4 /* AbbaSwiftUIApp.swift in Sources */,
 				8FD0AD402CC42338008207E5 /* ModeloBloqueFecha.swift in Sources */,

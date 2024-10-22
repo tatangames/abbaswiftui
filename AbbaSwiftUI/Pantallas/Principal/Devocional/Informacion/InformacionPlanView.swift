@@ -80,8 +80,7 @@ struct InformacionPlanView: View {
                                 .padding(.top, 40)
                                 .opacity(1.0)
                                 .buttonStyle(NoOpacityChangeButtonStyle())
-                                
-                                
+                                                                
                                 HStack {
                                     // Imagen a la izquierda
                                     Image("amigos") // Reemplaza "amigos" con el nombre de tu imagen en los assets
@@ -112,16 +111,10 @@ struct InformacionPlanView: View {
                                     }
                                 }
                                 .padding(.horizontal, 0)
-                                
-                                
-                                
                             }
                             .padding()
                         }
-                        
-                        
                     }
-                    
                 }.onAppear {
                     loadData()
                 }

@@ -9,6 +9,9 @@ import Foundation
 
 class GlobalVariablesSettings: ObservableObject {
     @Published var selectedPlanIDGlobal: Int = 0
+        
+    // utilizado en Texto Devocional
+    @Published var selectedIdBlockDeta: Int = 0
     
     // para actualizar los Tabs de Devocional
     @Published var updateTabsBuscarPlan: Bool = false

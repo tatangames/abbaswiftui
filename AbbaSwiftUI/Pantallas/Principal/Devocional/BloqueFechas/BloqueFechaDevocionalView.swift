@@ -31,8 +31,9 @@ struct BloqueFechaDevocionalView: View {
     
     @Environment(\.dismiss) var dismiss
     @State private var textToShare: String = ""
-    @State private var isShareSheetPresented = false
     @State private var selectedListado: ListadoBloqueFecha?
+    @State private var isShareSheetPresented:Bool = false
+    @State private var boolCambiarVista:Bool = false
     
     var body: some View {
         
@@ -52,8 +53,7 @@ struct BloqueFechaDevocionalView: View {
                                     .frame(maxWidth: .infinity)
                                     .padding(.horizontal, 20)
                                     .clipped()
-                                
-                                
+                                                                
                                 ScrollView(.horizontal, showsIndicators: false) {
                                     LazyHStack(spacing: 10) { // Mantenemos spacing: 0 para eliminar espacio entre items
                                         ForEach(viewModel.misplanesArray, id: \.id) { item in
@@ -61,8 +61,10 @@ struct BloqueFechaDevocionalView: View {
                                                 Text(item.textopersonalizado)
                                                     .fontWeight(.medium)
                                                     .frame(width: 100, height: 40) // Primero definimos el frame
-                                                    .background(selectedListado?.id == item.id ? Color.blue : Color.gray.opacity(0.1))
+                                                   // .background(selectedListado?.id == item.id ? Color(UIColor.systemGray2) : Color.gray.opacity(0.1))
+                                                    .background(backgroundColor(forSelected: selectedListado?.id == item.id))
                                                     .cornerRadius(25)
+                                                    .foregroundColor(.black)
                                                     .onTapGesture {
                                                         selectedListado = item
                                                     }
@@ -79,9 +81,16 @@ struct BloqueFechaDevocionalView: View {
                                     VStack(alignment: .leading, spacing: 10) {
                                         ForEach(listado.detalle, id: \.id) { detalle in
                                             HStack {
-                                                Text(detalle.titulo)
-                                                    .font(.system(size: 16, weight: .bold))
-                                                    .foregroundColor(temaApp==1 ? .white : .black)
+                                                Button(action: {
+                                                  settingsVista.selectedIdBlockDeta = detalle.id
+                                                  boolCambiarVista = true
+                                                }) {
+                                                    Text(detalle.titulo)
+                                                        .font(.system(size: 16, weight: .bold))
+                                                        .foregroundColor(temaApp==1 ? .white : .black)
+                                                }
+                                                .buttonStyle(PlainButtonStyle())
+                                                
                                                 
                                                 Spacer() // Espacio flexible para empujar la imagen a la derecha
                                                 
@@ -123,7 +132,9 @@ struct BloqueFechaDevocionalView: View {
                 .onReceive(viewModelCompartir.$loadingSpinner) { loading in
                     openLoadingSpinner = loading
                 }
-                
+                .fullScreenCover(isPresented: $boolCambiarVista) {
+                    TextoDevocionalView(settingsVista: settingsVista)
+                }
                 
                 if openLoadingSpinner {
                     LoadingSpinnerView()
@@ -168,6 +179,13 @@ struct BloqueFechaDevocionalView: View {
                                                 titleColor: .black))
     }
     
+    func backgroundColor(forSelected isSelected: Bool) -> Color {
+        if temaApp == 0 {
+            return isSelected ? Color(UIColor.systemGray2) : Color.gray.opacity(0.1)
+        } else {
+            return isSelected ? Color.white : Color(UIColor.systemGray)
+        }
+    }
     
     private func obtenerTextoServer(idPlanBlock: Int){
         openLoadingSpinner = true
@@ -202,8 +220,7 @@ struct BloqueFechaDevocionalView: View {
             }
         }
     }
-    
-    
+        
     private func loadData(){
         openLoadingSpinner = true
         

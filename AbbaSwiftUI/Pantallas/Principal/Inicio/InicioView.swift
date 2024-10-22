@@ -17,10 +17,7 @@ struct InicioView: View {
     
     var body: some View {
         Text("Hello, 111!")
-            .onTapGesture {
-                idToken = ""
-                idCliente = ""
-            }
+            
     }
 }
 
