@@ -60,8 +60,10 @@ struct TextoDevocionalView: View {
                 VStack {
                     
                     if(activarVista){
-                        WebViewRepresentable(htmlText: textoDevocional, theme: temaApp == 1, currentFontSize: fontSize)
-
+                        CustomWebView(htmlContent: textoDevocional)
+                               .onAppear {
+                                   // Lógica adicional si es necesario
+                               }
                       
                         
                     }
@@ -191,8 +193,6 @@ struct TextoDevocionalView: View {
     func adjustFont() {
            // Tu lógica para ajustar la fuente aquí
            print("Ajustar fuente: \(fontSize), tipo: \(tipoLetra)")
-        
-        print("Ajustando fuente a: \(fontSize)")
          
     }
     

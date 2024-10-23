@@ -8,133 +8,101 @@
 import SwiftUI
 import WebKit
 
-struct WebViewRepresentable: UIViewRepresentable {
-    var htmlText: String
-    var theme: Bool
-    var currentFontSize: Int
-    
-    class Coordinator: NSObject, WKNavigationDelegate {
-        var parent: WebViewRepresentable
-        var webView: WKWebView?
-        
-        init(_ parent: WebViewRepresentable) {
-            self.parent = parent
-        }
-        
-        func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-            self.webView = webView
-            injectInitialCSS(into: webView)
-        }
-        
-        func injectInitialCSS(into webView: WKWebView) {
-            let textColor = parent.theme ? "white" : "black"
-            let backgroundColor = parent.theme ? "black" : "white"
-            let fontFamily = getFontFamily(for: 0)  // Usando índice 0 como valor por defecto
-            
-            let css = """
-                var style = document.createElement('style');
-                style.id = 'custom-styles';
-                style.textContent = `
-                    html {
-                        font-size: \(parent.currentFontSize)px !important;
-                    }
-                    body {
-                        font-family: '\(fontFamily)' !important;
-                        color: \(textColor) !important;
-                        background-color: \(backgroundColor) !important;
-                    }
-                    body, body * {
-                        font-size: inherit !important;
-                        color: inherit !important;
-                    }
-                `;
-                document.head.appendChild(style);
-            """
-            
-            webView.evaluateJavaScript(css) { _, error in
-                if let error = error {
-                    print("Error al inyectar CSS inicial: \(error)")
-                }
-            }
-        }
-        
-        func updateStyles(fontSize: Int) {
-            guard let webView = self.webView else { return }
-            
-            let textColor = parent.theme ? "white" : "black"
-            let backgroundColor = parent.theme ? "black" : "white"
-            let fontFamily = getFontFamily(for: 0)
-            
-            let updateScript = """
-                var style = document.getElementById('custom-styles');
-                if (style) {
-                    style.textContent = `
-                        html {
-                            font-size: \(fontSize)px !important;
-                        }
-                        body {
-                            font-family: '\(fontFamily)' !important;
-                            color: \(textColor) !important;
-                            background-color: \(backgroundColor) !important;
-                        }
-                        body, body * {
-                            font-size: inherit !important;
-                            color: inherit !important;
-                        }
-                    `;
-                }
-            """
-            
-            webView.evaluateJavaScript(updateScript) { _, error in
-                if let error = error {
-                    print("Error al actualizar estilos: \(error)")
-                }
-            }
-        }
-        
-        private func getFontFamily(for index: Int) -> String {
-            switch index {
-            case 0: return "Fuente1ios"
-            case 1: return "Fuente2ios"
-            case 2: return "Fuente3ios"
-            case 3: return "Fuente4ios"
-            case 4: return "Fuente5ios"
-            default: return "Fuente1ios"
-            }
-        }
-    }
-    
+struct CustomWebView: UIViewRepresentable {
+    @AppStorage(DatosGuardadosKeys.tamanoLetra) private var fontSize: Int = 20
+    @AppStorage(DatosGuardadosKeys.tipoLetra) private var tipoLetraTexto: Int = 0
+    @AppStorage(DatosGuardadosKeys.temaApp) private var temaApp: Int = 0
+
+    var htmlContent: String
+
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
-    
+
     func makeUIView(context: Context) -> WKWebView {
-        let preferences = WKWebpagePreferences()
-        preferences.allowsContentJavaScript = true
-        
-        let configuration = WKWebViewConfiguration()
-        configuration.defaultWebpagePreferences = preferences
-        
-        let webView = WKWebView(frame: .zero, configuration: configuration)
+        let webView = WKWebView()
         webView.navigationDelegate = context.coordinator
+        opcinicio(for: webView, coordinator: context.coordinator)
         
-        let wrappedHTML = """
-        <!DOCTYPE html>
-        <html>
-        <head>
-            <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'>
-        </head>
-        <body>
-            \(htmlText)
-        </body>
-        </html>
-        """
+        loadHTMLContent(in: webView)
         
-        webView.loadHTMLString(wrappedHTML, baseURL: Bundle.main.bundleURL)
         return webView
     }
-    
+
     func updateUIView(_ webView: WKWebView, context: Context) {
-        context.coordinator.updateStyles(fontSize: currentFontSize)
+        // Actualiza el tamaño de la fuente cada vez que se cambie el valor de fontSize
+        let scriptTamano = "document.body.style.fontSize = '\(fontSize)px';"
+        webView.evaluateJavaScript(scriptTamano, completionHandler: nil)
+        
+        print("LLEGA AQUII")
+        
+        // Actualiza la fuente de letra según el valor de tipoLetraTexto
+        let tipoLetraScript = obtenerScriptParaFuente(tipoLetraTexto: tipoLetraTexto)
+        webView.evaluateJavaScript(tipoLetraScript, completionHandler: nil)
+    }
+
+    private func opcinicio(for webView: WKWebView, coordinator: Coordinator) {
+        webView.configuration.userContentController.add(coordinator, name: "didTapParagraph")
+    }
+
+    private func loadHTMLContent(in webView: WKWebView) {
+        webView.loadHTMLString(htmlContent, baseURL: nil)
+    }
+
+    private func obtenerScriptParaFuente(tipoLetraTexto: Int) -> String {
+        switch tipoLetraTexto {
+        case 0:
+            return "document.body.style.fontFamily = 'Fuente1ios';"
+        case 1:
+            return "document.body.style.fontFamily = 'Fuente2ios';"
+        case 2:
+            return "document.body.style.fontFamily = 'Fuente3ios';"
+        case 3:
+            return "document.body.style.fontFamily = 'Fuente4ios';"
+        case 4:
+            return "document.body.style.fontFamily = 'Fuente5ios';"
+        default:
+            return "document.body.style.fontFamily = 'Fuente1ios';"
+        }
+    }
+
+    class Coordinator: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
+        var parent: CustomWebView
+
+        init(_ parent: CustomWebView) {
+            self.parent = parent
+        }
+
+        func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+            let tipoLetraScript = parent.obtenerScriptParaFuente(tipoLetraTexto: parent.tipoLetraTexto)
+            webView.evaluateJavaScript(tipoLetraScript, completionHandler: nil)
+
+            let textColor = (parent.temaApp == 1) ? "white" : "black"
+            let backgroundColor = (parent.temaApp == 1) ? "black" : "white"
+
+            let scriptColor = "document.body.style.color = '\(textColor)';"
+            webView.evaluateJavaScript(scriptColor, completionHandler: nil)
+
+            let javascriptBackground = "document.body.style.backgroundColor = '\(backgroundColor)';"
+            webView.evaluateJavaScript(javascriptBackground, completionHandler: nil)
+
+            let scriptTamano = "document.body.style.fontSize = '\(parent.fontSize)px';"
+            webView.evaluateJavaScript(scriptTamano, completionHandler: nil)
+
+            let script = """
+            document.getElementById('miParrafo').addEventListener('click', function() {
+                window.webkit.messageHandlers.didTapParagraph.postMessage('miParrafo fue tocado');
+            });
+            """
+            webView.evaluateJavaScript(script, completionHandler: nil)
+        }
+
+        func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+            if message.name == "didTapParagraph" {
+                if let body = message.body as? String {
+                    print(body)
+                }
+            }
+        }
     }
 }

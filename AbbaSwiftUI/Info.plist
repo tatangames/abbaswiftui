@@ -2,12 +2,23 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key></key>
+	<string></string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>medel.ttf</string>
 		<string>liberation_sans_bold.ttf</string>
 		<string>montserratmedium.ttf</string>
 		<string>montserratregular.ttf</string>
+		<string>LobsterTwo-Bold.ttf</string>
+		<string>LobsterTwo-BoldItalic.ttf</string>
+		<string>LobsterTwo-Italic.ttf</string>
+		<string>LobsterTwo-Regular.ttf</string>
+		<string>Notosans-Light.ttf</string>
+		<string>Notosans-Medium.ttf</string>
+		<string>Times-Regular.ttf</string>
+		<string>Recolecta-Medium.ttf</string>
+		<string>Recolecta-Regular.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
