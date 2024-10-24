@@ -40,6 +40,8 @@ struct BloqueFechaDevocionalView: View {
         NavigationView {
             ZStack {
                 VStack {
+                    
+                    
                     if(boolActivarVista){
                         
                         ScrollView(.vertical, showsIndicators: false) {

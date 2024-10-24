@@ -12,6 +12,7 @@ import RxSwift
 import AlertToast
 import Combine
 import Foundation
+import WebKit
 
 struct TextoDevocionalView: View {
     
@@ -19,11 +20,8 @@ struct TextoDevocionalView: View {
     @AppStorage(DatosGuardadosKeys.idCliente) private var idCliente:String = ""
     @AppStorage(DatosGuardadosKeys.temaApp) private var temaApp: Int = 0
     @AppStorage(DatosGuardadosKeys.idiomaApp) private var idiomaApp:Int = 0
-    
     @AppStorage(DatosGuardadosKeys.tamanoLetra) private var fontSize:Int = 20
     @AppStorage(DatosGuardadosKeys.tipoLetra) private var tipoLetra:Int = 0
-    
-    
     @State private var showToastBool:Bool = false
     @State private var openLoadingSpinner: Bool = false
     @StateObject private var toastViewModel = ToastViewModel()
@@ -34,7 +32,9 @@ struct TextoDevocionalView: View {
     
     @State private var textoDevocional: String = ""
     @State private var activarVista: Bool = false
-    
+    @State private var boolRedireccionarLink: Bool = false
+    @State private var urlRedireccionWeb: String = ""
+    @State private var boolCambiarVista:Bool = false
     
     @State private var showModal = false
     
@@ -46,36 +46,40 @@ struct TextoDevocionalView: View {
         ModeloPickerLetra(id: 4, titulo: "Recolecta Regular")
     ]
     
-    
     @State private var selectedPickerLetra: ModeloPickerLetra?
     
+    @State private var webView: WKWebView?
     
-    
-   
-    
-    var body: some View {
-        
+    var body: some View {        
         NavigationView {
             ZStack {
                 VStack {
-                    
+                                        
                     if(activarVista){
-                        CustomWebView(htmlContent: textoDevocional)
-                               .onAppear {
-                                   // Lógica adicional si es necesario
-                               }
-                      
                         
+                        WebView(htmlString: textoDevocional, tamanoLetra: fontSize, temaApp: temaApp, onFinish: { webView in
+                            self.webView = webView
+                        }, onButtonMeditacionPressed: {
+                            boolCambiarVista = true
+                          
+                        }, onButtonTituloPressed: {
+                            if(boolRedireccionarLink){
+                                
+                                if let url = URL(string: urlRedireccionWeb) {
+                                    UIApplication.shared.open(url)
+                                }
+                            }
+                        })
+                        .edgesIgnoringSafeArea(.all)
                     }
                     
                     
                 }.onAppear {
                     loadData()
                 }
-                .onReceive(viewModel.$loadingSpinner) { loading in
-                    openLoadingSpinner = loading
+                .fullScreenCover(isPresented: $boolCambiarVista) {
+                    MeditacionView(settingsVista: settingsVista)
                 }
-                
                 
                 // Botón flotante en la esquina inferior izquierda
                 VStack {
@@ -100,8 +104,6 @@ struct TextoDevocionalView: View {
                     }
                     .padding(.bottom, 16) // Ajustar el margen desde el fondo
                 }
-                
-                
                 
                 if openLoadingSpinner {
                     LoadingSpinnerView()
@@ -138,20 +140,23 @@ struct TextoDevocionalView: View {
             }
             .sheet(isPresented: $showModal) {
                 AjustarFontSizeView(
-                                fontSize: $fontSize,
-                                selectedPickerLetra: $selectedPickerLetra,
-                                tipoLetra: $tipoLetra,
-                                adjustFont: adjustFont // Pasar la función aquí
-                            )
-                    .presentationDetents([.height(300)]) // Ajusta el tamaño del modal
-                    .presentationDragIndicator(.visible)
+                    fontSize: $fontSize,
+                    selectedPickerLetra: $selectedPickerLetra,
+                    tipoLetra: $tipoLetra,
+                    adjustFont: adjustFont,
+                    adjustSize: adjustSize// Pasar la función aquí
+                )
+                .presentationDetents([.height(300)]) // Ajusta el tamaño del modal
+                .presentationDragIndicator(.visible)
+            }
+            .onAppear{
+                
             }
             
         } // end-navigationView
         .background(CustomNavigationBarModifier(backgroundColor: .white, // toolbar
                                                 titleColor: .black))
     }
-    
     
     
     private func loadData(){
@@ -165,14 +170,18 @@ struct TextoDevocionalView: View {
                 switch success {
                 case 1:
                     
-                    let _redireccion = json["redireccionar"].int ?? 0
-                    let _iddevobiblia = json["iddevobiblia"].int ?? 0
+                    //let _redireccion = json["redireccionar"].int ?? 0 // esto era cuando habia meditacion o no
+                    //let _iddevobiblia = json["iddevobiblia"].int ?? 0
                     let _devocional = json["devocional"].string ?? ""
                     let _redirecweb = json["redirecweb"].int ?? 0
                     let _urllink = json["urllink"].string ?? ""
                     
-                    textoDevocional = _devocional
+                    if(_redirecweb == 1){
+                        boolRedireccionarLink = true
+                    }
                     
+                    urlRedireccionWeb = _urllink
+                    textoDevocional = _devocional + botonParaMeditacion()
                     activarVista = true
                     
                 default:
@@ -191,11 +200,88 @@ struct TextoDevocionalView: View {
     }
     
     func adjustFont() {
-           // Tu lógica para ajustar la fuente aquí
-           print("Ajustar fuente: \(fontSize), tipo: \(tipoLetra)")
-         
+        var fuente = ""
+        
+        switch tipoLetra {
+        case 0:
+            fuente = "Fuente1ios"
+        case 1:
+            fuente = "Fuente2ios"
+        case 2:
+            fuente = "Fuente3ios"
+        case 3:
+            fuente = "Fuente4ios"
+        case 4:
+            fuente = "Fuente5ios"
+        default:
+            fuente = "Fuente6ios"
+        }
+        
+        let script = """
+            console.log('Cambiando fuente...');
+            document.body.style.fontFamily = '\(fuente), serif';
+            console.log('Nueva fuente:', document.body.style.fontFamily);
+        """
+        
+        webView?.evaluateJavaScript(script) { (result, error) in
+            if let error = error {
+                print("Error al cambiar la fuente: \(error)")
+            } else {
+                print("Fuente cambiada exitosamente")
+            }
+        }
     }
     
+    func adjustSize() {
+        let scriptTamano = "document.body.style.fontSize = '\(Int(fontSize))px';"
+        webView?.evaluateJavaScript(scriptTamano) { (result, error) in
+            if let error = error {
+                print("Error al cambiar tamaño: \(error)")
+            }
+        }
+    }
+    
+    func botonParaMeditacion() -> String {
+        
+        let titulo = TextoIdiomaController.localizedString(forKey: "key-meditacion")
+        
+        return """
+                <html>
+                    <head>
+                        <style>
+                            .container {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                            button {
+                                padding: 10px 20px;
+                                background-color: #007AFF;
+                                color: white;
+                                border: none;
+                                border-radius: 8px;
+                                cursor: pointer;
+                                font-size: 16px;
+                                font-weight: bold;
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <br>
+                        <div class="container">
+                             <button onclick="buttonClicked()">\(titulo)</button>
+                        </div>
+                        <br><br>
+                        <script>
+                            function buttonClicked() {
+                                // Llamar una función nativa de Swift desde JavaScript
+                                window.webkit.messageHandlers.buttonClicked.postMessage("Botón presionado");
+                            }
+                        </script>
+                    </body>
+                </html>
+                """
+    }
 }
 
 
@@ -207,16 +293,18 @@ struct AjustarFontSizeView: View {
     
     // Agrega la propiedad para el closure
     var adjustFont: () -> Void
+    var adjustSize: () -> Void
     
     @State private var selectedFont: Int? = nil
     
-    init(fontSize: Binding<Int>, selectedPickerLetra: Binding<ModeloPickerLetra?>, tipoLetra: Binding<Int>, adjustFont: @escaping () -> Void) {
-          self._fontSize = fontSize
-          self._selectedPickerLetra = selectedPickerLetra
-          self._tipoLetra = tipoLetra
-          self.adjustFont = adjustFont // Asignar el closure
-          self._selectedFont = State(initialValue: tipoLetra.wrappedValue)
-      }
+    init(fontSize: Binding<Int>, selectedPickerLetra: Binding<ModeloPickerLetra?>, tipoLetra: Binding<Int>, adjustFont: @escaping () -> Void, adjustSize: @escaping () -> Void) {
+        self._fontSize = fontSize
+        self._selectedPickerLetra = selectedPickerLetra
+        self._tipoLetra = tipoLetra
+        self.adjustFont = adjustFont // Asignar el closure
+        self.adjustSize = adjustSize // Asignar el closure
+        self._selectedFont = State(initialValue: tipoLetra.wrappedValue)
+    }
     
     var modeloLetra: [ModeloPickerLetra] = [
         ModeloPickerLetra(id: 0, titulo: "Noto Sans Light"),
@@ -229,7 +317,6 @@ struct AjustarFontSizeView: View {
     var body: some View {
         VStack {
             
-            
             // Botones para aumentar o disminuir el tamaño de la letra
             VStack(alignment: .leading) { // Alinear el contenido a la izquierda
                 Text(TextoIdiomaController.localizedString(forKey: "key-tamano-de-letra"))
@@ -241,7 +328,7 @@ struct AjustarFontSizeView: View {
                     Button(action: {
                         if fontSize > 15 {
                             fontSize -= 1
-                            adjustFont()
+                            adjustSize()
                         }
                     }) {
                         Text("A-") // Texto del botón
@@ -256,7 +343,7 @@ struct AjustarFontSizeView: View {
                     Button(action: {
                         if fontSize < 35 {
                             fontSize += 1
-                            adjustFont()
+                            adjustSize()
                             
                         }
                     }) {
@@ -270,20 +357,19 @@ struct AjustarFontSizeView: View {
                     }
                 }
                 
-                
-                
                 Text(TextoIdiomaController.localizedString(forKey: "key-fuente"))
                     .foregroundColor(Color.black)
                     .font(.headline)
                     .padding(.leading) // Espaciado hacia la izquierda
                     .padding(.top, 5)
                 
-                
                 Menu {
                     ForEach(modeloLetra) { modelo in
                         Button(action: {
                             tipoLetra = modelo.id
                             selectedFont = modelo.id // Actualiza el ID de la fuente seleccionada
+                            
+                            adjustFont()
                         }) {
                             Text(modelo.titulo)
                                 .foregroundStyle(Color.black)

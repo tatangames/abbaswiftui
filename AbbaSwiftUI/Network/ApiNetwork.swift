@@ -40,3 +40,4 @@ let apiIniciarPlanConAmigos = baseUrl+"app/comunidadplan/iniciar/plan/amigosipho
 let apiBloqueFechas = baseUrl+"app/plan/misplanes/informacion/bloque"
 let apiMisRespuestasParaCompartir = baseUrl+"app/plan/misplanes/preguntas/infocompartir"
 let apiTextoDevocional = baseUrl+"app/plan/misplanes/cuestionario/bloque"
+let apiListadoPreguntas = baseUrl+"app/plan/misplanes/preguntas/bloque"

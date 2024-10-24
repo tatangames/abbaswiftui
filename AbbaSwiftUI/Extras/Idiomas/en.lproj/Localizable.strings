@@ -136,6 +136,13 @@ key-devocional-pendiente="Pending devotional";
 key-opciones-de-letra="Font Options";
 key-tamano-de-letra="Font size";
 key-fuente="Source";
+key-meditacion="Meditation";
+
+
+
+
+
+
 
 
 
@@ -228,7 +235,7 @@ no_hay_planes_disponibles="No planes available";
 interactivo="Interactive";
 opciones="Options";
 fuente="Source";
-meditacion="Meditation";
+
 no_hay_devocionales_disponibles="No Devotionals available";
 no_hay_devvocionales_seleccionado="No Devotional selected";
 guardar="Save";

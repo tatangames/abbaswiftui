@@ -82,6 +82,8 @@
 		8F792F9F2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F792F9E2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift */; };
 		8F792FA22CBAF96A0013211E /* ModeloInsignias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F792FA12CBAF96A0013211E /* ModeloInsignias.swift */; };
 		8F792FA52CBB3A030013211E /* PerfilViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F792FA42CBB3A030013211E /* PerfilViewModel.swift */; };
+		8F8BAA9B2CC9E88D004DBEFD /* MeditacionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8BAA9A2CC9E88D004DBEFD /* MeditacionView.swift */; };
+		8F8BAA9D2CC9ED13004DBEFD /* MeditacionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8BAA9C2CC9ED13004DBEFD /* MeditacionViewModel.swift */; };
 		8FA17F7B2CC7135C00F52765 /* TextoDevocionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA17F7A2CC7135C00F52765 /* TextoDevocionalView.swift */; };
 		8FA17F7D2CC7136A00F52765 /* TextoDevocionalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA17F7C2CC7136A00F52765 /* TextoDevocionalViewModel.swift */; };
 		8FA17F802CC73A3000F52765 /* WebViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA17F7F2CC73A3000F52765 /* WebViewRepresentable.swift */; };
@@ -222,6 +224,8 @@
 		8F792F9E2CBAF93D0013211E /* InsiginiasPorGanarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsiginiasPorGanarViewModel.swift; sourceTree = "<group>"; };
 		8F792FA12CBAF96A0013211E /* ModeloInsignias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModeloInsignias.swift; sourceTree = "<group>"; };
 		8F792FA42CBB3A030013211E /* PerfilViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilViewModel.swift; sourceTree = "<group>"; };
+		8F8BAA9A2CC9E88D004DBEFD /* MeditacionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditacionView.swift; sourceTree = "<group>"; };
+		8F8BAA9C2CC9ED13004DBEFD /* MeditacionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditacionViewModel.swift; sourceTree = "<group>"; };
 		8FA17F7A2CC7135C00F52765 /* TextoDevocionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextoDevocionalView.swift; sourceTree = "<group>"; };
 		8FA17F7C2CC7136A00F52765 /* TextoDevocionalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextoDevocionalViewModel.swift; sourceTree = "<group>"; };
 		8FA17F7F2CC73A3000F52765 /* WebViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewRepresentable.swift; sourceTree = "<group>"; };
@@ -326,7 +330,7 @@
 				8F245FE72CBA2E4500F145D1 /* Modelos */,
 				8F105B632CB078EC0036EF64 /* ViewModel */,
 				8F2FEBA62CAEE8DB00647572 /* Network */,
-				8F0B37D82CAE518A00A261E4 /* Font */,
+				8F0B37D82CAE518A00A261E4 /* fonts */,
 				8F0B37D42CAE4EF200A261E4 /* Extras */,
 				8F2FEB932CAEE60E00647572 /* Componentes */,
 				8F2FEB8D2CAEE37E00647572 /* Pantallas */,
@@ -371,7 +375,7 @@
 			path = Extras;
 			sourceTree = "<group>";
 		};
-		8F0B37D82CAE518A00A261E4 /* Font */ = {
+		8F0B37D82CAE518A00A261E4 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
 				8F10DD4A2CC86AAA00E79916 /* LobsterTwo-Bold.ttf */,
@@ -388,7 +392,7 @@
 				8F0B37DA2CAE51A700A261E4 /* montserratmedium.ttf */,
 				8F0B37DB2CAE51A700A261E4 /* montserratregular.ttf */,
 			);
-			path = Font;
+			path = fonts;
 			sourceTree = "<group>";
 		};
 		8F0B37E72CAE544900A261E4 /* OneSignalNotificationServiceExtension */ = {
@@ -682,6 +686,7 @@
 			children = (
 				8FD0AD3A2CC4199F008207E5 /* BloqueFechaDevocionalView.swift */,
 				8FA17F7A2CC7135C00F52765 /* TextoDevocionalView.swift */,
+				8F8BAA9A2CC9E88D004DBEFD /* MeditacionView.swift */,
 			);
 			path = BloqueFechas;
 			sourceTree = "<group>";
@@ -692,6 +697,7 @@
 				8FD0AD3D2CC42069008207E5 /* BloqueFechasDevocionalViewModel.swift */,
 				8FD0AD412CC46EC2008207E5 /* BloqueFechasCompartirPreguntasViewModel.swift */,
 				8FA17F7C2CC7136A00F52765 /* TextoDevocionalViewModel.swift */,
+				8F8BAA9C2CC9ED13004DBEFD /* MeditacionViewModel.swift */,
 			);
 			path = BloqueFechas;
 			sourceTree = "<group>";
@@ -1091,6 +1097,8 @@
 				8FD27AB52CB4BA0000667C2F /* ThemeChangeView.swift in Sources */,
 				8FD0AD3B2CC4199F008207E5 /* BloqueFechaDevocionalView.swift in Sources */,
 				8F2FEBB72CAF333600647572 /* LoginView.swift in Sources */,
+				8F8BAA9D2CC9ED13004DBEFD /* MeditacionViewModel.swift in Sources */,
+				8F8BAA9B2CC9E88D004DBEFD /* MeditacionView.swift in Sources */,
 				8F25FAF02CB333CA001BE477 /* ResetPasswordViewModel.swift in Sources */,
 				8F245FE92CBA2E6300F145D1 /* ModeloNotificacionPager.swift in Sources */,
 				8F792F9C2CBADA6B0013211E /* BorrarNotificacionesViewModel.swift in Sources */,
